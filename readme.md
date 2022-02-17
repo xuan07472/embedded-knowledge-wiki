@@ -49,3 +49,7 @@ JTAG ARMCPU 电压调节 IO
 ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 Flash编程 应用特殊逻辑 网络MAC 串口 SPI ADC CAN USB PWM 
 
 [SOC常见架构_RISCV AI SOC实战（一，概述及架构设计）](https://blog.csdn.net/weixin_39693101/article/details/109963793)
+
+(有图)AHB APB 计算核心 各种外设
+
+[ARM架构](./arm架构.md)
