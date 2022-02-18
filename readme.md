@@ -1,6 +1,89 @@
-====概述部分
+# 嵌入式知识图谱WiKi  
 
-〇、前提
+---
+
+|作者|将狼才鲸|
+|---|---|
+|时间|2022-02-18|
+
+## 一、概述  
+
+1. 模块框图  
+
+---
+
+<center>嵌入式</center>  
+
+```mermaid
+graph TB
+subgraph 硬件
+    subgraph 主控芯片
+        subgraph MCU/SoC
+        end
+
+        subgraph DSP
+        end
+
+        subgraph FPGA
+        end
+    end
+end
+
+subgraph 软件
+    subgraph boot
+    end
+
+    subgraph 裸机驱动+应用
+        subgraph 芯片开发包
+        end
+
+        subgraph 用户编写的代码
+        end
+    end
+end
+
+
+
+```
+
+```mermaid
+graph TB
+
+subgraph 工具
+	subgraph IDE/编译器
+		subgraph 编译器预设初始化代码
+		end
+		
+		subgraph 编译原理
+		end
+	end
+	
+	subgraph 开发语言
+		subgraph C语言: boot+驱动+应用+算法
+		end
+	
+		subgraph C++: 应用+算法+GUI
+		end
+		
+		subgraph 汇编
+		end
+	end
+	
+	subgraph xxx
+	end
+end
+```
+
+---
+
+​	
+
+
+2. 知识依赖流程图  
+3. 模块地图（不分层级的所有模块）  
+4. 层级模块地图（各个嵌套的子模块）  
+5. 写作背景  
+
 一直想找到一个从头到尾介绍嵌入式知识的网站，就像一般的WiKi网站那样，能够在一个地方就搜索到大部分嵌入式开发要用到的知识，但是并没由找到，所以就自己着手一边搜索资料一边写，想着花个数十年时间应该能搜集到自己想要的资料。希望以后也能遇到有人和我一起规划和更新这份文档，也希望自己不要放弃一直坚持。
 
 前提依赖：汉语、英语：C语言关键字、英文命名、数学：逻辑运算、电脑：键盘布局
@@ -60,7 +143,7 @@ ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 F
 
 (有图)AHB APB 计算核心 各种外设
 
-[ARM架构](./arm架构.md)
+*本地文档：* [ARM架构](./arm架构.md)
 
 八、硬件上电流程
 [常见SOC启动流程分析](https://blog.csdn.net/weixin_34153893/article/details/93263448)
