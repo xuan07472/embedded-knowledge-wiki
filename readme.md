@@ -13,13 +13,19 @@
 *备注：gitee暂不支持mermaid框图和流程图显示。可以下载本git仓库并用Typora等软件打开本.md文件查看。*  
 *也可以点击[该CSDN同名文章]()查看能正常显示图片的版本。*  
 
+[嵌入式系统硬件组成](https://blog.csdn.net/xiaohongya/article/details/100733863)  
+[一个完备的嵌入式系统硬件架构有哪几部分构成？](https://blog.csdn.net/weibo1230123/article/details/80206223)  
+[嵌入式系统基本概念(硬件篇)](https://blog.csdn.net/qq_36717753/article/details/90582307)  
+
 ---
+
+*备注：因为mermaid subgraph对框图的自定义布局不支持，所以这里用 -.- 虚线来控制布局。*
+
 <center>嵌入式</center>
 
 ```mermaid
 graph TB
 subgraph 硬件
-	A((硬件))
     subgraph 主控芯片
         subgraph MCU/SoC
         end
@@ -29,14 +35,44 @@ subgraph 硬件
 
         subgraph FPGA
         end
+        
+        MCU/SoC -.- DSP -.- FPGA
     end
+    
+    subgraph 外设芯片及配套电路
+    end
+    
+    subgraph 电源电路
+    end
+    
+    subgraph 时钟电路
+    end
+    
+    外设芯片及配套电路 -.- 电源电路 -.- 时钟电路
+        
+    subgraph 复位电路
+    end
+    
+    subgraph 通道与接口
+    
+    end
+    
+    subgraph PCB布线
+    end
+
+	复位电路 -.- 通道与接口 -.- PCB布线
+
+    A((硬件))
+    
+    时钟电路 -.- A
 end
 
 subgraph 软件
-	B((软件))
     subgraph boot
     end
-
+    
+	B((软件))
+	
     subgraph 裸机驱动+应用
         subgraph 芯片开发包
         end
@@ -73,7 +109,7 @@ subgraph 工具
 
 end
 
-A((硬件))-.-B((软件))-.-C((工具))
+A((硬件)) -.- B((软件)) -.- C((工具))
 
 ```
 
