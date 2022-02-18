@@ -13,13 +13,9 @@
 *备注：gitee暂不支持mermaid框图和流程图显示。可以下载本git仓库并用Typora等软件打开本.md文件查看。*  
 *也可以点击[该CSDN同名文章]()查看能正常显示图片的版本。*  
 
-[嵌入式系统硬件组成](https://blog.csdn.net/xiaohongya/article/details/100733863)  
-[一个完备的嵌入式系统硬件架构有哪几部分构成？](https://blog.csdn.net/weibo1230123/article/details/80206223)  
-[嵌入式系统基本概念(硬件篇)](https://blog.csdn.net/qq_36717753/article/details/90582307)  
+*备注：因为mermaid subgraph对框图的自定义布局不支持，所以这里用 -.- 虚线来控制布局。*
 
 ---
-
-*备注：因为mermaid subgraph对框图的自定义布局不支持，所以这里用 -.- 虚线来控制布局。*
 
 <center>嵌入式</center>
 
@@ -35,90 +31,130 @@ subgraph 硬件
 
         subgraph FPGA
         end
-        
+
         MCU/SoC -.- DSP -.- FPGA
     end
-    
+
     subgraph 外设芯片及配套电路
     end
-    
+
     subgraph 电源电路
     end
-    
+
     subgraph 时钟电路
     end
-    
+
     外设芯片及配套电路 -.- 电源电路 -.- 时钟电路
-        
+
     subgraph 复位电路
     end
-    
+
     subgraph 通道与接口
-    
+
     end
-    
+
     subgraph PCB布线
     end
 
-	复位电路 -.- 通道与接口 -.- PCB布线
-
-    A((硬件))
-    
-    时钟电路 -.- A
+    复位电路 -.- 通道与接口 -.- PCB布线
 end
 
+PCB布线 -.- boot
+
 subgraph 软件
-    subgraph boot
-    end
-    
-	B((软件))
-	
     subgraph 裸机驱动+应用
         subgraph 芯片开发包
         end
 
         subgraph 用户编写的代码
         end
+
+        芯片开发包 -.- 用户编写的代码
     end
+
+    subgraph 操作系统+驱动+应用
+        subgraph 原厂操作系统+驱动
+        end
+
+        subgraph 驱动移植
+        end
+
+        subgraph 用户应用
+        end
+
+    原厂操作系统+驱动 -.- 驱动移植 -.- 用户应用
+    end
+
+    subgraph boot
+    end
+
+    subgraph 算法
+    end
+
+    subgraph API接口
+    end
+
+    subgraph 架构
+    end
+
+    boot -.- 算法 -.- API接口 -.- 架构
 end
+
+架构 -.- C语言:boot+驱动+应用+算法
 
 subgraph 工具
-	subgraph IDE/编译器
-		subgraph 编译器预设初始化代码
-		end
-		
-		subgraph 编译原理
-		end
-	end
-	
-	C((工具))
-            
+    subgraph IDE/编译器
+        subgraph 编译器预设初始化代码
+        end
+
+        subgraph 编译原理
+        end
+
+        编译器预设初始化代码 -.- 编译原理
+
+        subgraph 优化选项
+        end
+
+        subgraph 调试与发布
+        end
+
+        优化选项 -.- 调试与发布
+    end
+
     subgraph 开发语言
-		subgraph C语言: boot+驱动+应用+算法
-		end
-	
-		subgraph C++: 应用+算法+GUI
-		end
-		
-		subgraph 汇编
-		end
-	end
-	
-	subgraph xxx
-	end
+        subgraph C语言:boot+驱动+应用+算法
+        end
 
+        subgraph C++:应用+算法+GUI
+        end
+
+        subgraph 汇编:boot+算法
+        end
+
+        subgraph Verilog:FPGA
+        end
+
+        subgraph Matlab:算法
+        end
+
+        C语言:boot+驱动+应用+算法 -.- C++:应用+算法+GUI -.- 汇编:boot+算法
+
+        Verilog:FPGA -.- Matlab:算法
+    end
 end
-
-A((硬件)) -.- B((软件)) -.- C((工具))
-
 ```
 
 ---
 
 2. 知识依赖流程图  
-3. 模块地图（不分层级的所有模块）  
-4. 层级模块地图（各个嵌套的子模块）  
-5. 写作背景  
+
+前提依赖
+
+入门 进阶 算法 架构 行业
+
+
+
+3. 写作背景  
 
 一直想找到一个从头到尾介绍嵌入式知识的网站，就像一般的WiKi网站那样，能够在一个地方就搜索到大部分嵌入式开发要用到的知识，但是并没由找到，所以就自己着手一边搜索资料一边写，想着花个数十年时间应该能搜集到自己想要的资料。希望以后也能遇到有人和我一起规划和更新这份文档，也希望自己不要放弃一直坚持。
 
@@ -136,8 +172,9 @@ A((硬件)) -.- B((软件)) -.- C((工具))
 学习嵌入式软件时可以只在上述三类中选一项学习，然后只从事相关类型的工作
 
 嵌入式硬件：主控芯片 外设芯片 输入输出 电源
-[嵌入式系统硬件组成](https://blog.csdn.net/xiaohongya/article/details/100733863)
-
+[嵌入式系统硬件组成](https://blog.csdn.net/xiaohongya/article/details/100733863)  
+[一个完备的嵌入式系统硬件架构有哪几部分构成？](https://blog.csdn.net/weibo1230123/article/details/80206223)  
+[嵌入式系统基本概念(硬件篇)](https://blog.csdn.net/qq_36717753/article/details/90582307)  
 
 
 嵌入式软件：编译器预设启动代码、boot代码、操作系统+应用或者裸机驱动+应用，以上各个部分中某些模块都有可能由芯片厂商提供，自己可以直接用或者稍做移植。
@@ -210,3 +247,6 @@ CPU获取编译器预设的代码，初始化时钟、看门狗、启动介质
 十五、算法
 
 十六、GUI
+
+2. 模块地图（不分层级的所有模块）  
+3. 层级模块地图（各个嵌套的子模块）  
