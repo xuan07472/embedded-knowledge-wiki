@@ -10,13 +10,16 @@
 
 1. 模块框图  
 
----
+*备注：gitee暂不支持mermaid框图和流程图显示。可以下载本git仓库并用Typora等软件打开本.md文件查看。*  
+*也可以点击[该CSDN同名文章]()查看能正常显示图片的版本。*  
 
-<center>嵌入式</center>  
+---
+<center>嵌入式</center>
 
 ```mermaid
 graph TB
 subgraph 硬件
+	A((硬件))
     subgraph 主控芯片
         subgraph MCU/SoC
         end
@@ -30,6 +33,7 @@ subgraph 硬件
 end
 
 subgraph 软件
+	B((软件))
     subgraph boot
     end
 
@@ -42,13 +46,6 @@ subgraph 软件
     end
 end
 
-
-
-```
-
-```mermaid
-graph TB
-
 subgraph 工具
 	subgraph IDE/编译器
 		subgraph 编译器预设初始化代码
@@ -58,7 +55,9 @@ subgraph 工具
 		end
 	end
 	
-	subgraph 开发语言
+	C((工具))
+            
+    subgraph 开发语言
 		subgraph C语言: boot+驱动+应用+算法
 		end
 	
@@ -71,13 +70,14 @@ subgraph 工具
 	
 	subgraph xxx
 	end
+
 end
+
+A((硬件))-.-B((软件))-.-C((工具))
+
 ```
 
 ---
-
-​	
-
 
 2. 知识依赖流程图  
 3. 模块地图（不分层级的所有模块）  
