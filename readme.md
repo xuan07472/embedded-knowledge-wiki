@@ -206,6 +206,9 @@ end
 
 #### 2. 不同方向的入门（首次入职）  
 ##### 2.1 51单片机（软硬件）  
+硬件开发详见[硬件设计](#hardware_design)  
+C51软件开发详见[软件设计](#software_design)  
+
 ##### 2.2 硬件  
 ##### 2.3 电源（纹波、低功耗）  
 ##### 2.4 功放（匹配）  
@@ -264,6 +267,7 @@ end
 每个模块依赖的各种其它理论知识  
 章节末尾扩展的某一块工作内容：Qt、游戏、UI、web前端、web后端、数据库、安卓、iOS、安全、大数据、人工智能、云计算、高级语言：Java，Python，C#、工具类：Json、正则表达式、网络协议栈、XAML……  
 
+<span id="hardware_design">跳转锚点</span>  
 ### 1）硬件设计  
 #### 1. 硬件架构  
 *参考网址：* [嵌入式系统硬件组成](https://blog.csdn.net/xiaohongya/article/details/100733863)  
@@ -332,6 +336,7 @@ ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 F
 
 编译器预设启动代码、芯片原厂boot代码  
 
+<span id="software_design">跳转锚点</span>  
 ### 3）软件开发  
 #### 1. boot  
 1.1 硬件上电流程  
