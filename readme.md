@@ -268,19 +268,48 @@ C51软件开发详见[软件设计](#software_design)
 章节末尾扩展的某一块工作内容：Qt、游戏、UI、web前端、web后端、数据库、安卓、iOS、安全、大数据、人工智能、云计算、高级语言：Java，Python，C#、工具类：Json、正则表达式、网络协议栈、XAML……  
 
 ### 1）硬件设计 <a name="hardware_design"></a>    
-#### 1. 硬件架构  
+#### 1. 硬件架构框图  
+#### 2. 硬件设计流程图  
+#### 3. 硬件设计的工具  
+硬件架构：SoC RJ45网口 SD 音频IN/OUT HDMI eMMC DDR SATA  
+一个MCU、微CPU或者DSP ROM/flash/EEPROM RAM 时钟源 外设 外部接口 ADC/DAC 电源和电源管理  
+JTAG ARMCPU 电压调节 IO  
+系统控制器：高级中断控制 电源管理控制 PLL锁相环 OSC晶振 复位控制 局部电源检测 上电断电控制 定时器 看门狗 调试单元 PID控制  
+ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 Flash编程 应用特殊逻辑 网络MAC 串口 SPI ADC CAN USB PWM   
+
 *参考网址：* [嵌入式系统硬件组成](https://blog.csdn.net/xiaohongya/article/details/100733863)  
 *参考网址：* [一个完备的嵌入式系统硬件架构有哪几部分构成？](https://blog.csdn.net/weibo1230123/article/details/80206223)  
 *参考网址：* [嵌入式系统基本概念(硬件篇)](https://blog.csdn.net/qq_36717753/article/details/90582307)  
+*参考网址：* [以硬件架构的思维方式看待软件架构（二）](https://zhuanlan.zhihu.com/p/464828478)  
+*参考网址：* [SoC](https://blog.csdn.net/iteye_13202/article/details/82575744)  
 
-#### 2. 硬件电路图设计  
+#### 4. 硬件电路图设计  
+#### 5. PCB布线  
+#### 6. 测试与量产  
 
-#### 3. PCB布线  
+---
 
+### 2）集成电路（IC）设计（扩展内容）  
 芯片、模块、平台、行业、产品列表（举例）  
+各类IC列表  
+SoC芯片公司  
 
-### 2）集成电路（IC）设计  
-====芯片架构  
+#### 1. SoC（主控芯片）设计  
+##### 1.1 SoC架构  
+<center>图2 典型的SoC芯片模块图（待修改为网址路径）</center>  
+
+![avatar](./SoC架构1.png)
+
+上述SoC模块图*参考网址：* [SoC架构](https://blog.csdn.net/weixin_39060517/article/details/113619888)  
+
+架构图解析：  
+
+* SoC（包括MCU、DSP或者单片机芯片）的主要框架就是**AHB总线**、**APB总线**和总线上的**模块**（CPU与外设等）。  
+
+* AHB和APB都是ARM公司出品的基于IP开发的SoC系统集成总线，它们一个高速一个低速，其实功能就和USB等总线协议类似，可以接入和控制多个模块。  
+*参考网址：* [AHB百度百科](https://baike.baidu.com/item/AHB)  
+
+
 嵌入式使用的主控芯片（单片机或者MCU）对应于IC设计中的SoC  
 运算器 控制器 指令集 协处理器 存储管理 中断和例外管理 缓存   
 *参考网址：* [CPU芯片逻辑设计技术](https://baike.baidu.com/item/CPU%E8%8A%AF%E7%89%87%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1%E6%8A%80%E6%9C%AF)  
@@ -290,36 +319,45 @@ C51软件开发详见[软件设计](#software_design)
 *参考网址：* [芯片设计的起源](https://zhuanlan.zhihu.com/p/104925162)  
 (有图)指令寄存器 指令解码器 寄存器 PC栈 ALU寄存器 ALU carry  
 
-SoC芯片公司  
-
 *参考网址：* [数字芯片设计入门？](https://www.zhihu.com/question/21892919)  
 soc硬件架构 低功耗设计 总线架构 接口协议 FIFO 仲裁器   
 UART/IIC/SPI/DDR等常用接口协议  
 
-*参考网址：* [以硬件架构的思维方式看待软件架构（二）](https://zhuanlan.zhihu.com/p/464828478)  
-硬件架构：SoC RJ45网口 SD 音频IN/OUT HDMI eMMC DDR SATA  
-
-*参考网址：* [SoC](https://blog.csdn.net/iteye_13202/article/details/82575744)  
-一个MCU、微CPU或者DSP ROM/flash/EEPROM RAM 时钟源 外设 外部接口 ADC/DAC 电源和电源管理  
-JTAG ARMCPU 电压调节 IO  
-系统控制器：高级中断控制 电源管理控制 PLL锁相环 OSC晶振 复位控制 局部电源检测 上电断电控制 定时器 看门狗 调试单元 PID控制  
-ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 Flash编程 应用特殊逻辑 网络MAC 串口 SPI ADC CAN USB PWM   
-
 *参考网址：* [SOC常见架构_RISCV AI SOC实战（一，概述及架构设计）](https://blog.csdn.net/weixin_39693101/article/details/109963793)  
 (有图)AHB APB 计算核心 各种外设  
 
-#### 1. 主控芯片架构  
-1.1 C51核  
-1.1.1 指令集  
+1.1.1 MCU  
 
-1.2 ARM核  
+1.1.1.1 CPU核
+1.1.1.1.1  C51核  
+1.1.1.1.1.1 指令集  
+
+1.1.1.1.2 ARM核  
 **ARM架构** *引用文档*：《[CSDN带图文档<待添加>]()》 《[Gitee源码文档](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/arm%E6%9E%B6%E6%9E%84.md)》 《[本地文档](./arm架构.md)》  
 
-1.3 TI DSP核  
+1.1.1.2 编译器预设启动代码、芯片原厂boot代码  
 
-1.4 Cadence Xtensa核（HiFi DSP）  
 
-1.5 FPGA（Xilinx）
+1.1.2 DSP  
+1.1.2.1 TI DSP  
+1.1.2.2 Cadence Xtensa HiFi DSP  
+
+1.1.3 FPGA  
+1.1.3.1 Xilinx
+
+#### 2. 数字IC设计  
+2.1 数字IC设计流程  
+2.1.1 版图 前仿 后仿  
+
+2.2 视频编解码器  
+
+2.2 音频编解码器  
+2.3 网络phy  
+2.4 USB phy  
+
+#### 3. 模拟IC设计  
+3.1 模拟IC设计流程  
+3.1 ADC/DAC  
 
 #### 2. 数字集成电路设计（扩展内容）  
 1.1 FPGA  
@@ -329,11 +367,8 @@ ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 F
 #### 4. 集成电路设计流程（扩展内容）  
 
 #### 5. IC开发流程（扩展内容）  
-版图 前仿 后仿
 
-各类IC列表  
-
-编译器预设启动代码、芯片原厂boot代码  
+---
 
 ### 3）软件开发 <a name="software_design"></a>  
 #### 1. boot  
