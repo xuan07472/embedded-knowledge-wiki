@@ -296,9 +296,11 @@ SoC芯片公司
 
 #### 1. SoC（主控芯片）设计  
 ##### 1.1 SoC架构  
-<center>图2 典型的SoC芯片模块图（待修改为网址路径）</center>  
+* 嵌入式使用的主控芯片（单片机或者MCU）对应于IC设计中的SoC。  
 
-![avatar](./SoC架构1.png)
+<center>图2 典型的SoC芯片模块图</center>  
+
+![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/SoC%E6%9E%B6%E6%9E%841.png)
 
 上述SoC模块图*参考网址：* [SoC架构](https://blog.csdn.net/weixin_39060517/article/details/113619888)  
 
@@ -306,11 +308,11 @@ SoC芯片公司
 
 * SoC（包括MCU、DSP或者单片机芯片）的主要框架就是**AHB总线**、**APB总线**和总线上的**模块**（CPU与外设等）。  
 
-* AHB和APB都是ARM公司出品的基于IP开发的SoC系统集成总线，它们一个高速一个低速，其实功能就和USB等总线协议类似，可以接入和控制多个模块。  
+* AHB和APB都是ARM公司出品的基于IP开发的SoC系统集成总线，它们一个高速一个低速，其实功能就和USB等总线协议类似，可以接入和控制多个设备（模块）。  
 *参考网址：* [AHB百度百科](https://baike.baidu.com/item/AHB)  
+*参考网址：* [AHB总线协议](https://blog.csdn.net/ivy_reny/article/details/78144785)  
 
 
-嵌入式使用的主控芯片（单片机或者MCU）对应于IC设计中的SoC  
 运算器 控制器 指令集 协处理器 存储管理 中断和例外管理 缓存   
 *参考网址：* [CPU芯片逻辑设计技术](https://baike.baidu.com/item/CPU%E8%8A%AF%E7%89%87%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1%E6%8A%80%E6%9C%AF)  
 *参考网址：* [芯片设计相关基础](https://zhuanlan.zhihu.com/p/431837543)  
