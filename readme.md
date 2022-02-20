@@ -206,8 +206,8 @@ end
 
 #### 2. 不同方向的入门（首次入职）  
 ##### 2.1 51单片机（软硬件）  
-硬件开发详见[硬件设计](#hardware_design)  
-C51软件开发详见[软件设计](#software_design)  
+硬件开发详见章节[硬件设计](#hardware_design) *备注：CSDN暂不支持文档内跳转，但是Gitee和Typora支持*  
+C51软件开发详见章节[软件设计](#software_design)  
 
 ##### 2.2 硬件  
 ##### 2.3 电源（纹波、低功耗）  
@@ -290,10 +290,6 @@ ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 F
 ---
 
 ### 2）集成电路（IC）设计（扩展内容）  
-芯片、模块、平台、行业、产品列表（举例）  
-各类IC列表  
-SoC芯片公司  
-
 #### 1. SoC（主控芯片）设计  
 ##### 1.1 SoC架构  
 * 嵌入式使用的主控芯片（单片机或者MCU）对应于IC设计中的SoC。  
@@ -309,47 +305,91 @@ SoC芯片公司
 * SoC（包括MCU、DSP或者单片机芯片）的主要框架就是**AHB总线**、**APB总线**和总线上的**模块**（CPU与外设等）。  
 
 * AHB和APB都是ARM公司出品的基于IP开发的SoC系统集成总线，它们一个高速一个低速，其实功能就和USB等总线协议类似，可以接入和控制多个设备（模块）。  
+
 *参考网址：* [AHB百度百科](https://baike.baidu.com/item/AHB)  
 *参考网址：* [AHB总线协议](https://blog.csdn.net/ivy_reny/article/details/78144785)  
+*参考网址：* [SOC常见架构_RISCV AI SOC实战（一，概述及架构设计）](https://blog.csdn.net/weixin_39693101/article/details/109963793)  
 
+|缩写|全名及解释|详情|
+|---|---|---|
+|SoC|System on Chip，系统级芯片，也称片上系统| 一种专用目标的集成电路，将微处理器、模拟IP核、数字IP核（包含各种驱动模块）和存储器(或片外存储控制接口)集成在单一芯片上；具体的产品有：MCU、单片机、DSP、手机CPU |
+|AHB|Advanced High performance Bus，高级高性能总线|ARM出品，几乎已经成了行业标准；主要用于芯片内部高性能模块(如CPU、DMA、DSP、ROM、RAM、USB、网络)之间的连接，同样也连接APB低速总线的主控接口Bridge；多主多从设计，有的模块既做主也做从（如DMA）|
+|Bridge|APB桥|APB总线架构不像AHB支持多个主模块，在APB里面唯一的主模块就是APB 桥|
+|APB|Advanced Peripheral Bus，高级外围总线|主要用于低带宽的周边外设之间的连接，例如UART、SPI、I2C|
+|CPU|Central Processing Unit，中央处理器|计算机系统的运算和控制核心，处理指令、执行操作、控制时间、处理数据；数字电路中各种逻辑运算、算数运算、控制的操作接口都是一条指令，指令要转换成特定数字电路模块的入口，所以CPU的工作分为以下5个阶段：取指令、指令译码、执行指令、访存取数和结果写回；主要包括两个部分，即控制器、运算器，其中还包括高速缓冲存储器及实现它们之间联系的数据、控制的总线|
+|DMA|||
+|Flash|||
+|SRAM|||
+|DDR|||
+|SD|||
+|USB|||
+|WDT|看门狗||
+|Timer|定时器||
+|GPIO|||
+|UART|||
+|I2C|||
+|SPI|||
+|System Controller|||
+|其它专用驱动模块|||
+
+<center>表2 SoC芯片模块英文缩写名词解释</center>  
+
+* 除了电源管理、射频处理等少数几个功能外，SOC基本上包办其它所有硬件功能。  
+
+##### 1.2 CPU（微处理器核）  
+
+(有图)FPU ISU FXU IDU IFU LSU L2 LC MC  
+*参考网址：* [芯片设计相关基础](https://zhuanlan.zhihu.com/p/431837543)  
 
 运算器 控制器 指令集 协处理器 存储管理 中断和例外管理 缓存   
 *参考网址：* [CPU芯片逻辑设计技术](https://baike.baidu.com/item/CPU%E8%8A%AF%E7%89%87%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1%E6%8A%80%E6%9C%AF)  
-*参考网址：* [芯片设计相关基础](https://zhuanlan.zhihu.com/p/431837543)  
+
 (有图)FPU ISU FXU IDU IFU LSU L2 LC MC  
+*参考网址：* [芯片设计相关基础](https://zhuanlan.zhihu.com/p/431837543)  
 
-*参考网址：* [芯片设计的起源](https://zhuanlan.zhihu.com/p/104925162)  
 (有图)指令寄存器 指令解码器 寄存器 PC栈 ALU寄存器 ALU carry  
+*参考网址：* [芯片设计的起源](https://zhuanlan.zhihu.com/p/104925162)  
 
-*参考网址：* [数字芯片设计入门？](https://www.zhihu.com/question/21892919)  
-soc硬件架构 低功耗设计 总线架构 接口协议 FIFO 仲裁器   
-UART/IIC/SPI/DDR等常用接口协议  
+1.1.1 MCU相关  
 
-*参考网址：* [SOC常见架构_RISCV AI SOC实战（一，概述及架构设计）](https://blog.csdn.net/weixin_39693101/article/details/109963793)  
-(有图)AHB APB 计算核心 各种外设  
+1.1.1.1  C51核  
+1.1.1.1.1 指令集  
 
-1.1.1 MCU  
-
-1.1.1.1 CPU核
-1.1.1.1.1  C51核  
-1.1.1.1.1.1 指令集  
-
-1.1.1.1.2 ARM核  
+1.1.1.2 ARM核  
 **ARM架构** *引用文档*：《[CSDN带图文档<待添加>]()》 《[Gitee源码文档](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/arm%E6%9E%B6%E6%9E%84.md)》 《[本地文档](./arm架构.md)》  
 
-1.1.1.2 编译器预设启动代码、芯片原厂boot代码  
+ 编译器预设启动代码、芯片原厂boot代码  
 
-
-1.1.2 DSP  
+1.1.2 DSP相关  
 1.1.2.1 TI DSP  
 1.1.2.2 Cadence Xtensa HiFi DSP  
 
-1.1.3 FPGA  
+1.1.3 FPGA相关  
 1.1.3.1 Xilinx
 
+##### 1.3 外设  
+1.3.1 通用外设  
+* 如UART、SPI、I2C等  
+
+1.3.2 特定外设  
+* 如显示、音频编解码器、视频编解码器等  
+
+详情略……  
+
 #### 2. 数字IC设计  
+
+* 既包含SoC整体设计、IP设计，也包含专有模块。  
+
+soc硬件架构 低功耗设计 总线架构 接口协议 FIFO 仲裁器   
+UART/IIC/SPI/DDR等常用接口协议  
+*参考网址：* [数字芯片设计入门？](https://www.zhihu.com/question/21892919)  
+
+[SoC芯片龙头有哪些，SoC芯片概念股一览](http://www.southmoney.com/gupiao/glg/202202/23494806.html)  
+
 2.1 数字IC设计流程  
 2.1.1 版图 前仿 后仿  
+
+[SoC知识及选型经验分享](https://blog.csdn.net/lijiuyangzilsc/article/details/46535913)  
 
 2.2 视频编解码器  
 
@@ -360,15 +400,6 @@ UART/IIC/SPI/DDR等常用接口协议
 #### 3. 模拟IC设计  
 3.1 模拟IC设计流程  
 3.1 ADC/DAC  
-
-#### 2. 数字集成电路设计（扩展内容）  
-1.1 FPGA  
-
-#### 3. 模拟集成电路设计（扩展内容）  
-
-#### 4. 集成电路设计流程（扩展内容）  
-
-#### 5. IC开发流程（扩展内容）  
 
 ---
 
