@@ -347,7 +347,7 @@ ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 F
 * CPU最重要的特点就是把所有的操作方式融合成了一种操作方式：指令集。  
 
 <center>图3 典型的CPU内模块框图</center>  
-![avater](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/CPU%E7%BB%93%E6%9E%841-%E4%B8%AD%E6%96%87.png)
+![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/CPU%E7%BB%93%E6%9E%841-%E4%B8%AD%E6%96%87.png)
 
 
 | 模块 | 子模块 | 描述 |
