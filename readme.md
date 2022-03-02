@@ -264,9 +264,9 @@ end
 * 普通硬件设计是围绕着主控芯片及其配套的驱动模块来进行的。  
 * 下图是一个典型的硬件框图，包含芯片最小系统、电源模块、各个外设接口。  
 
-<center>图2 硬件框图举例(待修改为gitee网络地址)</center>  
+<center>图2 硬件框图举例</center>  
 
-![avatar](./硬件框图.jpeg)  
+![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/%E7%A1%AC%E4%BB%B6%E6%A1%86%E5%9B%BE.jpeg)  
 
 *参考网址：* [基于ARM与μClinux的RTU设计](http://gongkong.gongye360.com/paper_view.html?id=266814)  
 
@@ -287,7 +287,7 @@ end
 ##### 1.1 SoC架构  
 * 嵌入式使用的主控芯片（单片机或者MCU）对应于IC设计中的SoC。  
 
-<center>图2 典型的SoC芯片模块图</center>  
+<center>图3 典型的SoC芯片模块图</center>  
 
 ![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/SoC%E6%9E%B6%E6%9E%841.png)
 
@@ -334,7 +334,7 @@ end
 
 * CPU最重要的特点就是把所有的操作融合成了一种操作方式：指令集。  
 
-<center>图3 典型的CPU内模块框图</center>  
+<center>图4 典型的CPU内模块框图</center>  
 
 ![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/CPU%E7%BB%93%E6%9E%841-%E4%B8%AD%E6%96%87.png)
 
@@ -359,21 +359,38 @@ end
 *参考网址：* [芯片设计相关基础](https://zhuanlan.zhihu.com/p/431837543)：有奔腾简单的版图与模块框图  
 *参考网址：* [芯片设计的起源](https://zhuanlan.zhihu.com/p/104925162)：有一张简单的Intel4004版图与模块框图  
 
-1.1.1 MCU相关  
-1.1.1.1  C51核  
-1.1.1.1.1 指令集  
+**1.2.1 C51核指令集**  
 
-1.1.1.2 ARM核  
-**ARM架构** *引用文档*：《[CSDN带图文档<待添加>]()》 《[Gitee源码文档](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/arm%E6%9E%B6%E6%9E%84.md)》 《[本地文档](./arm架构.md)》  
+* C51（8051）的指令并不多，并且比较简单。  
+* 8051单片机共有111条指令，按指令功能分，可分为数据传送类29条，算术运算类24条，逻辑运算类24条，位操作类12条，控制转移类22条。  
+* 指令寻址方式共7种，分别是：立即数寻址，直接寻址，寄存器寻址，寄存器间接寻址，变址寻址，相对寻址，位寻址。  
 
- 编译器预设启动代码、芯片原厂boot代码  
+* 详细指令内容详见 *参考网址：* [8051汇编指令集](https://blog.csdn.net/u010835747/article/details/119993636)  
 
-1.1.2 DSP相关  
-1.1.2.1 TI DSP  
-1.1.2.2 Cadence Xtensa HiFi DSP  
+*参考网址：* [单片机8051指令集](https://blog.csdn.net/qq_45653763/article/details/107906583)  
+*参考网址：* [8051汇编指令](https://www.cnblogs.com/techecho/p/9809662.html)  
+*参考网址：* [8051单片机共有多少条指令？](https://zhidao.baidu.com/question/566536288494065644.html)  
 
-1.1.3 FPGA相关  
-1.1.3.1 Xilinx
+* 汇编通过地址跳转即可以实现各种条件判断和循环功能，如if else switch do while for等高级语言的功能。  
+* 通过压栈和弹栈的指令即可以各种函数的调用。  
+
+**1.2.2 ARM核指令集**  
+
+* ARM核各个系列的介绍详见 *参考网址：* [关于ARM的内核架构](https://www.cnblogs.com/zhugeanran/p/8431127.html)  
+
+* ARM 可以用两套指令集：ARM指令集和Thumb指令集。  
+
+*参考网址：* [ARM汇编指令集汇总](https://blog.csdn.net/qq_40531974/article/details/83897559)  
+*参考网址：* [ARM指令集](https://blog.csdn.net/weixin_42110547/article/details/86672824)  
+*参考网址：* [关于ARM处理器指令集](https://blog.csdn.net/qq_45385706/article/details/108478867)  
+*参考网址：* [ARM指令集](https://www.diangon.com/m209371.html)  
+*参考网址：* [Arm Architecture Reference Manual for A-profile architecture](https://developer.arm.com/documentation/ddi0487/ha/?lang=en) 文档下载  
+
+**1.2.3 TI DSP指令集**  
+
+**1.2.4 Cadence Xtensa HiFi DSP指令集**  
+
+**1.2.5 Xilinx FPGA**  
 
 ##### 1.3 外设（芯片内部）  
 1.3.1 通用外设  
