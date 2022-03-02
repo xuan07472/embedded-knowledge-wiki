@@ -205,12 +205,7 @@ end
 *参考网址：* [普通高等学校高等职业教育（专科）专业目录（2015年）](https://baike.baidu.com/item/%E6%99%AE%E9%80%9A%E9%AB%98%E7%AD%89%E5%AD%A6%E6%A0%A1%E9%AB%98%E7%AD%89%E8%81%8C%E4%B8%9A%E6%95%99%E8%82%B2%EF%BC%88%E4%B8%93%E7%A7%91%EF%BC%89%E4%B8%93%E4%B8%9A%E7%9B%AE%E5%BD%95%EF%BC%882015%E5%B9%B4%EF%BC%89)  
 
 #### 2. 不同方向的入门（首次入职）  
-*章节内容待补充……*  
-
 ##### 2.1 51单片机（软硬件）  
-硬件开发详见章节[硬件设计](#hardware_design) *备注：CSDN暂不支持文档内跳转，但是Gitee和Typora支持*  
-C51软件开发详见章节[软件设计](#software_design)  
-
 ##### 2.2 硬件  
 ##### 2.3 电源（纹波、低功耗）  
 ##### 2.4 功放（匹配）  
@@ -229,8 +224,6 @@ C51软件开发详见章节[软件设计](#software_design)
 ---
 
 #### 3 进阶（高级工程师、管理）  
-*章节内容待补充……*  
-
 ##### 3.1 硬件部门管理  
 ##### 3.2 软件部门管理  
 ##### 3.3 51单片机硬件+软件+行业应用+GUI（可选）+架构  
@@ -263,39 +256,33 @@ C51软件开发详见章节[软件设计](#software_design)
 + **非嵌入式计算机**举例：笔记本、台式机、服务器、工作站、计算机集群、手机（应用类）。  
 
 ## 二、各个模块  
-
-待做：  
-每块工作的内容框图  
-每块工作的学习路线图  
-每块工作的知识依赖图  
-每个模块依赖的各种其它理论知识  
-章节末尾扩展的某一块工作内容：Qt、游戏、UI、web前端、web后端、数据库、安卓、iOS、安全、大数据、人工智能、云计算、高级语言：Java，Python，C#、工具类：Json、正则表达式、网络协议栈、XAML……  
-
 ### 1）硬件设计 <a name="hardware_design"></a>    
-*章节内容待补充……*  
+*详细内容未涉及……*  
 
 #### 1. 硬件架构框图  
-#### 2. 硬件设计流程图  
-#### 3. 硬件设计的工具  
-硬件架构：SoC RJ45网口 SD 音频IN/OUT HDMI eMMC DDR SATA  
-一个MCU、微CPU或者DSP ROM/flash/EEPROM RAM 时钟源 外设 外部接口 ADC/DAC 电源和电源管理  
-JTAG ARMCPU 电压调节 IO  
-系统控制器：高级中断控制 电源管理控制 PLL锁相环 OSC晶振 复位控制 局部电源检测 上电断电控制 定时器 看门狗 调试单元 PID控制  
-ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 Flash编程 应用特殊逻辑 网络MAC 串口 SPI ADC CAN USB PWM   
+
+* 普通硬件设计是围绕着主控芯片及其配套的驱动模块来进行的。  
+* 下图是一个典型的硬件框图，包含芯片最小系统、电源模块、各个外设接口。  
+
+<center>图2 硬件框图举例(待修改为gitee网络地址)</center>  
+
+![avatar](./硬件框图.jpeg)  
+
+*参考网址：* [基于ARM与μClinux的RTU设计](http://gongkong.gongye360.com/paper_view.html?id=266814)  
+
+#### 2. 硬件设计流程  
+
+此处忽略外观设计和结构设计。  
+设计流程为：器件选型、原理图设计、PCB设计、输出PCB及BOM表、PCB贴片及验证、软硬件联调。  
 
 *参考网址：* [嵌入式系统硬件组成](https://blog.csdn.net/xiaohongya/article/details/100733863)  
 *参考网址：* [一个完备的嵌入式系统硬件架构有哪几部分构成？](https://blog.csdn.net/weibo1230123/article/details/80206223)  
 *参考网址：* [嵌入式系统基本概念(硬件篇)](https://blog.csdn.net/qq_36717753/article/details/90582307)  
 *参考网址：* [以硬件架构的思维方式看待软件架构（二）](https://zhuanlan.zhihu.com/p/464828478)  
-*参考网址：* [SoC](https://blog.csdn.net/iteye_13202/article/details/82575744)  
-
-#### 4. 硬件电路图设计  
-#### 5. PCB布线  
-#### 6. 测试与量产  
 
 ---
 
-### 2）集成电路（IC）设计（扩展内容）  
+### 2）集成电路（IC）设计（扩展内容，可不翻阅）  
 #### 1. SoC（主控芯片）设计  
 ##### 1.1 SoC架构  
 * 嵌入式使用的主控芯片（单片机或者MCU）对应于IC设计中的SoC。  
@@ -304,7 +291,8 @@ ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 F
 
 ![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/SoC%E6%9E%B6%E6%9E%841.png)
 
-上述SoC模块图*参考网址：* [SoC架构](https://blog.csdn.net/weixin_39060517/article/details/113619888)  
+*参考网址：* [SoC架构](https://blog.csdn.net/weixin_39060517/article/details/113619888)  
+*参考网址：* [SoC](https://blog.csdn.net/iteye_13202/article/details/82575744)  
 
 架构图解析：  
 
@@ -344,7 +332,7 @@ ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 F
 
 ##### 1.2 CPU（处理器核）  
 
-* CPU最重要的特点就是把所有的操作方式融合成了一种操作方式：指令集。  
+* CPU最重要的特点就是把所有的操作融合成了一种操作方式：指令集。  
 
 <center>图3 典型的CPU内模块框图</center>  
 
@@ -372,7 +360,6 @@ ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 F
 *参考网址：* [芯片设计的起源](https://zhuanlan.zhihu.com/p/104925162)：有一张简单的Intel4004版图与模块框图  
 
 1.1.1 MCU相关  
-
 1.1.1.1  C51核  
 1.1.1.1.1 指令集  
 
@@ -388,14 +375,12 @@ ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 F
 1.1.3 FPGA相关  
 1.1.3.1 Xilinx
 
-##### 1.3 外设  
+##### 1.3 外设（芯片内部）  
 1.3.1 通用外设  
 * 如UART、SPI、I2C等  
 
 1.3.2 特定外设  
 * 如显示、音频编解码器、视频编解码器等  
-
-详情略……  
 
 #### 2. 数字IC设计  
 
@@ -606,6 +591,9 @@ can zigbee
 
 ## 五、 层级模块地图（各个主模块及其嵌套的子模块）  
 索引用  
+
+## 六、其它  
+Qt、游戏、UI、web前端、web后端、数据库、安卓、iOS、安全、大数据、人工智能、云计算、高级语言：Java，Python，C#、工具类：Json、正则表达式、网络协议栈、XAML……  
 
 ---
 
