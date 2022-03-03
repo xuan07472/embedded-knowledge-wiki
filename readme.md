@@ -194,7 +194,7 @@ end
 
 + 1.8 **学历与专业**（可选）：看老板态度；  
 
-学校相关专业：
+学校相关专业：  
 计算机科学与技术、电子信息科学与技术、微电子学、测控技术与仪器、数学与应用数学、信息与计算科学、信息工程、物理学、 应用物理学、机械设计制造及其自动化、机械工程及自动化、自动化、电子信息工程、通信工程、电子科学与技术、生物医学工程、其它特定行业相关专业如飞行器设计工程、探测制导与控制技术等（本科）  
 
 电子信息工程技术、应用电子技术、微电子技术、嵌入式技术与应用、电子电路设计与工艺、物联网应用技术、物联网工程技术、计算机应用技术、软件技术、智能产品开发、通信技术、机械制造与自动化、数控技术、电机与电器技术、机电一体化技术、工业过程自动化技术、工业自动化仪表、工业机器人技术、汽车电子技术等（专科）  
@@ -256,7 +256,7 @@ end
 + **非嵌入式计算机**举例：笔记本、台式机、服务器、工作站、计算机集群、手机（应用类）。  
 
 ## 二、各个模块  
-### 1）硬件设计 <a name="hardware_design"></a>    
+### 1）硬件设计   
 *详细内容未涉及……*  
 
 #### 1. 硬件架构框图  
@@ -289,7 +289,7 @@ end
 
 <center>图3 典型的SoC芯片模块图</center>  
 
-![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/SoC%E6%9E%B6%E6%9E%841.png)
+![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/SoC%E6%9E%B6%E6%9E%841.png)  
 
 *参考网址：* [SoC架构](https://blog.csdn.net/weixin_39060517/article/details/113619888)  
 *参考网址：* [SoC](https://blog.csdn.net/iteye_13202/article/details/82575744)  
@@ -337,7 +337,7 @@ end
 
 <center>图4 典型的CPU内模块框图</center>  
 
-![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/CPU%E7%BB%93%E6%9E%841-%E4%B8%AD%E6%96%87.png)
+![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/CPU%E7%BB%93%E6%9E%841-%E4%B8%AD%E6%96%87.png)  
 
 
 | 模块 | 子模块 | 描述 |
@@ -347,7 +347,7 @@ end
 | 运算器 | ALU算术单元、FPU浮点单元 | 计算机之所以叫计算机的由来，核心结构是计算 |
 | 控制器 | 译码器、JTAG、流水线生成、中断 | 将指令集中的指令转换成实际的操作，和返回操作的结果 |
 | Cache缓存 | 指令缓存、数据缓存 | 缓存用于提高速率 |
-<center>表3 CPU内主要模块和子模块</center>
+<center>表3 CPU内主要模块和子模块</center>  
 
 *参考网址：* [深度分析国产龙芯新架构CPU：自主当崛起](https://www.eetop.cn/view-50164.html) 英文框图  
 *参考网址：* [微处理器分类及主要技术性能](https://mbb.eet-china.com/blog/3658169-370989.html) 中文原理框图  
@@ -397,7 +397,7 @@ end
 *参考网址：* [TMS3205000系列DSP汇编语言程序设计](https://baike.baidu.com/item/TMS3205000%E7%B3%BB%E5%88%97DSP%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1)  
 
 **1.2.4 Cadence Xtensa HiFi DSP指令集**  
-详见*子文档*：《[XtensaHifiDsp.md<待修改为csdn网址>](./XtensaHifiDsp.md)》  
+详见*子文档*：《[XtensaHifiDsp.md<待修改为csdn网址>](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/XtensaHifiDsp.md)》  
 
 **1.2.5 Xilinx FPGA**  
 *参考网址：* [Welcome to the Xilinx Wiki!](https://xilinx-wiki.atlassian.net/wiki/spaces/A/overview)  
@@ -427,7 +427,7 @@ end
 
 ---
 
-### 3）软件开发 <a name="software_design"></a>  
+### 3）软件开发  
 #### 1. boot  
 **硬件上电流程**  
 * 前提：一般嵌入式硬件都有内部IROM、内部IRAM、外部ROM、外部RAM。  
@@ -533,7 +533,7 @@ Linux中使用
 4.1.9 ModBus  
 4.1.10 I2S  
 
-**i2s音频模块**详见*子文档*：《[i2s模块.md<待修改为csdn网址>](./i2s模块.md)》  
+**i2s音频模块**详见*子文档*：《[i2s模块.md<待修改为csdn网址>](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/i2s%E6%A8%A1%E5%9D%97.md)》  
 
 4.2 存储类驱动  
 4.2.1 DDR  
@@ -649,7 +649,7 @@ Linux中使用
 瀑布开发 敏捷开发
 
 ### 7）测试方法  
-单元测试 集成测试 老化测试 白盒测试 黑盒测试
+单元测试 集成测试 老化测试 白盒测试 黑盒测试  
 
 ## 四、模块地图（不分层级的所有模块）  
 索引用  
