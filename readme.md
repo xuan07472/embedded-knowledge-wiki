@@ -453,21 +453,57 @@ end
 
 #### 2. 系统移植  
 
-[操作系统包含哪些子系统？](https://www.zhihu.com/question/453246529)  
+<center>图5 操作系统框架</center>  
 
-1.1 uCOS（μC/OS）  
-1.2 eCos  
-1.3 RT-Thread  
-1.4 SYS/BIOS（TI）  
-1.5 Atomthreads  
-1.6 FreeRTOS  
-1.7 ThreadX（Cadence Tensilica）  
-1.8 VxWorks  
-1.9 Linux（U-Boot、kernel、根文件系统）  
+![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6.jpg)  
 
-1.10 根文件系统  
-1.10.1 ramfs  
-1.10.2 xxx  
+* 操作系统包含以下几个主模块：进程管理（线程）、内存管理、文件系统、设备驱动、网络管理（可选）  
+
+|主模块|子模块|描述|
+|---|---|---|
+|进程管理|TASK、进程或线程创建、挂起、运行、销毁，优先级管理，进程调度，自旋锁，互斥锁，信号量，条件变量，事件，邮箱，管道，Socket套接字，读写锁，共享内存|PV操作，原子操作，同步与互斥，临界资源|
+|内存管理|物理地址、虚拟地址、内存映射、分页、命中、内存清理|MMU，实现malloc()、free()|
+|文件系统|block块，窗口命中，写块，擦除块| DMA，缓存，volatile关键字|
+|驱动|字符驱动、块驱动、杂项驱动、网络驱动|主设备号，子设备号，通用接口，ioctl|
+|其它|中断处理、异常处理|ISR和DSR，上半部和下半部，定时器|
+
+<center>表4 操作系统框架</center>  
+
+*参考网址：* [操作系统包含哪些子系统？](https://www.zhihu.com/question/453246529)  
+*参考网址：* [Linux 进程与线程的同步与互斥](https://www.cnblogs.com/hzhida/archive/2012/11/01/2750216.html)  
+
+2.1 uCOS（μC/OS）  
+2.2 eCos  
+2.3 RT-Thread  
+2.4 SYS/BIOS（TI）  
+2.5 Atomthreads  
+2.6 FreeRTOS  
+2.7 ThreadX（Cadence Tensilica）  
+2.8 VxWorks  
+2.9 Linux（U-Boot、kernel、根文件系统）  
+
+**2.10 根文件系统**  
+
+* 如果是Linux可以BusyBox工具来创建根文件系统。  
+
+**2.10.1 Ramfs**  
+Ramfs是LinusTorvalds开发的一种基于内存的文件系统，工作于虚拟文件系统(VFS)层，不能格式化，可以创建多个，在创建时可以指定其能使用的内存大小。(实际上，VFS本质上可看成一种内存文件系统，它统一了文件在内核中的表示方式，并对磁盘文件系统进行缓冲。)  
+
+**2.10.2 Ramdisk**  
+和网吧一样，用户保存的数据在断电后会丢失，防止入侵和用户乱改乱删文件导致嵌入式设备变板砖。  
+Ramdisk是将一部分固定大小的内存当作分区来使用。它并非一个实际的文件系统，而是一种将实际的文件系统装入内存的机制，并且可以作为根文件系统。将一些经常被访问而又不会更改的文件（如只读的根文件系统）通过Ramdisk放在内存中，可以明显地提高系统的性能。  
+
+2.10.3 ext4  
+Linux中使用  
+
+2.10.4 FAT32  
+兼容U盘、SD卡等经常要在Windows使用的存储设备。  
+
+2.10.5 jffs2  
+
+*参考网址：* [什么是嵌入式的根文件?嵌入式的根文件系统有哪些?](http://www.gec-edu.org/gsnews/show/571664.html)  
+*参考网址：*[嵌入式系统中常用的文件系统](https://www.cnblogs.com/wmate/p/13558773.html)  
+*参考网址：*[嵌入式 Linux根文件系统移植（三）——根文件系统构建](http://www.360doc.com/content/18/1224/14/8335678_804124205.shtml)  
 
 #### 3. 驱动框架  
 驱动寄存器通用结构：输入输出地址（可与DMA配合）、中断控制  
@@ -488,9 +524,7 @@ end
 4.1.1.3 Linux开发  
 
 4.1.2 I2C  
-
 4.1.3 SPI  
-
 4.1.4 网络  
 4.1.5 USB  
 4.1.6 蓝牙  
