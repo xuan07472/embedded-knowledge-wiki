@@ -388,7 +388,15 @@ end
 
 **1.2.3 TI DSP指令集**  
 
+包含C66x、C67x等型号，有各种加速运算的指令。  
+
+*参考网址：* [KeyStone C66x CorePac Instruction Set Architecture](https://training.ti.com/sites/default/files/docs/instruction-set-architecture-presentation.pdf)  
+*参考网址：* [MS320C674x DSP CPU and Instruction Set Reference Guide](https://www.ti.com/lit/ug/sprufe8b/sprufe8b.pdf) Chapter 3 Instruction Set  
+*参考网址：* [C66x-CorePac用户指南---中文版](https://wenku.baidu.com/view/866eee93de88d0d233d4b14e852458fb770b38dd.html) TI C66x DSP寄存器介绍  
+*参考网址：* [TMS3205000系列DSP汇编语言程序设计](https://baike.baidu.com/item/TMS3205000%E7%B3%BB%E5%88%97DSP%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1)  
+
 **1.2.4 Cadence Xtensa HiFi DSP指令集**  
+详见*子文档*：《[XtensaHifiDsp.md<待修改为csdn网址>](./XtensaHifiDsp.md)》  
 
 **1.2.5 Xilinx FPGA**  
 
@@ -470,9 +478,9 @@ CPU获取编译器预设的代码，初始化时钟、看门狗、启动介质
 #### 4. 驱动模块  
 4.1 通讯类驱动  
 4.1.1 串口  
-4.1.1 裸机开发  
-4.1.2 RTOS开发  
-4.1.3 Linux开发  
+4.1.1.1 裸机开发  
+4.1.1.2 RTOS开发  
+4.1.1.3 Linux开发  
 
 4.1.2 I2C  
 
@@ -481,11 +489,12 @@ CPU获取编译器预设的代码，初始化时钟、看门狗、启动介质
 4.1.4 网络  
 4.1.5 USB  
 4.1.6 蓝牙  
-can zigbee  
+4.1.7 CAN  
+4.1.8 ZigBee  
+4.1.9 ModBus  
+4.1.10 I2S  
 
-**i2s音频模块** *引用文档*：《[CSDN带图文档<待添加>]()》 《[Gitee源码文档](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/i2s%E6%A8%A1%E5%9D%97.md)》 《[本地文档](./i2s模块.md)》  
-
-……  
+**i2s音频模块**详见*子文档*：《[i2s模块.md<待修改为csdn网址>](./i2s模块.md)》  
 
 4.2 存储类驱动  
 4.2.1 DDR  
