@@ -303,6 +303,7 @@ end
 *参考网址：* [AHB百度百科](https://baike.baidu.com/item/AHB)  
 *参考网址：* [AHB总线协议](https://blog.csdn.net/ivy_reny/article/details/78144785)  
 *参考网址：* [SOC常见架构_RISCV AI SOC实战（一，概述及架构设计）](https://blog.csdn.net/weixin_39693101/article/details/109963793)  
+*参考网址：* [SoC知识及选型经验分享](https://blog.csdn.net/lijiuyangzilsc/article/details/46535913)  
 
 |缩写|全名及解释|详情|
 |---|---|---|
@@ -399,38 +400,30 @@ end
 详见*子文档*：《[XtensaHifiDsp.md<待修改为csdn网址>](./XtensaHifiDsp.md)》  
 
 **1.2.5 Xilinx FPGA**  
-
-##### 1.3 外设（芯片内部）  
-1.3.1 通用外设  
-* 如UART、SPI、I2C等  
-
-1.3.2 特定外设  
-* 如显示、音频编解码器、视频编解码器等  
+*参考网址：* [Welcome to the Xilinx Wiki!](https://xilinx-wiki.atlassian.net/wiki/spaces/A/overview)  
 
 #### 2. 数字IC设计  
 
-* 既包含SoC整体设计、IP设计，也包含专有模块。  
+数字IC设计使用硬件描述语言Verilog，设计时要有时序、并行、延时的思想。  
+芯片设计可以分为两部分，前端和后端，仿真也可以分为前仿和后仿。  
 
-soc硬件架构 低功耗设计 总线架构 接口协议 FIFO 仲裁器   
-UART/IIC/SPI/DDR等常用接口协议  
 *参考网址：* [数字芯片设计入门？](https://www.zhihu.com/question/21892919)  
-
-[SoC芯片龙头有哪些，SoC芯片概念股一览](http://www.southmoney.com/gupiao/glg/202202/23494806.html)  
-
-2.1 数字IC设计流程  
-2.1.1 版图 前仿 后仿  
-
-[SoC知识及选型经验分享](https://blog.csdn.net/lijiuyangzilsc/article/details/46535913)  
-
-2.2 视频编解码器  
-
-2.2 音频编解码器  
-2.3 网络phy  
-2.4 USB phy  
+*参考网址：* [SoC芯片龙头有哪些，SoC芯片概念股一览](http://www.southmoney.com/gupiao/glg/202202/23494806.html)  
+*参考网址：* [数字IC设计流程介绍](https://zhuanlan.zhihu.com/p/260933238)  
+*参考网址：* [前仿真与后仿真](https://blog.csdn.net/zhangyujie0316/article/details/106360591)  
+*参考网址：* [数字IC设计流程及工具简介](https://blog.csdn.net/weixin_39269366/article/details/120665925)  
 
 #### 3. 模拟IC设计  
-3.1 模拟IC设计流程  
-3.1 ADC/DAC  
+
+模拟IC设计需要画原理图和版图。  
+
+*参考网址：* [模拟集成电路设计流程（1）——熟悉Cadence环境](https://zhuanlan.zhihu.com/p/344938075)  
+*参考网址：* [模拟集成电路设计流程（2）——原理图设计与仿真](https://zhuanlan.zhihu.com/p/344939731)  
+*参考网址：* [模拟集成电路设计流程（3）——不同的电路仿真方法](https://zhuanlan.zhihu.com/p/344937484)  
+*参考网址：* [模拟集成电路设计流程（4）——版图设计基础](https://zhuanlan.zhihu.com/p/350617982)  
+*参考网址：* [模拟集成电路设计流程（5）——版图验证](https://zhuanlan.zhihu.com/p/350813971)  
+*参考网址：* [模拟芯片/IC设计，都经历过哪些lesson—learned（经验教训）？](https://www.zhihu.com/question/46956546)  
+*参考网址：* [怎样学好模拟集成电路设计？](https://www.zhihu.com/question/25911879)  
 
 ---
 
@@ -443,6 +436,8 @@ CPU获取编译器预设的代码，初始化时钟、看门狗、启动介质
 引导代码重定位地址并执行用户代码：操作系统+应用，或者裸机程序程序（驱动+应用）  
 
 1.1 IDE/编译器自带初始化代码  
+JTAG
+
 1.2 各芯片boot代码  
 1.3 U-Boot  
 
