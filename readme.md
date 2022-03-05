@@ -4,7 +4,7 @@
 
 |作者|将狼才鲸|
 |---|---|
-|时间|2022-02-18|
+|创建时间|2022-02-18|
 
 ---
 
@@ -194,10 +194,10 @@ end
 
 + 1.8 **学历与专业**（可选）：看老板态度；  
 
-学校相关专业：
-计算机科学与技术、电子信息科学与技术、微电子学、测控技术与仪器、数学与应用数学、信息与计算科学、信息工程、物理学、 应用物理学、机械设计制造及其自动化、机械工程及自动化、自动化、电子信息工程、通信工程、电子科学与技术、生物医学工程、其它特定行业相关专业如飞行器设计工程、探测制导与控制技术等（大学）  
+学校相关专业：  
+计算机科学与技术、电子信息科学与技术、微电子学、测控技术与仪器、数学与应用数学、信息与计算科学、信息工程、物理学、 应用物理学、机械设计制造及其自动化、机械工程及自动化、自动化、电子信息工程、通信工程、电子科学与技术、生物医学工程、其它特定行业相关专业如飞行器设计工程、探测制导与控制技术等（本科）  
 
-电子信息工程技术、应用电子技术、微电子技术、嵌入式技术与应用、电子电路设计与工艺、物联网应用技术、物联网工程技术、计算机应用技术、软件技术、智能产品开发、通信技术、机械制造与自动化、数控技术、电机与电器技术、机电一体化技术、工业过程自动化技术、工业自动化仪表、工业机器人技术、汽车电子技术等（大专）  
+电子信息工程技术、应用电子技术、微电子技术、嵌入式技术与应用、电子电路设计与工艺、物联网应用技术、物联网工程技术、计算机应用技术、软件技术、智能产品开发、通信技术、机械制造与自动化、数控技术、电机与电器技术、机电一体化技术、工业过程自动化技术、工业自动化仪表、工业机器人技术、汽车电子技术等（专科）  
 
 *备注：计算机相关专业并不占优势（竞争专业过多）*  
 
@@ -205,38 +205,35 @@ end
 *参考网址：* [普通高等学校高等职业教育（专科）专业目录（2015年）](https://baike.baidu.com/item/%E6%99%AE%E9%80%9A%E9%AB%98%E7%AD%89%E5%AD%A6%E6%A0%A1%E9%AB%98%E7%AD%89%E8%81%8C%E4%B8%9A%E6%95%99%E8%82%B2%EF%BC%88%E4%B8%93%E7%A7%91%EF%BC%89%E4%B8%93%E4%B8%9A%E7%9B%AE%E5%BD%95%EF%BC%882015%E5%B9%B4%EF%BC%89)  
 
 #### 2. 不同方向的入门（首次入职）  
-##### 2.1 51单片机（软硬件）  
-硬件开发详见章节[硬件设计](#hardware_design) *备注：CSDN暂不支持文档内跳转，但是Gitee和Typora支持*  
-C51软件开发详见章节[软件设计](#software_design)  
-
-##### 2.2 硬件  
-##### 2.3 电源（纹波、低功耗）  
-##### 2.4 功放（匹配）  
-##### 2.5 STM32等单片机驱动（裸机）  
-##### 2.6 STM32等单片机应用（裸机）  
-##### 2.7 RTOS移植和驱动（ARM、DSP等）  
-##### 2.8 RTOS应用（ARM、DSP等）  
-##### 2.9 FPGA（Verilog、数电）  
-##### 2.10 Linux移植（U-Boot、根文件系统）  
-##### 2.11 Linux字符驱动  
-##### 2.12 Linux块驱动  
-##### 2.13 Linux应用  
-##### 2.14 通讯算法（调制解调、Matlab、DSP、汇编、C、数学）  
-##### 2.15 编解码算法（音视频等）  
+2.1 51单片机（软硬件）  
+2.2 硬件  
+2.3 电源（纹波、低功耗）  
+2.4 功放（匹配）  
+2.5 STM32等单片机驱动（裸机）  
+2.6 STM32等单片机应用（裸机）  
+2.7 RTOS移植和驱动（ARM、DSP等）  
+2.8 RTOS应用（ARM、DSP等）  
+2.9 FPGA（Verilog、数电）  
+2.10 Linux移植（U-Boot、根文件系统）  
+2.11 Linux字符驱动  
+2.12 Linux块驱动  
+2.13 Linux应用  
+2.14 通讯算法（调制解调、Matlab、DSP、汇编、C、数学）  
+2.15 编解码算法（音视频等）  
 
 ---
 
 #### 3 进阶（高级工程师、管理）  
-##### 3.1 硬件部门管理  
-##### 3.2 软件部门管理  
-##### 3.3 51单片机硬件+软件+行业应用+GUI（可选）+架构  
-##### 3.4 硬件+电源+功放+量产  
-##### 3.5 STM32等单片机驱动+行业应用+架构+通讯协议+GUI（可选）+硬件选型+FPGA  
-##### 3.6 RTOS移植+驱动+行业应用+架构+通讯协议+GUI（可选）+硬件选型+FPGA  
-##### 3.7 Linux移植+字符驱动+块驱动+杂项驱动+通讯协议+硬件选型+FPGA  
-##### 3.8 Linux行业应用+架构+GUI（可选）  
-##### 3.9 DSP+调制解调+编解码+人工智能算法   
-##### 3.10 不同行业多年经验（与上述岗位相结合）  
+3.1 硬件部门管理  
+3.2 软件部门管理  
+3.3 51单片机硬件+软件+行业应用+GUI（可选）+架构  
+3.4 硬件+电源+功放+量产  
+3.5 STM32等单片机驱动+行业应用+架构+通讯协议+GUI（可选）+硬件选型+FPGA（可选）  
+3.6 RTOS移植+驱动+行业应用+架构+通讯协议+GUI（可选）+硬件选型+FPGA（可选）  
+3.7 Linux移植+字符驱动+块驱动+杂项驱动+通讯协议+硬件选型+FPGA（可选）  
+3.8 Linux行业应用+架构+GUI（可选）  
+3.9 DSP+调制解调+编解码+人工智能算法   
+3.10 不同行业多年经验（与上述岗位相结合）  
 
 |音视频|GUI|通讯|人工智能|物联网|汽车|金融|医疗|机械|激光|电力|机器人|
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -251,7 +248,7 @@ C51软件开发详见章节[软件设计](#software_design)
 
 ### 3）写作背景  
 
-* 一直想找到一个从头到尾介绍嵌入式知识的网站，就像一般的WiKi网站那样，能够在一个地方就搜到大部分嵌入式开发的知识，但是又并没由找到，所以就自己着手一边搜索资料一边写，想着花个数十年时间应该能搜集到自己想要的资料。希望以后也有人和我一起规划和更新这份文档，也希望自己不要放弃一直坚持。  
+* 一直想找一个从头到尾介绍嵌入式的网站，就像一般的WiKi网站那样，能够在一个地方就搜到大部分的嵌入式开发知识，但是又没找到，所以我就自己尝试着写，想着花个数十年时间应该能搜集到想要的资料。希望以后也有人和我一起规划和更新这份文档，也希望自己能一直坚持。  
 
 #### 1. 嵌入式定义  
 + **嵌入式**：嵌入到各种设备中执行专项任务的计算机软硬件；通常不包含可以执行多种不确定任务（运行各种软件），以计算机原本的功能为主体的设备。  
@@ -259,46 +256,43 @@ C51软件开发详见章节[软件设计](#software_design)
 + **非嵌入式计算机**举例：笔记本、台式机、服务器、工作站、计算机集群、手机（应用类）。  
 
 ## 二、各个模块  
+### 1）硬件设计   
+*详细内容未涉及……*  
 
-待做：  
-每块工作的内容框图  
-每块工作的学习路线图  
-每块工作的知识依赖图  
-每个模块依赖的各种其它理论知识  
-章节末尾扩展的某一块工作内容：Qt、游戏、UI、web前端、web后端、数据库、安卓、iOS、安全、大数据、人工智能、云计算、高级语言：Java，Python，C#、工具类：Json、正则表达式、网络协议栈、XAML……  
-
-### 1）硬件设计 <a name="hardware_design"></a>    
 #### 1. 硬件架构框图  
-#### 2. 硬件设计流程图  
-#### 3. 硬件设计的工具  
-硬件架构：SoC RJ45网口 SD 音频IN/OUT HDMI eMMC DDR SATA  
-一个MCU、微CPU或者DSP ROM/flash/EEPROM RAM 时钟源 外设 外部接口 ADC/DAC 电源和电源管理  
-JTAG ARMCPU 电压调节 IO  
-系统控制器：高级中断控制 电源管理控制 PLL锁相环 OSC晶振 复位控制 局部电源检测 上电断电控制 定时器 看门狗 调试单元 PID控制  
-ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 Flash编程 应用特殊逻辑 网络MAC 串口 SPI ADC CAN USB PWM   
+
+* 普通硬件设计是围绕着主控芯片及其配套的驱动模块来进行的。  
+* 下图是一个典型的硬件框图，包含芯片最小系统、电源模块、各个外设接口。  
+
+<center>图2 硬件框图举例</center>  
+
+![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/documents/T2_%E7%A1%AC%E4%BB%B6%E6%A1%86%E5%9B%BE.jpeg)  
+
+*参考网址：* [基于ARM与μClinux的RTU设计](http://gongkong.gongye360.com/paper_view.html?id=266814)  
+
+#### 2. 硬件设计流程  
+
+此处忽略外观设计和结构设计。  
+设计流程为：器件选型、原理图设计、PCB设计、输出PCB及BOM表、PCB贴片及验证、软硬件联调。  
 
 *参考网址：* [嵌入式系统硬件组成](https://blog.csdn.net/xiaohongya/article/details/100733863)  
 *参考网址：* [一个完备的嵌入式系统硬件架构有哪几部分构成？](https://blog.csdn.net/weibo1230123/article/details/80206223)  
 *参考网址：* [嵌入式系统基本概念(硬件篇)](https://blog.csdn.net/qq_36717753/article/details/90582307)  
 *参考网址：* [以硬件架构的思维方式看待软件架构（二）](https://zhuanlan.zhihu.com/p/464828478)  
-*参考网址：* [SoC](https://blog.csdn.net/iteye_13202/article/details/82575744)  
-
-#### 4. 硬件电路图设计  
-#### 5. PCB布线  
-#### 6. 测试与量产  
 
 ---
 
-### 2）集成电路（IC）设计（扩展内容）  
+### 2）集成电路（IC）设计（扩展内容，可不翻阅）  
 #### 1. SoC（主控芯片）设计  
 ##### 1.1 SoC架构  
 * 嵌入式使用的主控芯片（单片机或者MCU）对应于IC设计中的SoC。  
 
-<center>图2 典型的SoC芯片模块图</center>  
+<center>图3 典型的SoC芯片模块图</center>  
 
-![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/SoC%E6%9E%B6%E6%9E%841.png)
+![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/documents/T3-SoC%E6%9E%B6%E6%9E%84.png)  
 
-上述SoC模块图*参考网址：* [SoC架构](https://blog.csdn.net/weixin_39060517/article/details/113619888)  
+*参考网址：* [SoC架构](https://blog.csdn.net/weixin_39060517/article/details/113619888)  
+*参考网址：* [SoC](https://blog.csdn.net/iteye_13202/article/details/82575744)  
 
 架构图解析：  
 
@@ -309,6 +303,7 @@ ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 F
 *参考网址：* [AHB百度百科](https://baike.baidu.com/item/AHB)  
 *参考网址：* [AHB总线协议](https://blog.csdn.net/ivy_reny/article/details/78144785)  
 *参考网址：* [SOC常见架构_RISCV AI SOC实战（一，概述及架构设计）](https://blog.csdn.net/weixin_39693101/article/details/109963793)  
+*参考网址：* [SoC知识及选型经验分享](https://blog.csdn.net/lijiuyangzilsc/article/details/46535913)  
 
 |缩写|全名及解释|详情|
 |---|---|---|
@@ -317,118 +312,198 @@ ASB/AHB/APB总线：外设桥 存储控制：EBI SRAM Flash 外设数据控制 F
 |Bridge|APB桥|APB总线架构不像AHB支持多个主模块，在APB里面唯一的主模块就是APB 桥|
 |APB|Advanced Peripheral Bus，高级外围总线|主要用于低带宽的周边外设之间的连接，例如UART、SPI、I2C|
 |CPU|Central Processing Unit，中央处理器|计算机系统的运算和控制核心，处理指令、执行操作、控制时间、处理数据；数字电路中各种逻辑运算、算数运算、控制的操作接口都是一条指令，指令要转换成特定数字电路模块的入口，所以CPU的工作分为以下5个阶段：取指令、指令译码、执行指令、访存取数和结果写回；主要包括两个部分，即控制器、运算器，其中还包括高速缓冲存储器及实现它们之间联系的数据、控制的总线|
-|DMA|||
-|Flash|||
-|SRAM|||
-|DDR|||
-|SD|||
-|USB|||
-|WDT|看门狗||
-|Timer|定时器||
-|GPIO|||
-|UART|||
-|I2C|||
-|SPI|||
-|System Controller|||
-|其它专用驱动模块|||
+|DMA|Direct Memory Access，直接存储器访问|不依赖CPU将一块数据从一个地址空间复制到另一个地址空间，大量节省CPU时间|
+|Flash|Flash EEPROM，闪存|是ROM；有两种：NORFlash和NANDFlash；结合了ROM和RAM的长处，不仅具备电子可擦除可编程（EEPROM）的性能，还可以快速读取数据（NVRAM的优势）|
+|SRAM|Static Random-Access Memory，静态随机存取存储器|不需要刷新电路即能保存它内部存储的数据，断电后丢失；速度快但贵一点，也用作高速缓存|
+|DDR|Double Data Rate SDRAM，双倍速率同步动态随机存储器|具有双倍数据传输率的SDRAM，其数据传输速度为系统时钟频率的两倍，DDR是一个时钟周期内可传输两次数据，也就是在时钟的上升期和下降期各传输一次数据|
+|SD|Secure Digital Memory Card|基于闪存的存储卡，驱动方式为SDIO|
+|USB|Universal Serial Bus，通用串行总线|一种高速串行总线，兼容性好速度快|
+|WDT|Watchdog Timer，看门狗|是一个定时器电路，一般有一个输入，叫喂狗，一个输出到MCU的RST端，MCU正常工作的时候，每隔一段时间输出一个信号到喂狗端，给WDT清零，如果超过规定的时间不喂狗，（一般在程序跑飞时），WDT定时超过，就会给出一个复位信号到MCU，使MCU复位，防止MCU死机|
+|Timer|定时器|定时到了之后给出中断|
+|GPIO|General-purpose input/output，通用型输入输出|引脚可以用于输入、输出或其他特殊功能|
+|UART|Universal Asynchronous Receiver/Transmitter，异步收发传输器|通用串行数据总线，用于异步通信，对应的电气协议有RS-232/RS-422/RS-485，其中485是半双工|
+|I2C|Inter-Integrated Circuit，内置集成电路总线|一种简单、双向二线制同步串行总线|
+|SPI|Serial Peripheral Interface，串行外设接口|一种高速的，全双工，同步的通信总线，使用四根线|
+|System Controller|系统控制|电源、复位、锁相环频率等|
+|其它专用驱动模块||模块非常多，一个人总是只能精通里面的很少一部分|
 
 <center>表2 SoC芯片模块英文缩写名词解释</center>  
 
-* 除了电源管理、射频处理等少数几个功能外，SOC基本上包办其它所有硬件功能。  
+* 除了电源管理、射频处理等少数几个功能外，SOC几乎包办了其它所有硬件功能。  
 
-##### 1.2 CPU（微处理器核）  
+##### 1.2 CPU（处理器核）  
 
-(有图)FPU ISU FXU IDU IFU LSU L2 LC MC  
-*参考网址：* [芯片设计相关基础](https://zhuanlan.zhihu.com/p/431837543)  
+* CPU最重要的特点就是把所有的操作融合成了一种操作方式：指令集。  
 
-运算器 控制器 指令集 协处理器 存储管理 中断和例外管理 缓存   
-*参考网址：* [CPU芯片逻辑设计技术](https://baike.baidu.com/item/CPU%E8%8A%AF%E7%89%87%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1%E6%8A%80%E6%9C%AF)  
+<center>图4 典型的CPU内模块框图</center>  
 
-(有图)FPU ISU FXU IDU IFU LSU L2 LC MC  
-*参考网址：* [芯片设计相关基础](https://zhuanlan.zhihu.com/p/431837543)  
+![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/documents/T4_CPU%E7%BB%93%E6%9E%841.png)  
 
-(有图)指令寄存器 指令解码器 寄存器 PC栈 ALU寄存器 ALU carry  
-*参考网址：* [芯片设计的起源](https://zhuanlan.zhihu.com/p/104925162)  
 
-1.1.1 MCU相关  
+| 模块 | 子模块 | 描述 |
+| ---- | ------ | ---- |
+| 操作接口 | 指令集、IO接口 | 对CPU的所有操作都通过指令集中的指令和数据来完成 |
+| 总线 | 数据总线DBUS、指令总线IBUS、控制总线 | CPU与外界，CPU内指令、数据、译码器、寄存器、算术单元之间的数据通讯 |
+| 运算器 | ALU算术单元、FPU浮点单元 | 计算机之所以叫计算机的由来，核心结构是计算 |
+| 控制器 | 译码器、JTAG、流水线生成、中断 | 将指令集中的指令转换成实际的操作，和返回操作的结果 |
+| Cache缓存 | 指令缓存、数据缓存 | 缓存用于提高速率 |
+<center>表3 CPU内主要模块和子模块</center>  
 
-1.1.1.1  C51核  
-1.1.1.1.1 指令集  
+*参考网址：* [深度分析国产龙芯新架构CPU：自主当崛起](https://www.eetop.cn/view-50164.html) 英文框图  
+*参考网址：* [微处理器分类及主要技术性能](https://mbb.eet-china.com/blog/3658169-370989.html) 中文原理框图  
+*参考网址：* [微处理器微计算机微处理机单片机cpu区别](https://zhidao.baidu.com/question/424009835054682252.html) 有中文框图  
+*参考网址：* [计算机组成原理——CPU](https://blog.csdn.net/include_zrl/article/details/112382253) 有中文的简单框图  
+*参考网址：* [cpu的结构(CPU的结构与工作原理)](http://www.chenmo.net.cn/998794) 有Cortex-A8的简单框图  
+*参考网址：* [cpu架构一](https://blog.csdn.net/sinat_38259539/article/details/84627610) 有中文的CPU结构图  
+*参考网址：* [微架构](https://baike.baidu.com/item/%E5%BE%AE%E6%9E%B6%E6%9E%84) 里面的结构图最详细  
+*参考网址：* [CPU芯片逻辑设计技术](https://baike.baidu.com/item/CPU%E8%8A%AF%E7%89%87%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1%E6%8A%80%E6%9C%AF)：CPU设计的基础教程  
+*参考网址：* [芯片设计相关基础](https://zhuanlan.zhihu.com/p/431837543)：有奔腾简单的版图与模块框图  
+*参考网址：* [芯片设计的起源](https://zhuanlan.zhihu.com/p/104925162)：有一张简单的Intel4004版图与模块框图  
 
-1.1.1.2 ARM核  
-**ARM架构** *引用文档*：《[CSDN带图文档<待添加>]()》 《[Gitee源码文档](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/arm%E6%9E%B6%E6%9E%84.md)》 《[本地文档](./arm架构.md)》  
+###### **1.2.1 C51核指令集**  
 
- 编译器预设启动代码、芯片原厂boot代码  
+* C51（8051）的指令并不多，并且比较简单。  
+* 8051单片机共有111条指令，按指令功能分，可分为数据传送类29条，算术运算类24条，逻辑运算类24条，位操作类12条，控制转移类22条。  
+* 指令寻址方式共7种，分别是：立即数寻址，直接寻址，寄存器寻址，寄存器间接寻址，变址寻址，相对寻址，位寻址。  
 
-1.1.2 DSP相关  
-1.1.2.1 TI DSP  
-1.1.2.2 Cadence Xtensa HiFi DSP  
+* 详细指令内容详见 *参考网址：* [8051汇编指令集](https://blog.csdn.net/u010835747/article/details/119993636)  
 
-1.1.3 FPGA相关  
-1.1.3.1 Xilinx
+*参考网址：* [单片机8051指令集](https://blog.csdn.net/qq_45653763/article/details/107906583)  
+*参考网址：* [8051汇编指令](https://www.cnblogs.com/techecho/p/9809662.html)  
+*参考网址：* [8051单片机共有多少条指令？](https://zhidao.baidu.com/question/566536288494065644.html)  
 
-##### 1.3 外设  
-1.3.1 通用外设  
-* 如UART、SPI、I2C等  
+* 汇编通过地址跳转即可以实现各种条件判断和循环功能，如if else switch do while for等高级语言的功能。  
+* 通过压栈和弹栈的指令即可以各种函数的调用。  
 
-1.3.2 特定外设  
-* 如显示、音频编解码器、视频编解码器等  
+###### **1.2.2 ARM核指令集**  
 
-详情略……  
+* ARM核各个系列的介绍详见 *参考网址：* [关于ARM的内核架构](https://www.cnblogs.com/zhugeanran/p/8431127.html)  
+
+* ARM 可以用两套指令集：ARM指令集和Thumb指令集。  
+
+*参考网址：* [ARM汇编指令集汇总](https://blog.csdn.net/qq_40531974/article/details/83897559)  
+*参考网址：* [ARM指令集](https://blog.csdn.net/weixin_42110547/article/details/86672824)  
+*参考网址：* [关于ARM处理器指令集](https://blog.csdn.net/qq_45385706/article/details/108478867)  
+*参考网址：* [ARM指令集](https://www.diangon.com/m209371.html)  
+*参考网址：* [Arm Architecture Reference Manual for A-profile architecture](https://developer.arm.com/documentation/ddi0487/ha/?lang=en) 文档下载  
+
+**1.2.3 TI DSP指令集**  
+
+包含C66x、C67x等型号，有各种加速运算的指令。  
+
+*参考网址：* [KeyStone C66x CorePac Instruction Set Architecture](https://training.ti.com/sites/default/files/docs/instruction-set-architecture-presentation.pdf)  
+*参考网址：* [MS320C674x DSP CPU and Instruction Set Reference Guide](https://www.ti.com/lit/ug/sprufe8b/sprufe8b.pdf) Chapter 3 Instruction Set  
+*参考网址：* [C66x-CorePac用户指南---中文版](https://wenku.baidu.com/view/866eee93de88d0d233d4b14e852458fb770b38dd.html) TI C66x DSP寄存器介绍  
+*参考网址：* [TMS3205000系列DSP汇编语言程序设计](https://baike.baidu.com/item/TMS3205000%E7%B3%BB%E5%88%97DSP%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1)  
+
+**1.2.4 Cadence Xtensa HiFi DSP指令集**  
+详见 <u>**子文档**</u>：《[XtensaHifiDsp.md](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/documents/2.2.2_1.2.4_XtensaHifiDsp.md)》  
+
+**1.2.5 Xilinx FPGA**  
+*参考网址：* [Welcome to the Xilinx Wiki!](https://xilinx-wiki.atlassian.net/wiki/spaces/A/overview)  
 
 #### 2. 数字IC设计  
 
-* 既包含SoC整体设计、IP设计，也包含专有模块。  
+数字IC设计使用硬件描述语言Verilog，设计时要有时序、并行、延时的思想。  
+芯片设计可以分为两部分，前端和后端，仿真也可以分为前仿和后仿。  
 
-soc硬件架构 低功耗设计 总线架构 接口协议 FIFO 仲裁器   
-UART/IIC/SPI/DDR等常用接口协议  
 *参考网址：* [数字芯片设计入门？](https://www.zhihu.com/question/21892919)  
-
-[SoC芯片龙头有哪些，SoC芯片概念股一览](http://www.southmoney.com/gupiao/glg/202202/23494806.html)  
-
-2.1 数字IC设计流程  
-2.1.1 版图 前仿 后仿  
-
-[SoC知识及选型经验分享](https://blog.csdn.net/lijiuyangzilsc/article/details/46535913)  
-
-2.2 视频编解码器  
-
-2.2 音频编解码器  
-2.3 网络phy  
-2.4 USB phy  
+*参考网址：* [SoC芯片龙头有哪些，SoC芯片概念股一览](http://www.southmoney.com/gupiao/glg/202202/23494806.html)  
+*参考网址：* [数字IC设计流程介绍](https://zhuanlan.zhihu.com/p/260933238)  
+*参考网址：* [前仿真与后仿真](https://blog.csdn.net/zhangyujie0316/article/details/106360591)  
+*参考网址：* [数字IC设计流程及工具简介](https://blog.csdn.net/weixin_39269366/article/details/120665925)  
 
 #### 3. 模拟IC设计  
-3.1 模拟IC设计流程  
-3.1 ADC/DAC  
+
+模拟IC设计需要画原理图和版图。  
+
+*参考网址：* [模拟集成电路设计流程（1）——熟悉Cadence环境](https://zhuanlan.zhihu.com/p/344938075)  
+*参考网址：* [模拟集成电路设计流程（2）——原理图设计与仿真](https://zhuanlan.zhihu.com/p/344939731)  
+*参考网址：* [模拟集成电路设计流程（3）——不同的电路仿真方法](https://zhuanlan.zhihu.com/p/344937484)  
+*参考网址：* [模拟集成电路设计流程（4）——版图设计基础](https://zhuanlan.zhihu.com/p/350617982)  
+*参考网址：* [模拟集成电路设计流程（5）——版图验证](https://zhuanlan.zhihu.com/p/350813971)  
+*参考网址：* [模拟芯片/IC设计，都经历过哪些lesson—learned（经验教训）？](https://www.zhihu.com/question/46956546)  
+*参考网址：* [怎样学好模拟集成电路设计？](https://www.zhihu.com/question/25911879)  
 
 ---
 
-### 3）软件开发 <a name="software_design"></a>  
+### 3）软件开发  
 #### 1. boot  
-1.1 硬件上电流程  
-*参考网址：* [常见SOC启动流程分析](https://blog.csdn.net/weixin_34153893/article/details/93263448)  
-CPU获取编译器预设的代码，初始化时钟、看门狗、启动介质  
-执行编译器预设的启动介质初始化代码，读取并执行用户编写的boot代码  
-引导代码重定位地址并执行用户代码：操作系统+应用，或者裸机程序程序（驱动+应用）  
+**硬件上电流程**  
+* 前提：一般嵌入式硬件都有内部IROM、内部IRAM、外部ROM、外部RAM。  
+* 在boot前，启动介质中已经烧录或者拷贝了可执行程序。  
 
-1.1 IDE/编译器自带初始化代码  
-1.2 各芯片boot代码  
-1.3 U-Boot  
+* 一般boot分四步：  
+
+1、芯片上电后判断启动介质（启动介质的选择由几个芯片引脚的电平排序来决定，开发时使用跳线，生产则固定启动介质），直接执行ROM启动介质的0地址上的代码，或者将ROM启动介质的0地址及以后的代码拷贝到内部RAM中执行（最开始的启动代码会初始化芯片：如设置CPU频率、关看门狗、关MMU、分类临时内存执行一部分代码、设置异常向量、初始化内存控制器、初始化DDR、分配中断、确定内存资源范围、建立内存空间的映射表、IO端口资源、定义第二步boot入口地址；这部分源码往往由芯片厂商提供的与IDE配套的芯片配置包或者芯片厂商提供的交叉编译器中自带模板；这部分代码是汇编写的）。  
+
+2、与第一步同时，芯片也接收JTAG指令（JTAG执行时不需要ROM中的初始化代码，芯片直接接收并执行JTAG总线上的机器指令序列，这些序列中包含了最开始的芯片初始化机器指令序列），JTAG可以用来加载程序、烧录程序、运行并调试程序。JTAG中的初始化指令序列也由芯片厂商提供的IDE芯片配置包中自带。JTAG需要使用仿真器（如J-Link）。  
+
+3、调用并运行第二阶段初始化代码（第二阶段代码可以从Flash、SD卡、USB、串口、网口等介质中引导）；拷贝第二阶段代码到RAM、初始化堆栈、跳转到RAM运行第二阶段程序，第二阶段程序可以是U-Boot主体，也可以是裸机程序，main函数入口也在第二段初始化代码中，接着会初始化驱动。  
+
+4、如果有操作系统，由U-Boot或者其它的bootloader引导操作系统。  
+
+*参考网址：* [IMX6 uboot的启动流程](https://www.cnblogs.com/cyc2009/p/4077430.html)  
+*参考网址：* [TMS320F280025的BOOT流程](https://blog.csdn.net/booksyhay/article/details/120172063)  
+*参考网址：* [BOOT流程](https://blog.csdn.net/sp612422/article/details/51730053)  
+*参考网址：* [常见SOC启动流程分析](https://blog.csdn.net/weixin_34153893/article/details/93263448)  
+*参考网址：* [bootloader(xboot)起动流程分析](http://blog.chinaunix.net/uid-2630593-id-2955923.html)  
+*参考网址：* [详解嵌入式系统Boot-Loader](https://blog.csdn.net/liangzc1124/article/details/110180693)  
+*参考网址：* [嵌入式u-boot浅析](https://blog.csdn.net/xiaoqiang2080/article/details/77894379)  
 
 #### 2. 系统移植  
-1.1 uCOS（μC/OS）  
-1.2 eCos  
-1.3 RT-Thread  
-1.4 SYS/BIOS（TI）  
-1.5 Atomthreads  
-1.6 FreeRTOS  
-1.7 ThreadX（Cadence Tensilica）  
-1.8 VxWorks  
-1.9 Linux（U-Boot、kernel、根文件系统）  
 
-1.10 根文件系统  
-1.10.1 ramfs  
-1.10.2 xxx  
+<center>图5 操作系统框架</center>  
+
+![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/documents/T5_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6.jpg)  
+
+* 操作系统包含以下几个主模块：进程管理（线程）、内存管理、文件系统、设备驱动、网络管理（可选）  
+
+|主模块|子模块|描述|
+|---|---|---|
+|进程管理|TASK、进程或线程创建、挂起、运行、销毁，优先级管理，进程调度，自旋锁，互斥锁，信号量，条件变量，事件，邮箱，管道，Socket套接字，读写锁，共享内存|PV操作，原子操作，同步与互斥，临界资源|
+|内存管理|物理地址、虚拟地址、内存映射、分页、命中、内存清理|MMU，实现malloc()、free()|
+|文件系统|block块，窗口命中，写块，擦除块| DMA，缓存，volatile关键字|
+|驱动|字符驱动、块驱动、杂项驱动、网络驱动|主设备号，子设备号，通用接口，ioctl|
+|其它|中断处理、异常处理|ISR和DSR，上半部和下半部，定时器|
+
+<center>表4 操作系统框架</center>  
+
+*参考网址：* [操作系统包含哪些子系统？](https://www.zhihu.com/question/453246529)  
+*参考网址：* [Linux 进程与线程的同步与互斥](https://www.cnblogs.com/hzhida/archive/2012/11/01/2750216.html)  
+
+2.1 uCOS（μC/OS）  
+2.2 eCos  
+2.3 RT-Thread  
+2.4 SYS/BIOS（TI）  
+2.5 Atomthreads  
+2.6 FreeRTOS  
+2.7 ThreadX（Cadence Tensilica）  
+2.8 VxWorks  
+2.9 Linux（U-Boot、kernel、根文件系统）  
+
+**2.10 根文件系统**  
+
+* 如果是Linux可以BusyBox工具来创建根文件系统。  
+
+**2.10.1 Ramfs**  
+Ramfs是LinusTorvalds开发的一种基于内存的文件系统，工作于虚拟文件系统(VFS)层，不能格式化，可以创建多个，在创建时可以指定其能使用的内存大小。(实际上，VFS本质上可看成一种内存文件系统，它统一了文件在内核中的表示方式，并对磁盘文件系统进行缓冲。)  
+
+**2.10.2 Ramdisk**  
+和网吧一样，用户保存的数据在断电后会丢失，防止入侵和用户乱改乱删文件导致嵌入式设备变板砖。  
+Ramdisk是将一部分固定大小的内存当作分区来使用。它并非一个实际的文件系统，而是一种将实际的文件系统装入内存的机制，并且可以作为根文件系统。将一些经常被访问而又不会更改的文件（如只读的根文件系统）通过Ramdisk放在内存中，可以明显地提高系统的性能。  
+
+2.10.3 ext4  
+Linux中使用  
+
+2.10.4 FAT32  
+兼容U盘、SD卡等经常要在Windows使用的存储设备。  
+
+2.10.5 jffs2  
+
+*参考网址：* [什么是嵌入式的根文件?嵌入式的根文件系统有哪些?](http://www.gec-edu.org/gsnews/show/571664.html)  
+*参考网址：*[嵌入式系统中常用的文件系统](https://www.cnblogs.com/wmate/p/13558773.html)  
+*参考网址：*[嵌入式 Linux根文件系统移植（三）——根文件系统构建](http://www.360doc.com/content/18/1224/14/8335678_804124205.shtml)  
 
 #### 3. 驱动框架  
 驱动寄存器通用结构：输入输出地址（可与DMA配合）、中断控制  
@@ -444,22 +519,21 @@ CPU获取编译器预设的代码，初始化时钟、看门狗、启动介质
 #### 4. 驱动模块  
 4.1 通讯类驱动  
 4.1.1 串口  
-4.1.1 裸机开发  
-4.1.2 RTOS开发  
-4.1.3 Linux开发  
+4.1.1.1 裸机开发  
+4.1.1.2 RTOS开发  
+4.1.1.3 Linux开发  
 
 4.1.2 I2C  
-
 4.1.3 SPI  
-
 4.1.4 网络  
 4.1.5 USB  
 4.1.6 蓝牙  
-can zigbee  
+4.1.7 CAN  
+4.1.8 ZigBee  
+4.1.9 ModBus  
+4.1.10 I2S  
 
-**i2s音频模块** *引用文档*：《[CSDN带图文档<待添加>]()》 《[Gitee源码文档](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/i2s%E6%A8%A1%E5%9D%97.md)》 《[本地文档](./i2s模块.md)》  
-
-……  
+**i2s音频模块**详见 <u>**子文档**</u>：《[i2s模块.md](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/documents/2.3.4_4.1.10_i2s%E6%A8%A1%E5%9D%97.md)》  
 
 4.2 存储类驱动  
 4.2.1 DDR  
@@ -494,33 +568,56 @@ can zigbee
 
 4.5 杂项驱动  
 
-#### 5. 软件架构（框架）  
+#### 5. 软件架构（应用框架）  
 5.1 FIFO  
 5.2 BUFFER  
 5.3 状态机  
 5.4 TASK  
+5.5 多线程  
 
 #### 6. 通用应用  
-应用框架  
-多媒体框架  
+##### 6.1 应用框架  
 
 #### 7. 行业相关应用  
-传感器采集与校准  
-电视节目加解扰  
-键盘键值（不同国家布局、不同游戏手柄布局）  
-蓝牙音响  
+##### 7.1 GUI框架  
+###### 7.1.1 Qt框架  
+**Qt模块**详见 <u>**子文档**</u>：《[从零开始学习Qt GUI编程](https://gitee.com/langcai1943/qt_gui_simple2complex)》 内容非常全  
 
-#### 7. 通用算法  
+###### 7.1.2 uC/GUI  
+
+##### 7.2 多媒体框架  
+###### 7.2.1 嵌入式多媒体（音视频API）  
+- **音视频**是指：  
+a) 音频播放和录制：mp3、aac、ac3、wav（未编码的裸流）、pcm（未编码的裸流）  
+b) 音视频播放和录制：mp4、mkv、flv、ts（音视频封装），h264、h265(hevc)、vp8、vp9（纯视频流）
+c) 图片显示和抓取：jpeg(jpg)、mjpeg、png、jif  
+
+- **音视频基础知识**完整内容详见*子文档*：《[音视频开发](https://gitee.com/langcai1943/audio_video_codec)》 内容全  
+
+音视频编解码的参考源码有ffmpeg。  
+- **FFmpeg音视频编解码**完整内容详见 <u>**子文档**</u>：《[ffmpeg源码及架构分析](https://gitee.com/langcai1943/audio_video_codec/blob/develop/2_ffmpeg%E6%9E%B6%E6%9E%84.md)》内容全  
+
+###### 7.2.2 Qt多媒体（音视频，含界面）  
+**Qt多媒体**详见 <u>**子文档**</u>：《[MultiMedia_VideoAudio.md](https://gitee.com/langcai1943/qt_gui_simple2complex/blob/develop/source/002_MultiMedia_VideoAudio/documents/MultiMedia_VideoAudio.md)》 内容全  
+
+###### 7.2.3 Linux多媒体  
+###### 7.2.4 Windows多媒体  
+###### 7.2.5 Web多媒体  
+
+7.3 传感器采集与校准  
+7.4 电视节目加解扰  
+7.5 键盘键值（不同国家布局、不同游戏手柄布局）  
+7.6 蓝牙音响  
+
+#### 8. 通用算法  
 调制解调  
 编解码  
 人工智能  
 
-#### 8. 行业相关算法  
+#### 9. 行业相关算法  
 8.1 水声  
 8.2 激光打标（显示类）  
 8.3 通讯  
-
-#### 8. GUI  
 
 ## 三、工具使用  
 ### 1）编码语言  
@@ -553,6 +650,7 @@ can zigbee
 #### 12. Git语法  
 
 #### 13. Markdown语法（扩展内容）  
+详见 <u>**子文档**</u>：《[Markdown语法](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/documents/3.1.13_Markdown%E8%AF%AD%E6%B3%95.md)》  
 
 ### 2）通讯协议  
 #### 1. OSI七层协议  
@@ -563,9 +661,7 @@ can zigbee
 ## 三、理论知识  
 ### 1）操作系统原理（扩展内容）  
 ### 2）编译原理（扩展内容）  
-
 ### 3）信息论（扩展内容）  
-
 ### 4）离散数学  
 1. 快速傅里叶变换  
 
@@ -575,16 +671,46 @@ can zigbee
 瀑布开发 敏捷开发
 
 ### 7）测试方法  
-单元测试 集成测试 老化测试 白盒测试 黑盒测试
+单元测试 集成测试 老化测试 白盒测试 黑盒测试  
 
-## 四、模块地图（不分层级的所有模块）  
-索引用  
+## 四、项目实践  
+### 4.1 自运行的吃豆人程序  
+详见 <u>**子文档**</u>：《[才鲸 / C语言小游戏](https://gitee.com/langcai1943/c-little-game)》  
 
-## 五、 层级模块地图（各个主模块及其嵌套的子模块）  
-索引用  
+### 4.2 Linux下视频播放程序  
+详见 <u>**子文档**</u>：《[才鲸 / 嵌入式播放器](https://gitee.com/langcai1943/embedded-player)》  
+
+### 4.3 Qt安卓手机群控PC软件  
+详见 <u>**子文档**</u>：《[才鲸 / qtscrcpy_tc_安卓手机群控](https://gitee.com/langcai1943/qtscrcpy_tc)》  
+
+## 五、其它  
+待完善……  
+
+### 5.1 嵌入式编程技巧  
+详见 <u>**子文档**</u>：《[才鲸 / 嵌入式编程技巧](https://gitee.com/langcai1943/embedded_programming_skills)》  
+
+### 5.2 嵌入式软件笔试题汇总  
+详见 <u>**子文档**</u>：《[才鲸 / 嵌入式软件笔试题汇总](https://gitee.com/langcai1943/embedded_exercise_problems)》  
+
+### 5.3 QEMU仿真器（模拟器）  
+详见 <u>**子文档**</u>：《[QEMU默认支持的所有开发板列表](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/documents/0004_QEMU%E6%A8%A1%E6%8B%9F%E5%99%A8_%E4%BB%BF%E7%9C%9F%E5%99%A8/001_QEMU%E9%BB%98%E8%AE%A4%E6%94%AF%E6%8C%81%E7%9A%84%E6%89%80%E6%9C%89%E5%BC%80%E5%8F%91%E6%9D%BF%E5%88%97%E8%A1%A8.md)》  
+
+### 5.4 嵌入式找远程岗位、兼职、和接私单的方法  
+详见 <u>**子文档**</u>：《[才鲸 / 嵌入式远程岗位_兼职_私单](https://gitee.com/langcai1943/embedded_remote_work)》  
+
+### 5.5 理工科考证获取额外收入  
+详见 <u>**子文档**</u>：《[才鲸 / 专利代理师（仅限理工科）](https://gitee.com/langcai1943/ZhuanDai)》 注：专代很快就要取消，不能考了  
+
+游戏、UI、web前端、web后端、数据库、安卓、iOS、安全、大数据、人工智能、云计算、高级语言：Java，Python，C#、工具类：Json、正则表达式、网络协议栈、XAML……  
+
+## 六、缩写列表  
+待完善……  
+
+## 七、索引（文档地图）  
+待完善……  
 
 ---
 
-……待补充……正在编写中……  
+……正在编写中……  
 
 ---
