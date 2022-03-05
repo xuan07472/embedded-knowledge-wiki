@@ -674,12 +674,32 @@ c) 图片显示和抓取：jpeg(jpg)、mjpeg、png、jif
 单元测试 集成测试 老化测试 白盒测试 黑盒测试  
 
 ## 四、项目实践  
-待完善……  
+### 4.1 自运行的吃豆人程序  
+详见 <u>**子文档**</u>：《[才鲸 / C语言小游戏](https://gitee.com/langcai1943/c-little-game)》  
+
+### 4.2 Linux下视频播放程序  
+详见 <u>**子文档**</u>：《[才鲸 / 嵌入式播放器](https://gitee.com/langcai1943/embedded-player)》  
+
+### 4.3 Qt安卓手机群控PC软件  
+详见 <u>**子文档**</u>：《[才鲸 / qtscrcpy_tc_安卓手机群控](https://gitee.com/langcai1943/qtscrcpy_tc)》  
 
 ## 五、其它  
 待完善……  
-5.1 QEMU仿真器（模拟器）  
-详见 <u>**子文档**</u>：《[《QEMU默认支持的所有开发板列表》](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/documents/0004_QEMU%E6%A8%A1%E6%8B%9F%E5%99%A8_%E4%BB%BF%E7%9C%9F%E5%99%A8/001_QEMU%E9%BB%98%E8%AE%A4%E6%94%AF%E6%8C%81%E7%9A%84%E6%89%80%E6%9C%89%E5%BC%80%E5%8F%91%E6%9D%BF%E5%88%97%E8%A1%A8.md)》  
+
+### 5.1 嵌入式编程技巧  
+详见 <u>**子文档**</u>：《[才鲸 / 嵌入式编程技巧](https://gitee.com/langcai1943/embedded_programming_skills)》  
+
+### 5.2 嵌入式软件笔试题汇总  
+详见 <u>**子文档**</u>：《[才鲸 / 嵌入式软件笔试题汇总](https://gitee.com/langcai1943/embedded_exercise_problems)》  
+
+### 5.3 QEMU仿真器（模拟器）  
+详见 <u>**子文档**</u>：《[QEMU默认支持的所有开发板列表](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/documents/0004_QEMU%E6%A8%A1%E6%8B%9F%E5%99%A8_%E4%BB%BF%E7%9C%9F%E5%99%A8/001_QEMU%E9%BB%98%E8%AE%A4%E6%94%AF%E6%8C%81%E7%9A%84%E6%89%80%E6%9C%89%E5%BC%80%E5%8F%91%E6%9D%BF%E5%88%97%E8%A1%A8.md)》  
+
+### 5.4 嵌入式找远程岗位、兼职、和接私单的方法  
+详见 <u>**子文档**</u>：《[才鲸 / 嵌入式远程岗位_兼职_私单](https://gitee.com/langcai1943/embedded_remote_work)》  
+
+### 5.5 理工科考证获取额外收入  
+详见 <u>**子文档**</u>：《[才鲸 / 专利代理师（仅限理工科）](https://gitee.com/langcai1943/ZhuanDai)》 注：专代很快就要取消，不能考了  
 
 游戏、UI、web前端、web后端、数据库、安卓、iOS、安全、大数据、人工智能、云计算、高级语言：Java，Python，C#、工具类：Json、正则表达式、网络协议栈、XAML……  
 
