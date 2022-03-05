@@ -264,9 +264,9 @@ end
 * 普通硬件设计是围绕着主控芯片及其配套的驱动模块来进行的。  
 * 下图是一个典型的硬件框图，包含芯片最小系统、电源模块、各个外设接口。  
 
-<center>图2 硬件框图举例（待改路径）</center>  
+<center>图2 硬件框图举例</center>  
 
-![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/%E7%A1%AC%E4%BB%B6%E6%A1%86%E5%9B%BE.jpeg)  
+![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/documents/T2_%E7%A1%AC%E4%BB%B6%E6%A1%86%E5%9B%BE.jpeg)  
 
 *参考网址：* [基于ARM与μClinux的RTU设计](http://gongkong.gongye360.com/paper_view.html?id=266814)  
 
@@ -287,9 +287,9 @@ end
 ##### 1.1 SoC架构  
 * 嵌入式使用的主控芯片（单片机或者MCU）对应于IC设计中的SoC。  
 
-<center>图3 典型的SoC芯片模块图（待改路径）</center>  
+<center>图3 典型的SoC芯片模块图</center>  
 
-![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/SoC%E6%9E%B6%E6%9E%841.png)  
+![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/documents/T3-SoC%E6%9E%B6%E6%9E%84.png)  
 
 *参考网址：* [SoC架构](https://blog.csdn.net/weixin_39060517/article/details/113619888)  
 *参考网址：* [SoC](https://blog.csdn.net/iteye_13202/article/details/82575744)  
@@ -335,9 +335,9 @@ end
 
 * CPU最重要的特点就是把所有的操作融合成了一种操作方式：指令集。  
 
-<center>图4 典型的CPU内模块框图（待改路径）</center>  
+<center>图4 典型的CPU内模块框图</center>  
 
-![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/CPU%E7%BB%93%E6%9E%841-%E4%B8%AD%E6%96%87.png)  
+![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/documents/T4_CPU%E7%BB%93%E6%9E%841.png)  
 
 
 | 模块 | 子模块 | 描述 |
@@ -397,7 +397,7 @@ end
 *参考网址：* [TMS3205000系列DSP汇编语言程序设计](https://baike.baidu.com/item/TMS3205000%E7%B3%BB%E5%88%97DSP%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1)  
 
 **1.2.4 Cadence Xtensa HiFi DSP指令集**  
-详见 <u>**子文档**</u> （待改路径）：《[XtensaHifiDsp.md<待修改为csdn网址>](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/XtensaHifiDsp.md)》  
+详见 <u>**子文档**</u>：《[XtensaHifiDsp.md](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/documents/2.2.2_1.2.4_XtensaHifiDsp.md)》  
 
 **1.2.5 Xilinx FPGA**  
 *参考网址：* [Welcome to the Xilinx Wiki!](https://xilinx-wiki.atlassian.net/wiki/spaces/A/overview)  
@@ -453,9 +453,9 @@ end
 
 #### 2. 系统移植  
 
-<center>图5 操作系统框架（待改路径）</center>  
+<center>图5 操作系统框架</center>  
 
-![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6.jpg)  
+![avatar](https://gitee.com/langcai1943/embedded-knowledge-wiki/raw/develop/documents/T5_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6.jpg)  
 
 * 操作系统包含以下几个主模块：进程管理（线程）、内存管理、文件系统、设备驱动、网络管理（可选）  
 
@@ -533,7 +533,7 @@ Linux中使用
 4.1.9 ModBus  
 4.1.10 I2S  
 
-**i2s音频模块**详见 <u>**子文档（待改路径）**</u>：《[i2s模块.md<待修改为csdn网址>](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/i2s%E6%A8%A1%E5%9D%97.md)》  
+**i2s音频模块**详见 <u>**子文档**</u>：《[i2s模块.md](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/documents/2.3.4_4.1.10_i2s%E6%A8%A1%E5%9D%97.md)》  
 
 4.2 存储类驱动  
 4.2.1 DDR  
@@ -650,8 +650,7 @@ c) 图片显示和抓取：jpeg(jpg)、mjpeg、png、jif
 #### 12. Git语法  
 
 #### 13. Markdown语法（扩展内容）  
-详见 <u>**子文档(待修改gitee路径)**</u>：[Markdown语法](./3.1.13_Markdown语法.md)  
-
+详见 <u>**子文档**</u>：《[Markdown语法](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/documents/3.1.13_Markdown%E8%AF%AD%E6%B3%95.md)》  
 
 ### 2）通讯协议  
 #### 1. OSI七层协议  
@@ -679,7 +678,10 @@ c) 图片显示和抓取：jpeg(jpg)、mjpeg、png、jif
 
 ## 五、其它  
 待完善……  
-仿真器（模拟器）、游戏、UI、web前端、web后端、数据库、安卓、iOS、安全、大数据、人工智能、云计算、高级语言：Java，Python，C#、工具类：Json、正则表达式、网络协议栈、XAML……  
+5.1 QEMU仿真器（模拟器）  
+详见 <u>**子文档**</u>：《[《QEMU默认支持的所有开发板列表》](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/documents/0004_QEMU%E6%A8%A1%E6%8B%9F%E5%99%A8_%E4%BB%BF%E7%9C%9F%E5%99%A8/001_QEMU%E9%BB%98%E8%AE%A4%E6%94%AF%E6%8C%81%E7%9A%84%E6%89%80%E6%9C%89%E5%BC%80%E5%8F%91%E6%9D%BF%E5%88%97%E8%A1%A8.md)》  
+
+游戏、UI、web前端、web后端、数据库、安卓、iOS、安全、大数据、人工智能、云计算、高级语言：Java，Python，C#、工具类：Json、正则表达式、网络协议栈、XAML……  
 
 ## 六、缩写列表  
 待完善……  
