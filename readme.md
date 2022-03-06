@@ -580,8 +580,8 @@ Linux中使用
 
 #### 7. 行业相关应用  
 ##### 7.1 GUI框架  
-###### 7.1.1 Qt框架  
-**Qt模块**详见 <u>**子文档**</u>：《[从零开始学习Qt GUI编程](https://gitee.com/langcai1943/qt_gui_simple2complex)》 内容非常全  
+###### 7.1.1 Qt编程  
+**Qt编程**详见 <u>**子文档**</u>：《[从零开始学习Qt GUI编程](https://gitee.com/langcai1943/qt_gui_simple2complex)》 内容非常全，含各种源码  
 
 ###### 7.1.2 uC/GUI  
 
@@ -598,7 +598,11 @@ c) 图片显示和抓取：jpeg(jpg)、mjpeg、png、jif
 - **FFmpeg音视频编解码**完整内容详见 <u>**子文档**</u>：《[ffmpeg源码及架构分析](https://gitee.com/langcai1943/audio_video_codec/blob/develop/2_ffmpeg%E6%9E%B6%E6%9E%84.md)》内容全  
 
 ###### 7.2.2 Qt多媒体（音视频，含界面）  
-**Qt多媒体**详见 <u>**子文档**</u>：《[MultiMedia_VideoAudio.md](https://gitee.com/langcai1943/qt_gui_simple2complex/blob/develop/source/002_MultiMedia_VideoAudio/documents/MultiMedia_VideoAudio.md)》 内容全  
+* **Qt多媒体**详见 <u>**子文档**</u>：《[MultiMedia_VideoAudio.md](https://gitee.com/langcai1943/qt_gui_simple2complex/blob/develop/source/003_MultiMedia_VideoAudio/documents/MultiMedia_VideoAudio.md)》 内容全  
+
+* [Qt官方播放器源码（纯应用）](https://gitee.com/langcai1943/qt_gui_simple2complex/blob/develop/source/003_MultiMedia_VideoAudio/003_qt6.2.3_multimedia/documents/003_qt6.2.3_multimedia.md)  
+
+* [嵌入式播放器源码（自行实现编解码、复用解复用）](https://gitee.com/langcai1943/qt_gui_simple2complex/blob/develop/source/003_MultiMedia_VideoAudio/004_audio_video_codec/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91.md)  
 
 ###### 7.2.3 Linux多媒体  
 ###### 7.2.4 Windows多媒体  
@@ -701,7 +705,7 @@ c) 图片显示和抓取：jpeg(jpg)、mjpeg、png、jif
 ### 5.5 理工科考证获取额外收入  
 详见 <u>**子文档**</u>：《[才鲸 / 专利代理师（仅限理工科）](https://gitee.com/langcai1943/ZhuanDai)》 注：专代很快就要取消，不能考了  
 
-游戏、UI、web前端、web后端、数据库、安卓、iOS、安全、大数据、人工智能、云计算、高级语言：Java，Python，C#、工具类：Json、正则表达式、网络协议栈、XAML……  
+游戏、UI、web前端、web后端、数据库、安卓、iOS、安全、大数据、人工智能、云计算、高级语言：Java，Python，C#、工具类：Json、正则表达式、网络协议栈、XAML、MinGW、MSYS2、Cygwin、Wine兼容层……  
 
 ## 六、缩写列表  
 待完善……  
