@@ -428,6 +428,23 @@ end
 ---
 
 ### 3）软件开发  
+
+* 进行一个新项目时，先想好文件夹结构和其中的各个模块，如：  
+arch 独立出来的硬件相关的内容（arch下也有drivers、fs、kernel、lib、mm、usr文件夹，实现这个模块中的硬件相关功能）  
+drivers 设备驱动（里面是抽象的接口，不包含实际硬件寄存器的操作）  
+fs 文件系统（可选）  
+kernel 进程调度（可选）  
+lib 通用中间件、基础模块  
+mm 内存管理（可选）  
+usr 工具类应用  
+
+*参考网址：*  
+[Linux内核 -- 内核源码结构](https://www.cnblogs.com/y4247464/p/12333955.html)  
+[eCos教程2：eCos源码结构分析](http://velep.com/archives/970.html)  
+[RT-Thread / rt-thread](https://gitee.com/rtthread/rt-thread)  
+[FreeRTOS介绍与源码结构分析](https://zhuanlan.zhihu.com/p/145699420)  
+[uCOS-II源码下载及源码目录结构](https://blog.csdn.net/qq_29344757/article/details/77096149)  
+
 #### 1. boot  
 **硬件上电流程**  
 * 前提：一般嵌入式硬件都有内部IROM、内部IRAM、外部ROM、外部RAM。  
@@ -569,11 +586,136 @@ Linux中使用
 4.5 杂项驱动  
 
 #### 5. 软件架构（应用框架）  
-5.1 FIFO  
-5.2 BUFFER  
+##### 5.1 模块统一接口  
+1、module、session：
+session type(id)、FSM(state)、session buffer、devgroup?、
+session struct(name、type、function_pointer(init/exit/start/stop/pause/resume/run/command)、timestamp)
+
+gloable function: sessionget, sessionnext, bufferpush, bufferpop, bufferoption, run, command,
+
+init, exit: create, destroy
+run: process
+command: control
+
+session buffer list: slist, session buffer  --> link, fifo, loopbuffer
+
+session to punit: orap, private, priv, use static priv, session_priv_t
+
+class: session_target(video=0, audio=1, subtitle=2)
+
+global gsession:
+init: set target, dedault target,
+
+3、将所有session_initall改掉，只赋值全局变量指针即可，session_all_register
+init是链式初始化？？？（如果是多输入多输出用于测试的话，固定的链式init则不可取，还是做成全部统一init，设置target后start的方法），只init mp4或i2sin即可，所有的初始参数传递，都在start()中传递（宽高、采样率通道数位深度）
+push前要有can_push(valid)判断，每个session在自己模块中设置buffer阈值，分为音频视频字幕
+4、一个架构：模块统一接口 + fifo/缓存/队列 + 状态机（不使用Task和线程而达到类似的效果，不使用class而达到类似的面向对象模块）
+弄清楚各种缓存和管道的名称
+5、有些session需要接受多个上级session的输入，
+6、session结构体中加入一个父级指针，
+7、如果是多输入的session，session start/stop只能由初始化一次，要好好想想，况且第一个初始化后不知道第二个还在不在，所以需要一个标志，是video_only, audio_only还是all，session_start中自行判断什么时候进行mp4初始化。
+8、在多对一的情况下，可以把所有的START和STOP都统一运行，不再级联运行，几十模块间多对一，但是START只执行一次
+
+start的层级调用还是加进去的好，但是要在set_tartget之后，方便参数传递，否则，每个模块的start都要手动设置参数了
+
+##### 5.2 缓存结构  
+
+
+1、各种缓存结构：
+基础：指针、链表、内存、数组
+数据结构基础：表、树、图（多对多）
+缓冲区/buffer/顺序表/平直缓存/数组/内存指针（malloc）
+栈/stack：因为是先进后出，也用于函数调用时的压栈，编译器和高级算法中用的多，日常编程基本上不用。
+堆/heap/完全二叉树：方便排序，编译器和算法中常用，日常编程基本上不用
+环形缓冲区/环形缓存区/循环队列/loop_buffer/ring_buffer/队列/FIFO/Queue：先进先出，满和空
+
+[什么是队列（队列存储结构）](http://c.biancheng.net/view/3352.html)  
+[链式队列及基本操作（C语言实现）](http://c.biancheng.net/view/3354.html)  
+
+分组队列/多级队列/group_buffer/fifo/queue：每个模块都有自己的队列，且不同队列间可直接通过数据指针无消耗转移大块数据。
+
+
+[数据结构与算法教程，数据结构C语言版教程！](http://c.biancheng.net/data_structure/)  
+
+各个地方都要上锁：
+sessionbuffer:
+	sysbuf + slists_group
+SessionBufferDeInit(session);
+SessionBufferClean(session, SESSION_DEVGROUP_BASIC);
+	SessionBufferPop all
+	sysbuf_free all
+SessionBufferPop(punit->session, SESSION_DEVGROUP_BASIC);
+SessionBufferPush
+sysbuf_alloc(SYSBUF_GROUP_DATBUFS);
+SessionBufferInit(session);
+slists_group_init(&(session->buffer_group));
+SessionBufferTopNum
+	获取slists数目
+session_buflist_t
+session_buffer_t
+SYS_BUF_MAX_COUNT
+sysbufcfg.h
+
+session:
+    session_buflist数组 { // 链表数组 + 缓存
+    	单个元素 {
+            slists { // 链表数组
+            	list_head链表节点 { // 第二个group，模块分类
+            		前个指针
+            		后个指针
+            	}
+            	pslists_group {
+            		list_head节点数组 {
+            			单个节点 {
+            				前个指针
+            				后个指针
+            			}
+            		}
+            		互斥锁
+            	}
+            }
+            session_buffer {
+            	psysbuf {
+            		slists // 链表数组，第一个group，缓存类型分类
+                        list_head链表节点 {
+                            前个指针
+                            后个指针
+                        }
+                        pslists_group {
+                            list_head节点数组 {
+                                单个节点 {
+                                    前个指针
+                                    后个指针
+                                }
+                            }
+                            互斥锁
+                        }
+                    }
+            		group // 有RAMBUF 5，DATABUF 20，CVBUFMSG 5，BITBUF 32，FRMBUF 50几个类型
+            		地址
+            		缓存大小
+            		数据大小
+            	}
+            	group_index // 有basic audio video user等，可以始终只用一个
+            }
+    	}
+    }
+
+缓存里面有链表数组，缓存外面同级的还有链表数组，多个缓存也组成了数组
+
+session_buflist数组中放了所有的大块buffer，RAMBUF 5，DATABUF 20，CVBUFMSG 5，BITBUF 32，FRMBUF 50
+各个buffer长度不一样
+
+提前把所有的地址都赋值给队列
+sysbuf_alloc(SYSBUF_GROUP_DATBUFS);
+
+有sysbuf_get，但是只在别的模块中用，如mali、uart，RAMBUF，BITBUF，FRMBUF
+
 5.3 状态机  
-5.4 TASK  
-5.5 多线程  
+状态机用于多任务、多线程、循环中反复执行的函数中进行状态切换  
+
+5.4 循环、TASK、定时器  
+5.5 多线程、同步与竞争  
 
 #### 6. 通用应用  
 ##### 6.1 应用框架  
@@ -586,7 +728,11 @@ Linux中使用
 ###### 7.1.2 uC/GUI  
 
 ##### 7.2 多媒体框架  
-###### 7.2.1 嵌入式多媒体（音视频API）  
+###### 7.2.1 Linux、Windows、安卓多媒体框架  
+
+详见 <u>**子文档**</u>：《[2.3_7.2.3_不同操作系统多媒体框架.md](./documents/2.3_7.2.1_不同操作系统多媒体框架.md)》  
+
+###### 7.2.2 嵌入式多媒体（音视频API）  
 - **音视频**是指：  
 a) 音频播放和录制：mp3、aac、ac3、wav（未编码的裸流）、pcm（未编码的裸流）  
 b) 音视频播放和录制：mp4、mkv、flv、ts（音视频封装），h264、h265(hevc)、vp8、vp9（纯视频流）
@@ -597,16 +743,12 @@ c) 图片显示和抓取：jpeg(jpg)、mjpeg、png、jif
 音视频编解码的参考源码有ffmpeg。  
 - **FFmpeg音视频编解码**完整内容详见 <u>**子文档**</u>：《[ffmpeg源码及架构分析](https://gitee.com/langcai1943/audio_video_codec/blob/develop/2_ffmpeg%E6%9E%B6%E6%9E%84.md)》内容全  
 
-###### 7.2.2 Qt多媒体（音视频，含界面）  
+###### 7.2.3 Qt多媒体（音视频，含界面）  
 * **Qt多媒体**详见 <u>**子文档**</u>：《[MultiMedia_VideoAudio.md](https://gitee.com/langcai1943/qt_gui_simple2complex/blob/develop/source/003_MultiMedia_VideoAudio/documents/MultiMedia_VideoAudio.md)》 内容全  
 
 * [Qt官方播放器源码（纯应用）](https://gitee.com/langcai1943/qt_gui_simple2complex/blob/develop/source/003_MultiMedia_VideoAudio/003_qt6.2.3_multimedia/documents/003_qt6.2.3_multimedia.md)  
 
 * [嵌入式播放器源码（自行实现编解码、复用解复用）](https://gitee.com/langcai1943/qt_gui_simple2complex/blob/develop/source/003_MultiMedia_VideoAudio/004_audio_video_codec/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91.md)  
-
-###### 7.2.3 Linux多媒体  
-###### 7.2.4 Windows多媒体  
-###### 7.2.5 Web多媒体  
 
 7.3 传感器采集与校准  
 7.4 电视节目加解扰  
@@ -670,11 +812,11 @@ c) 图片显示和抓取：jpeg(jpg)、mjpeg、png、jif
 1. 快速傅里叶变换  
 
 ### 5）自动控制  
-
-### 6）开发方法  
+### 6）数据结构  
+### 7）开发方法  
 瀑布开发 敏捷开发
 
-### 7）测试方法  
+### 8）测试方法  
 单元测试 集成测试 老化测试 白盒测试 黑盒测试  
 
 ## 四、项目实践  
