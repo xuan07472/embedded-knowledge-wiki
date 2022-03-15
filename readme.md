@@ -634,8 +634,11 @@ start的层级调用还是加进去的好，但是要在set_tartget之后，方�
 
 分组队列/多级队列/group_buffer/fifo/queue：每个模块都有自己的队列，且不同队列间可直接通过数据指针无消耗转移大块数据。
 
-
 [数据结构与算法教程，数据结构C语言版教程！](http://c.biancheng.net/data_structure/)  
+
+
+
+大块多级缓存组：
 
 各个地方都要上锁：
 sessionbuffer:
@@ -710,6 +713,24 @@ session_buflist数组中放了所有的大块buffer，RAMBUF 5，DATABUF 20，CV
 sysbuf_alloc(SYSBUF_GROUP_DATBUFS);
 
 有sysbuf_get，但是只在别的模块中用，如mali、uart，RAMBUF，BITBUF，FRMBUF
+
+
+
+linux list module: 双向循环链表初始化、添加、获取，列表节点后面跟着私有数据，通过container_of来获取私有数据的地址
+
+syslist module: 初始化所有的列表（9个），一个列表头拖着一组列表头，
+
+
+
+将一块内存分配好：sysbuf_group_reset
+
+分配好的内存块存在g_sys_buf_group[n]中的一项
+
+
+
+每个session都有一个buffer_group
+
+
 
 5.3 状态机  
 状态机用于多任务、多线程、循环中反复执行的函数中进行状态切换  
