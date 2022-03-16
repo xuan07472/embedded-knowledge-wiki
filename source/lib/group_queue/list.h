@@ -1,4 +1,4 @@
-/**
+﻿/**
  * \file list.h
  * \brief 双向循环链表
  *
@@ -41,7 +41,6 @@ typedef int bool; /* from include/linux/types.h */
  * \return 结构体中一个元素相对于结构体起始地址的偏移量
  * \remarks 巧用了编译器对0地址的操作
  */
-typedef unsigned int size_t; /* include/linux/types.h */
 #define offsetof(TYPE, MEMBER)	((size_t)&((TYPE *)0)->MEMBER)
 
 /**
@@ -93,6 +92,9 @@ typedef unsigned int size_t; /* include/linux/types.h */
 #define LIST_HEAD_INIT(name) { &(name), &(name) }
 #define LIST_HEAD(name) \
 	struct list_head name = LIST_HEAD_INIT(name)
+
+//typedef __typeof typeof;
+//[__typeof__() 、 __typeof（） 、 typeof（）的区别](https://blog.csdn.net/weixin_33961829/article/details/92300888)
 
 /**
  * \brief 使用volatile保证没有缓存，数据立马赋值成功
@@ -146,16 +148,16 @@ static inline void __list_add(struct list_head *new, // 要加入的元素
 			      struct list_head *prev, // 开头
 			      struct list_head *next) // 第一个元素
 {
-	if (!__list_add_valid(new, prev, next))
+    if (!__list_add_valid(new, prev, next))
 		return;
 
     //       末尾            开头      第一个
     // 之前：entry->prev <== entry <== entry->next
 
-	next->prev = new; // new ..< entry->next
-	new->next = next; // new <== entry->next
-	new->prev = prev; // entry ..< new
-	WRITE_ONCE(prev->next, new); // entry <== new
+    next->prev = new; // new ..< entry->next
+    new->next = next; // new <== entry->next
+    new->prev = prev; // entry ..< new
+    WRITE_ONCE(prev->next, new); // entry <== new
 
     //       开头      第一个  第二个
     // 之后：entry <== new <== entry->next
@@ -180,7 +182,7 @@ static inline void list_add(struct list_head *new, struct list_head *head)
     //       末尾           入口     第一个
     // 之前：head->prev <== head <== head->next
 
-	__list_add(new, head, head->next);
+    __list_add(new, head, head->next);
 
     //       入口     第一个  第二个
     // 之后：head <== new <== head->next
@@ -204,7 +206,7 @@ static inline void list_add_tail(struct list_head *new, struct list_head *head)
     //       倒数第二个           倒数第一个     开头
     // 之前：head->prev->prev <== head->prev <== head
 
-	__list_add(new, head->prev, head);
+    __list_add(new, head->prev, head);
 
     //       倒数第三个           倒数第二个      倒数第一个  开头
     // 之后：head->prev->prev ==>  head->prev ==> new ==>     head
@@ -283,12 +285,12 @@ static inline void list_del(struct list_head *entry)
  */
 /* 将old节点替换成new节点 */
 static inline void list_replace(struct list_head *old,
-				struct list_head *new)
+                struct list_head *new)
 {
-	new->next = old->next;
-	new->next->prev = new;
-	new->prev = old->prev;
-	new->prev->next = new;
+    new->next = old->next;
+    new->next->prev = new;
+    new->prev = old->prev;
+    new->prev->next = new;
 }
 
 /**
@@ -300,9 +302,9 @@ static inline void list_replace(struct list_head *old,
  */
 /* 将old节点替换为new节点，并且初始化替换下来的old节点 */
 static inline void list_replace_init(struct list_head *old,
-				     struct list_head *new)
+                     struct list_head *new)
 {
-	list_replace(old, new);
+    list_replace(old, new);
 	INIT_LIST_HEAD(old);
 }
 
@@ -504,7 +506,7 @@ static inline void __list_cut_position(struct list_head *list,
 {
 	struct list_head *new_first = entry->next;
 	list->next = head->next;
-	list->next->prev = list;
+    list->next->prev = list;
 	list->prev = entry;
 	entry->next = list;
 	head->next = new_first;
@@ -1114,11 +1116,11 @@ hlist_is_singular_node(struct hlist_node *n, struct hlist_head *h)
  * reference of the first entry if it exists.
  */
 static inline void hlist_move_list(struct hlist_head *old,
-				   struct hlist_head *new)
+                   struct hlist_head *new)
 {
-	new->first = old->first;
-	if (new->first)
-		new->first->pprev = &new->first;
+    new->first = old->first;
+    if (new->first)
+        new->first->pprev = &new->first;
 	old->first = NULL;
 }
 
@@ -1182,4 +1184,3 @@ static inline void hlist_move_list(struct hlist_head *old,
 
 //**** 参考资料 ****//
 //[linux内核中的list详解](https://blog.csdn.net/qq_26617115/article/details/53509321)
- 

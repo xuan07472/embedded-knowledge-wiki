@@ -587,6 +587,13 @@ Linux中使用
 
 #### 5. 软件架构（应用框架）  
 ##### 5.1 模块统一接口  
+
+* 备注：用Visual Studio和Qt + MSVC编译偏底层的C程序会报错（如使用了typeof等GNU C特性时），推荐使用Qt + MinGW 64-bit 或者 gcc编译。  
+* 备注：Windows下也可以安装gcc和make（安装此软件时同时也会后台安装MinGW环境），然后可以直接在Windows命令行cmd中执行make生成exe。  
+* 备注：Qt + MinGW创建工程时不能使用Paint C++，只能使用Paint C，因为编译时会报一些C++专有的关键字错误（如new关键字），和部分类型强制转换不支持等错误。  
+
+参考网址：  
+
 1、module、session：
 session type(id)、FSM(state)、session buffer、devgroup?、
 session struct(name、type、function_pointer(init/exit/start/stop/pause/resume/run/command)、timestamp)
