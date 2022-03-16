@@ -41,6 +41,7 @@ typedef int bool; /* from include/linux/types.h */
  * \return 结构体中一个元素相对于结构体起始地址的偏移量
  * \remarks 巧用了编译器对0地址的操作
  */
+typedef unsigned int size_t; // from stddef.h, 用Qt+MinGW编译时要删除此条
 #define offsetof(TYPE, MEMBER)	((size_t)&((TYPE *)0)->MEMBER)
 
 /**
@@ -93,9 +94,6 @@ typedef int bool; /* from include/linux/types.h */
 #define LIST_HEAD(name) \
 	struct list_head name = LIST_HEAD_INIT(name)
 
-//typedef __typeof typeof;
-//[__typeof__() 、 __typeof（） 、 typeof（）的区别](https://blog.csdn.net/weixin_33961829/article/details/92300888)
-
 /**
  * \brief 使用volatile保证没有缓存，数据立马赋值成功
  * \remarks tools/include/linux/compiler.h
@@ -113,6 +111,7 @@ typedef int bool; /* from include/linux/types.h */
 /**
  * \brief 初始化链表节点，前指针和后指针都指向自己
  */
+ ////
 static inline void INIT_LIST_HEAD(struct list_head *list)
 {
 	WRITE_ONCE(list->next, list);
@@ -201,6 +200,7 @@ static inline void list_add(struct list_head *new, struct list_head *head)
  * \note 此接口用来实现队列的数据推入
 
  */
+ ////
 static inline void list_add_tail(struct list_head *new, struct list_head *head)
 {
     //       倒数第二个           倒数第一个     开头
@@ -331,6 +331,7 @@ static inline void list_swap(struct list_head *entry1,
  * @entry: the element to delete from the list.
  */
 /* 删除并初始化一个节点 */
+////
 static inline void list_del_init(struct list_head *entry)
 {
 	__list_del_entry(entry);
@@ -424,24 +425,6 @@ static inline int list_empty(const struct list_head *head)
 }
 
 /**
- * list_del_init_careful - deletes entry from list and reinitialize it.
- * @entry: the element to delete from the list.
- *
- * This is the same as list_del_init(), except designed to be used
- * together with list_empty_careful() in a way to guarantee ordering
- * of other memory operations.
- *
- * Any memory operations done before a list_del_init_careful() are
- * guaranteed to be visible after a list_empty_careful() test.
- */
-static inline void list_del_init_careful(struct list_head *entry)
-{
-	__list_del_entry(entry);
-	entry->prev = entry;
-	smp_store_release(&entry->next, entry);
-}
-
-/**
  * list_empty_careful - tests whether a list is empty and not being modified
  * @head: the list to test
  *
@@ -454,9 +437,10 @@ static inline void list_del_init_careful(struct list_head *entry)
  * to the list entry is list_del_init(). Eg. it cannot be used
  * if another CPU could re-list_add() it.
  */
+ ////
 static inline int list_empty_careful(const struct list_head *head)
 {
-	struct list_head *next = smp_load_acquire(&head->next);
+	struct list_head *next = (struct list_head *)&head->next;
 	return list_is_head(next, head) && (next == head->prev);
 }
 
@@ -651,6 +635,7 @@ static inline void list_splice_tail_init(struct list_head *list,
  * \brief 这里可以获取到包含该链表节点的上级结构体的真实地址，比如ptr是list_node地址，而返回的却是QUEUE_STRUCT的地址
  * \details 宏定义目的：从一个子元素地址返回主结构体地址
  */
+ ////
 #define list_entry(ptr, type, member) \
 	container_of(ptr, type, member)
 
@@ -661,6 +646,10 @@ static inline void list_splice_tail_init(struct list_head *list,
  * @member:	the name of the list_head within the struct.
  *
  * Note, that list is expected to be not empty.
+ */
+ ////
+/**
+ * \brief 获取入口后面的第一个节点所属的结构体的地址
  */
 #define list_first_entry(ptr, type, member) \
 	list_entry((ptr)->next, type, member)
