@@ -20,6 +20,8 @@
 #ifndef _LIST_H
 #define _LIST_H
 
+#include <stddef.h> // size_t
+
 /**
  * \brief 链表节点结构体
  * \details 拷贝自include/linux/types.h
@@ -41,8 +43,8 @@ typedef int bool; /* from include/linux/types.h */
  * \return 结构体中一个元素相对于结构体起始地址的偏移量
  * \remarks 巧用了编译器对0地址的操作
  */
-typedef unsigned int size_t; // from stddef.h, 用Qt+MinGW编译时要删除此条
-#define offsetof(TYPE, MEMBER)	((size_t)&((TYPE *)0)->MEMBER)
+//typedef unsigned int size_t; // from stddef.h, 用Qt+MinGW编译时要注释此条
+//#define offsetof(TYPE, MEMBER)	((size_t)&((TYPE *)0)->MEMBER)
 
 /**
  * container_of - cast a member of a structure out to the containing structure
