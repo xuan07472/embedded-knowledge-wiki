@@ -104,24 +104,6 @@ int group_buf_init(buffer_group_t *group_addr, unsigned int group_type)
 }
 
 /**
- * \brief 将一个用完的缓存放回到静态未使用缓存组中去
- */
-int buffer_free(buffer_t *buf)
-{
-    int ret;
-    
-    if (NULL == buf)
-        return -EPERM;
-    
-    ret = pair_list_free(&buf->list_node);
-    if (0 == ret) {
-        buf->group_flag = BUFFER_GROUP_NOTUSE;
-    }
-    
-    return ret;
-}
-
-/**
  * \brief 从缓存组静态数组中申请一个缓存备用
  */
 buffer_t *buffer_alloc(unsigned int group)
@@ -143,6 +125,24 @@ buffer_t *buffer_alloc(unsigned int group)
     buf->len = 0;
     
     return buf;
+}
+
+/**
+ * \brief 将一个用完的缓存放回到静态未使用缓存组中去
+ */
+int buffer_free(buffer_t *buf)
+{
+    int ret;
+    
+    if (NULL == buf)
+        return -EPERM;
+    
+    ret = pair_list_free(&buf->list_node);
+    if (0 == ret) {
+        buf->group_flag = BUFFER_GROUP_NOTUSE;
+    }
+    
+    return ret;
 }
 
 /**

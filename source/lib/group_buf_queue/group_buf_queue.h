@@ -62,6 +62,24 @@ void all_buffer_group_default_init(void);
  */
 int group_buf_init(buffer_group_t *group_addr, unsigned int group_type);
 
+/**
+ * \brief 从缓存组静态数组中申请一个缓存备用
+ */
+buffer_t *buffer_alloc(unsigned int group);
 
+/**
+ * \brief 将一个用完的缓存放回到静态未使用缓存组中去
+ */
+int buffer_free(buffer_t *buf);
+
+/**
+ * \brief 将写好数据的缓存推入到申请时的缓存组中
+ */
+int buffer_push(buffer_t *buf);
+
+/**
+ * \brief 从指定的缓存组中获取一个缓存
+ */
+buffer_t *buffer_pop(unsigned int group);
 
 #endif // ifndef_GROUP_BUF_QUEUE_H
