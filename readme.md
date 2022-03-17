@@ -628,116 +628,55 @@ start的层级调用还是加进去的好，但是要在set_tartget之后，方�
 ##### 5.2 缓存结构  
 
 
-1、各种缓存结构：
-基础：指针、链表、内存、数组
-数据结构基础：表、树、图（多对多）
-缓冲区/buffer/顺序表/平直缓存/数组/内存指针（malloc）
-栈/stack：因为是先进后出，也用于函数调用时的压栈，编译器和高级算法中用的多，日常编程基本上不用。
-堆/heap/完全二叉树：方便排序，编译器和算法中常用，日常编程基本上不用
-环形缓冲区/环形缓存区/循环队列/loop_buffer/ring_buffer/队列/FIFO/Queue：先进先出，满和空
+* 1、各种缓存结构：  
 
-[什么是队列（队列存储结构）](http://c.biancheng.net/view/3352.html)  
-[链式队列及基本操作（C语言实现）](http://c.biancheng.net/view/3354.html)  
+基础：指针、链表、内存、数组。  
+数据结构基础：表、树、图（多对多）。  
+缓冲区/buffer/顺序表/平直缓存/数组/内存指针（malloc）。  
+栈/stack：因为是先进后出，也用于函数调用时的压栈，编译器和高级算法中用的多，日常编程基本上不用。  
+堆/heap/完全二叉树：方便排序，编译器和算法中常用，日常编程基本上不用。  
+环形缓冲区/环形缓存区/循环队列/loop_buffer/ring_buffer/队列/FIFO/Queue：先进先出，满和空。  
 
-分组队列/多级队列/group_buffer/fifo/queue：每个模块都有自己的队列，且不同队列间可直接通过数据指针无消耗转移大块数据。
+*参考网址：*  [什么是队列（队列存储结构）](http://c.biancheng.net/view/3352.html)  
+*参考网址：* [链式队列及基本操作（C语言实现）](http://c.biancheng.net/view/3354.html)  
+*参考网址：*  [数据结构与算法教程，数据结构C语言版教程！](http://c.biancheng.net/data_structure/)  
 
-[数据结构与算法教程，数据结构C语言版教程！](http://c.biancheng.net/data_structure/)  
+分组队列/多级队列/group_buffer/fifo/queue：每个模块都有自己的队列，且不同队列间可直接通过数据指针无消耗转移大块数据。  
 
+* 2、自行实现的**“多级缓存队列”模块**源码：[点击此处查看源码](https://gitee.com/langcai1943/embedded-knowledge-wiki/tree/develop/source/lib/group_buf_queue)  
+本地路径：嵌入式知识图谱WiKi\source\lib\group_buf_queue\   
 
+有gcc-makefile和Qt两个工程都能编过，带详细注释和单元测试用例。  
 
-大块多级缓存组：
+目录结构：  
 
-各个地方都要上锁：
-sessionbuffer:
-	sysbuf + slists_group
-SessionBufferDeInit(session);
-SessionBufferClean(session, SESSION_DEVGROUP_BASIC);
-	SessionBufferPop all
-	sysbuf_free all
-SessionBufferPop(punit->session, SESSION_DEVGROUP_BASIC);
-SessionBufferPush
-sysbuf_alloc(SYSBUF_GROUP_DATBUFS);
-SessionBufferInit(session);
-slists_group_init(&(session->buffer_group));
-SessionBufferTopNum
-	获取slists数目
-session_buflist_t
-session_buffer_t
-SYS_BUF_MAX_COUNT
-sysbufcfg.h
+```
+jim@DESKTOP-SVP3BEM MINGW64 /d/3_doc/嵌入式知识图谱WiKi/source/lib/group_buf_queue (develop)
+$ tree
+.
+|-- Makefile
+|-- arch_buffer_config.c
+|-- arch_buffer_config.h
+|-- group_buf_queue.c
+|-- group_buf_queue.h
+|-- group_buf_queue.md
+|-- group_buf_queue_init.c
+|-- group_buf_queue_init.h
+|-- group_buf_queue_unitest.c
+|-- group_buf_queue_unitest_qt_proj
+|   `-- group_buf_queue_unitest_qt_proj.pro
+|-- list.h
+|-- module_buf_queue.c
+|-- pair_list.c
+|-- pair_list.h
+`-- readme.txt
 
-session:
-    session_buflist数组 { // 链表数组 + 缓存
-    	单个元素 {
-            slists { // 链表数组
-            	list_head链表节点 { // 第二个group，模块分类
-            		前个指针
-            		后个指针
-            	}
-            	pslists_group {
-            		list_head节点数组 {
-            			单个节点 {
-            				前个指针
-            				后个指针
-            			}
-            		}
-            		互斥锁
-            	}
-            }
-            session_buffer {
-            	psysbuf {
-            		slists // 链表数组，第一个group，缓存类型分类
-                        list_head链表节点 {
-                            前个指针
-                            后个指针
-                        }
-                        pslists_group {
-                            list_head节点数组 {
-                                单个节点 {
-                                    前个指针
-                                    后个指针
-                                }
-                            }
-                            互斥锁
-                        }
-                    }
-            		group // 有RAMBUF 5，DATABUF 20，CVBUFMSG 5，BITBUF 32，FRMBUF 50几个类型
-            		地址
-            		缓存大小
-            		数据大小
-            	}
-            	group_index // 有basic audio video user等，可以始终只用一个
-            }
-    	}
-    }
+1 directory, 15 files
+```
 
-缓存里面有链表数组，缓存外面同级的还有链表数组，多个缓存也组成了数组
+* 3、实现原理：  
 
-session_buflist数组中放了所有的大块buffer，RAMBUF 5，DATABUF 20，CVBUFMSG 5，BITBUF 32，FRMBUF 50
-各个buffer长度不一样
-
-提前把所有的地址都赋值给队列
-sysbuf_alloc(SYSBUF_GROUP_DATBUFS);
-
-有sysbuf_get，但是只在别的模块中用，如mali、uart，RAMBUF，BITBUF，FRMBUF
-
-
-
-linux list module: 双向循环链表初始化、添加、获取，列表节点后面跟着私有数据，通过container_of来获取私有数据的地址
-
-syslist module: 初始化所有的列表（9个），一个列表头拖着一组列表头，
-
-
-
-将一块内存分配好：sysbuf_group_reset
-
-分配好的内存块存在g_sys_buf_group[n]中的一项
-
-
-
-每个session都有一个buffer_group
-
-
+……正在编写中……  
 
 5.3 状态机  
 状态机用于多任务、多线程、循环中反复执行的函数中进行状态切换  
