@@ -12,8 +12,6 @@
 
 #include "pair_list.h"
 
-#define EPERM 1 // from errno.h
-
 /**
  * \brief 初始化一个队列
  */

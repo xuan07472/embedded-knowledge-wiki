@@ -47,10 +47,21 @@ typedef struct _buffer {
  * \details 整个缓存组的数据总长度通过count * unitsize算出来
  */
 typedef struct _buffer_group {
-    unsigned int group_type; // 组类型，如BUFFER_GROUP_MSG/DATA
-    unsigned int count; // 缓存个数
-    unsigned int unitsize; // 单个缓存的长度，同组内每个缓存的长度都一样
     void *addr; // 整个缓存组的起始地址
+    unsigned int unitsize; // 单个缓存的长度，同组内每个缓存的长度都一样
+    unsigned int count; // 缓存个数
 } buffer_group_t;
+
+/**
+ * \brief 默认初始化所有缓存组和所有缓存子项
+ */
+void all_buffer_group_default_init(void);
+
+/**
+ * \brief 使用地址等参数初始化一个缓存组
+ */
+int group_buf_init(buffer_group_t *group_addr, unsigned int group_type);
+
+
 
 #endif // ifndef_GROUP_BUF_QUEUE_H
