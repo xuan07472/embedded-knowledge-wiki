@@ -15,6 +15,8 @@
 
 #include "list.h"
 
+#define EPERM 1 // from errno.h
+
 enum {
     PAIR_LIST_USED = 0,
     PAIR_LIST_FREE,

@@ -1,7 +1,6 @@
 #include "group_buf_queue.h"
 #include "arch_buffer_config.h"
-
-#define ENOMEM 12 // from errno.h
+#include <string.h> // memset
 
 /**
  * \brief 所有的缓存组，每个组都有自己一对链表入口，链表成员则在其它位置定义
@@ -102,4 +101,83 @@ int group_buf_init(buffer_group_t *group_addr, unsigned int group_type)
     }
 
     return 0;
+}
+
+/**
+ * \brief 将一个用完的缓存放回到静态未使用缓存组中去
+ */
+int buffer_free(buffer_t *buf)
+{
+    int ret;
+    
+    if (NULL == buf)
+        return -EPERM;
+    
+    ret = pair_list_free(&buf->list_node);
+    if (0 == ret) {
+        buf->group_flag = BUFFER_GROUP_NOTUSE;
+    }
+    
+    return ret;
+}
+
+/**
+ * \brief 从缓存组静态数组中申请一个缓存备用
+ */
+buffer_t *buffer_alloc(unsigned int group)
+{
+    buffer_t *buf; // 一个缓存
+    pair_list_node_t *buf_node; // 这个缓存的链表节点，和这个缓存所属的缓存组的两条链表的入口
+    pair_list_t *pair_list; // 缓存组对应的链表对（这个缓存所属的缓存组的两条链表的入口）
+
+    if (group <= BUFFER_GROUP_NOTUSE || group >= BUFFER_GROUP_MAX_COUNT)
+        return NULL;
+    
+    pair_list = &g_all_bufgroup[group]; // 如MSG DAT等缓存组
+    buf_node = pair_list_alloc(pair_list);
+    if (NULL == buf_node)
+        return NULL;
+    
+    buf = container_of(buf_node, buffer_t, list_node);
+    buf->group_flag = group;
+    buf->len = 0;
+    
+    return buf;
+}
+
+/**
+ * \brief 将写好数据的缓存推入到申请时的缓存组中
+ */
+int buffer_push(buffer_t *buf)
+{
+    int ret;
+    
+    if (NULL == buf)
+        return -EPERM;
+    
+    ret = pair_list_put(NULL, &buf->list_node, PAIR_LIST_USED);
+    
+    return ret;
+}
+
+/**
+ * \brief 从指定的缓存组中获取一个缓存
+ */
+buffer_t *buffer_pop(unsigned int group)
+{
+    buffer_t *buf; // 一个缓存
+    pair_list_node_t *buf_node; // 这个缓存的链表节点，和这个缓存所属的缓存组的两条链表的入口
+    pair_list_t *pair_list; // 缓存组对应的链表对（这个缓存所属的缓存组的两条链表的入口）
+
+    if (group <= BUFFER_GROUP_NOTUSE || group >= BUFFER_GROUP_MAX_COUNT)
+        return NULL;
+    
+    pair_list = &g_all_bufgroup[group]; // 如MSG DAT等缓存组
+    buf_node = pair_list_get(pair_list, PAIR_LIST_USED);
+    if (NULL == buf_node)
+        return NULL;
+    
+    buf = container_of(buf_node, buffer_t, list_node);
+    
+    return buf;
 }

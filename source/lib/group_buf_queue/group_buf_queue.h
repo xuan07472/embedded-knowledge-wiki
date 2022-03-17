@@ -14,10 +14,12 @@
  *          组别间传递缓存
  */
 
-#ifndef_GROUP_BUF_QUEUE_H
+#ifndef _GROUP_BUF_QUEUE_H
 #define ifndef_GROUP_BUF_QUEUE_H
 
 #include "pair_list.h"
+
+#define ENOMEM 12 // from errno.h
 
 enum {
     BUFFER_GROUP_NOTUSE = 0,
@@ -47,7 +49,7 @@ typedef struct _buffer {
 typedef struct _buffer_group {
     unsigned int group_type; // 组类型，如BUFFER_GROUP_MSG/DATA
     unsigned int count; // 缓存个数
-    unsigned int unitsize // 单个缓存的长度，同组内每个缓存的长度都一样
+    unsigned int unitsize; // 单个缓存的长度，同组内每个缓存的长度都一样
     void *addr; // 整个缓存组的起始地址
 } buffer_group_t;
 
