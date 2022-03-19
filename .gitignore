@@ -1,5 +1,9 @@
 build-*/
+.vs/
 
 *.exe
 *.txt.user
 *.pro.user
+*.o
+*.TMP
+

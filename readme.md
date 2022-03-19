@@ -586,158 +586,168 @@ Linux中使用
 4.5 杂项驱动  
 
 #### 5. 软件架构（应用框架）  
-##### 5.1 模块统一接口  
+
+##### 5.1 缓存结构  
+
+* 1、各种缓存结构：  
+
+基础：指针、链表、内存、数组。  
+数据结构基础：表、树、图（多对多）。  
+缓冲区/buffer/顺序表/平直缓存/数组/内存指针（malloc）。  
+栈/stack：因为是先进后出，也用于函数调用时的压栈，编译器和高级算法中用的多，日常编程基本上不用。  
+堆/heap/完全二叉树：方便排序，编译器和算法中常用，日常编程基本上不用。  
+环形缓冲区/环形缓存区/循环队列/loop_buffer/ring_buffer/队列/FIFO/Queue：先进先出，满和空。  
+
+*参考网址：*  [什么是队列（队列存储结构）](http://c.biancheng.net/view/3352.html)  
+*参考网址：* [链式队列及基本操作（C语言实现）](http://c.biancheng.net/view/3354.html)  
+*参考网址：*  [数据结构与算法教程，数据结构C语言版教程！](http://c.biancheng.net/data_structure/)  
+
+分组队列/多级队列/group_buffer/fifo/queue：每个模块都有自己的队列，且不同队列间可直接通过数据指针无消耗转移大块数据。  
+
+* 2、自行实现的 **“多级缓存队列”模块** Gitee仓库源码：[点击此处查看源码](https://gitee.com/langcai1943/embedded-knowledge-wiki/tree/develop/source/lib/group_buf_queue)  
+本地路径：嵌入式知识图谱WiKi\source\lib\group_buf_queue\   
+
+有gcc-makefile和Qt两个工程都能编过，带详细注释和单元测试用例。  
+
+**目录结构：**  
+
+```
+jim@DESKTOP-SVP3BEM MINGW64 /d/3_doc/嵌入式知识图谱WiKi/source/lib/group_buf_queue (develop)
+$ tree
+.
+|-- Makefile
+|-- arch_buffer_config.c
+|-- arch_buffer_config.h
+|-- group_buf_queue.c
+|-- group_buf_queue.h
+|-- group_buf_queue_init.c
+|-- group_buf_queue_init.h
+|-- group_buf_queue_unitest.c
+|-- group_buf_queue_unitest_qt_proj
+|   `-- group_buf_queue_unitest_qt_proj.pro
+|-- list.h
+|-- module_buf_queue.c
+|-- pair_list.c
+|-- pair_list.h
+`-- readme.txt
+
+1 directory, 15 files
+```
+
+**单元测试结果：**  
+
+```
+jim@DESKTOP-SVP3BEM MINGW64 /d/3_doc/嵌入式知识图谱WiKi/source/lib/group_buf_queue (develop)
+$ ./group_buf_queue_demo.exe
+         buffer_unitest start          
+got buf: [group_flag: 1] [addr: 0x0040d760] [buf_maxsize: 512] [len: 0]
+push data: :) my first buffer message ^_^
+got buf data: [group_flag: 1] [msg: :) my first buffer message ^_^] [len: 31]
+________ buffer_unitest test pass. ________
+
+          pair_list_unitest start          
+put data: :) my first buffer message ^_^
+got data: :) my first buffer message ^_^
+________ pair_list_unitest test pass. ________
+
+         circular_linked_list_unitest start         
+put a node
+node count: 1
+put a tail node
+node count: 2
+delete a node
+node count: 1
+________ circular_linked_list_unitest test pass. ________
+
+group_buf_queue_unitest.c test pass.
+```
+
+
+* 3、实现原理：  
+
+……待编写……  
+
+##### 5.2 模块统一接口  
 
 * 备注：用Visual Studio和Qt + MSVC编译偏底层的C程序会报错（如使用了typeof等GNU C特性时），推荐使用Qt + MinGW 64-bit 或者 gcc编译。  
 * 备注：Windows下也可以安装gcc和make（安装此软件时同时也会后台安装MinGW环境），然后可以直接在Windows命令行cmd中执行make生成exe。  
 * 备注：Qt + MinGW创建工程时不能使用Paint C++，只能使用Paint C，因为编译时会报一些C++专有的关键字错误（如new关键字），和部分类型强制转换不支持等错误。  
 
-参考网址：  
+* 1、自行实现的 **“通用模块”** Gitee仓库源码：[点击此处查看源码](https://gitee.com/langcai1943/embedded-knowledge-wiki/tree/develop/source/lib/module_core)  
+本地路径：嵌入式知识图谱WiKi\source\lib\module_core\ 支持make编译和Qt编译，带详细注释和单元测试用例。     
 
-1、module、session：
-session type(id)、FSM(state)、session buffer、devgroup?、
-session struct(name、type、function_pointer(init/exit/start/stop/pause/resume/run/command)、timestamp)
+* 2、目录结构  
 
-gloable function: sessionget, sessionnext, bufferpush, bufferpop, bufferoption, run, command,
+```
+jim@DESKTOP-SVP3BEM MINGW64 /d/3_doc/嵌入式知识图谱WiKi/source/lib/module_core (develop)
+$ tree
+.
+|-- Makefile
+|-- module.c
+|-- module.h
+|-- module1.c
+|-- module2.c
+|-- module3.c
+|-- module_queue.c
+|-- module_queue.h
+|-- module_unitest.c
+`-- module_unitest_qt_proj
+    `-- module_unitest_qt_proj.pro
 
-init, exit: create, destroy
-run: process
-command: control
+1 directory, 10 files
+```
 
-session buffer list: slist, session buffer  --> link, fifo, loopbuffer
+**单元测试结果：**  
 
-session to punit: orap, private, priv, use static priv, session_priv_t
+```
+jim@DESKTOP-SVP3BEM MINGW64 /d/3_doc/嵌入式知识图谱WiKi/source/lib/module_core (develop)
+$ ./module_core_demo.exe
+         module_unitest start         
+ 'module1 >>>1<<<' module_create
+ 'module2 )))2(((' module_create
+ 'module3 \\\3///' module_create
+ 'module1 >>>1<<<' module_start
+ 'module2 )))2(((' module_start
+ 'module3 \\\3///' module_start
+ 'module1 >>>1<<<' module_process
+ 'module2 )))2(((' module_process
+ 'module3 \\\3///' module_process
 
-class: session_target(video=0, audio=1, subtitle=2)
-
-global gsession:
-init: set target, dedault target,
-
-3、将所有session_initall改掉，只赋值全局变量指针即可，session_all_register
-init是链式初始化？？？（如果是多输入多输出用于测试的话，固定的链式init则不可取，还是做成全部统一init，设置target后start的方法），只init mp4或i2sin即可，所有的初始参数传递，都在start()中传递（宽高、采样率通道数位深度）
-push前要有can_push(valid)判断，每个session在自己模块中设置buffer阈值，分为音频视频字幕
-4、一个架构：模块统一接口 + fifo/缓存/队列 + 状态机（不使用Task和线程而达到类似的效果，不使用class而达到类似的面向对象模块）
-弄清楚各种缓存和管道的名称
-5、有些session需要接受多个上级session的输入，
-6、session结构体中加入一个父级指针，
-7、如果是多输入的session，session start/stop只能由初始化一次，要好好想想，况且第一个初始化后不知道第二个还在不在，所以需要一个标志，是video_only, audio_only还是all，session_start中自行判断什么时候进行mp4初始化。
-8、在多对一的情况下，可以把所有的START和STOP都统一运行，不再级联运行，几十模块间多对一，但是START只执行一次
-
-start的层级调用还是加进去的好，但是要在set_tartget之后，方便参数传递，否则，每个模块的start都要手动设置参数了
-
-##### 5.2 缓存结构  
-
-
-1、各种缓存结构：
-基础：指针、链表、内存、数组
-数据结构基础：表、树、图（多对多）
-缓冲区/buffer/顺序表/平直缓存/数组/内存指针（malloc）
-栈/stack：因为是先进后出，也用于函数调用时的压栈，编译器和高级算法中用的多，日常编程基本上不用。
-堆/heap/完全二叉树：方便排序，编译器和算法中常用，日常编程基本上不用
-环形缓冲区/环形缓存区/循环队列/loop_buffer/ring_buffer/队列/FIFO/Queue：先进先出，满和空
-
-[什么是队列（队列存储结构）](http://c.biancheng.net/view/3352.html)  
-[链式队列及基本操作（C语言实现）](http://c.biancheng.net/view/3354.html)  
-
-分组队列/多级队列/group_buffer/fifo/queue：每个模块都有自己的队列，且不同队列间可直接通过数据指针无消耗转移大块数据。
-
-[数据结构与算法教程，数据结构C语言版教程！](http://c.biancheng.net/data_structure/)  
+module1 >>>1<<< put data:  '@_@ @o@ from module1 1 1'  >>>>>>>>
+ 'module1 >>>1<<<' module_process
+ 'module2 )))2(((' module_process
+ 'module3 \\\3///' module_process
+module2 )))2((( got data:  '@_@ @o@ from module1 1 1'  <<<<<<<<
 
 
+module2 )))2((( put data:  ':) :-) from module2 2 2'  >>>>>>>>
 
-大块多级缓存组：
+module1 >>>1<<< put data:  '@_@ @o@ from module1 1 1'  >>>>>>>>
+ 'module1 >>>1<<<' module_process
+ 'module2 )))2(((' module_process
+ 'module3 \\\3///' module_process
+module3 \\\3/// got data:  ':) :-) from module2 2 2'  <<<<<<<<
 
-各个地方都要上锁：
-sessionbuffer:
-	sysbuf + slists_group
-SessionBufferDeInit(session);
-SessionBufferClean(session, SESSION_DEVGROUP_BASIC);
-	SessionBufferPop all
-	sysbuf_free all
-SessionBufferPop(punit->session, SESSION_DEVGROUP_BASIC);
-SessionBufferPush
-sysbuf_alloc(SYSBUF_GROUP_DATBUFS);
-SessionBufferInit(session);
-slists_group_init(&(session->buffer_group));
-SessionBufferTopNum
-	获取slists数目
-session_buflist_t
-session_buffer_t
-SYS_BUF_MAX_COUNT
-sysbufcfg.h
-
-session:
-    session_buflist数组 { // 链表数组 + 缓存
-    	单个元素 {
-            slists { // 链表数组
-            	list_head链表节点 { // 第二个group，模块分类
-            		前个指针
-            		后个指针
-            	}
-            	pslists_group {
-            		list_head节点数组 {
-            			单个节点 {
-            				前个指针
-            				后个指针
-            			}
-            		}
-            		互斥锁
-            	}
-            }
-            session_buffer {
-            	psysbuf {
-            		slists // 链表数组，第一个group，缓存类型分类
-                        list_head链表节点 {
-                            前个指针
-                            后个指针
-                        }
-                        pslists_group {
-                            list_head节点数组 {
-                                单个节点 {
-                                    前个指针
-                                    后个指针
-                                }
-                            }
-                            互斥锁
-                        }
-                    }
-            		group // 有RAMBUF 5，DATABUF 20，CVBUFMSG 5，BITBUF 32，FRMBUF 50几个类型
-            		地址
-            		缓存大小
-            		数据大小
-            	}
-            	group_index // 有basic audio video user等，可以始终只用一个
-            }
-    	}
-    }
-
-缓存里面有链表数组，缓存外面同级的还有链表数组，多个缓存也组成了数组
-
-session_buflist数组中放了所有的大块buffer，RAMBUF 5，DATABUF 20，CVBUFMSG 5，BITBUF 32，FRMBUF 50
-各个buffer长度不一样
-
-提前把所有的地址都赋值给队列
-sysbuf_alloc(SYSBUF_GROUP_DATBUFS);
-
-有sysbuf_get，但是只在别的模块中用，如mali、uart，RAMBUF，BITBUF，FRMBUF
+module2 )))2((( got data:  '@_@ @o@ from module1 1 1'  <<<<<<<<
 
 
+module2 )))2((( put data:  ':) :-) from module2 2 2'  >>>>>>>>
 
-linux list module: 双向循环链表初始化、添加、获取，列表节点后面跟着私有数据，通过container_of来获取私有数据的地址
+module1 >>>1<<< put data:  '@_@ @o@ from module1 1 1'  >>>>>>>>
+ 'module1 >>>1<<<' module_stop
+ 'module2 )))2(((' module_stop
+ 'module3 \\\3///' module_stop
+ 'module1 >>>1<<<' module_distroy
+ 'module2 )))2(((' module_distroy
+ 'module3 \\\3///' module_distroy
+________ module_unitest test pass. ________
 
-syslist module: 初始化所有的列表（9个），一个列表头拖着一组列表头，
+module_unitest.c test pass.
+```
 
+* 3、实现原理：  
 
-
-将一块内存分配好：sysbuf_group_reset
-
-分配好的内存块存在g_sys_buf_group[n]中的一项
-
-
-
-每个session都有一个buffer_group
-
-
+……待编写……  
 
 5.3 状态机  
 状态机用于多任务、多线程、循环中反复执行的函数中进行状态切换  
