@@ -592,41 +592,10 @@ Linux中使用
 * 备注：Windows下也可以安装gcc和make（安装此软件时同时也会后台安装MinGW环境），然后可以直接在Windows命令行cmd中执行make生成exe。  
 * 备注：Qt + MinGW创建工程时不能使用Paint C++，只能使用Paint C，因为编译时会报一些C++专有的关键字错误（如new关键字），和部分类型强制转换不支持等错误。  
 
-参考网址：  
-
-1、module、session：
-session type(id)、FSM(state)、session buffer、devgroup?、
-session struct(name、type、function_pointer(init/exit/start/stop/pause/resume/run/command)、timestamp)
-
-gloable function: sessionget, sessionnext, bufferpush, bufferpop, bufferoption, run, command,
-
-init, exit: create, destroy
-run: process
-command: control
-
-session buffer list: slist, session buffer  --> link, fifo, loopbuffer
-
-session to punit: orap, private, priv, use static priv, session_priv_t
-
-class: session_target(video=0, audio=1, subtitle=2)
-
-global gsession:
-init: set target, dedault target,
-
-3、将所有session_initall改掉，只赋值全局变量指针即可，session_all_register
-init是链式初始化？？？（如果是多输入多输出用于测试的话，固定的链式init则不可取，还是做成全部统一init，设置target后start的方法），只init mp4或i2sin即可，所有的初始参数传递，都在start()中传递（宽高、采样率通道数位深度）
-push前要有can_push(valid)判断，每个session在自己模块中设置buffer阈值，分为音频视频字幕
-4、一个架构：模块统一接口 + fifo/缓存/队列 + 状态机（不使用Task和线程而达到类似的效果，不使用class而达到类似的面向对象模块）
-弄清楚各种缓存和管道的名称
-5、有些session需要接受多个上级session的输入，
-6、session结构体中加入一个父级指针，
-7、如果是多输入的session，session start/stop只能由初始化一次，要好好想想，况且第一个初始化后不知道第二个还在不在，所以需要一个标志，是video_only, audio_only还是all，session_start中自行判断什么时候进行mp4初始化。
-8、在多对一的情况下，可以把所有的START和STOP都统一运行，不再级联运行，几十模块间多对一，但是START只执行一次
-
-start的层级调用还是加进去的好，但是要在set_tartget之后，方便参数传递，否则，每个模块的start都要手动设置参数了
+* 1、自行实现的 **“通用模块”** 源码：[点击此处查看源码](https://gitee.com/langcai1943/embedded-knowledge-wiki/tree/develop/source/lib/module_core)  
+本地路径：嵌入式知识图谱WiKi\source\lib\module_core\   
 
 ##### 5.2 缓存结构  
-
 
 * 1、各种缓存结构：  
 
@@ -643,7 +612,7 @@ start的层级调用还是加进去的好，但是要在set_tartget之后，方�
 
 分组队列/多级队列/group_buffer/fifo/queue：每个模块都有自己的队列，且不同队列间可直接通过数据指针无消耗转移大块数据。  
 
-* 2、自行实现的**“多级缓存队列”模块**源码：[点击此处查看源码](https://gitee.com/langcai1943/embedded-knowledge-wiki/tree/develop/source/lib/group_buf_queue)  
+* 2、自行实现的 **“多级缓存队列”模块** 源码：[点击此处查看源码](https://gitee.com/langcai1943/embedded-knowledge-wiki/tree/develop/source/lib/group_buf_queue)  
 本地路径：嵌入式知识图谱WiKi\source\lib\group_buf_queue\   
 
 有gcc-makefile和Qt两个工程都能编过，带详细注释和单元测试用例。  
@@ -659,7 +628,6 @@ $ tree
 |-- arch_buffer_config.h
 |-- group_buf_queue.c
 |-- group_buf_queue.h
-|-- group_buf_queue.md
 |-- group_buf_queue_init.c
 |-- group_buf_queue_init.h
 |-- group_buf_queue_unitest.c
@@ -676,7 +644,7 @@ $ tree
 
 * 3、实现原理：  
 
-……正在编写中……  
+……待编写……  
 
 5.3 状态机  
 状态机用于多任务、多线程、循环中反复执行的函数中进行状态切换  
