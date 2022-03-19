@@ -124,9 +124,9 @@ module_buf_t *module_queue_push(struct module *m, module_buf_t *buf)
     if (!mbnode)
         return NULL;
 
+    mbnode->mbuf = buf;
     ret_buf = mbnode->mbuf;
 
-//    list_del_init(&mbnode->qnode.node); // 从node自己所属的链表中删除node节点并初始化node节点
     list_add_tail(&mbnode->qnode.node, &m->queue_entry); //node加入到head的前面，也就是entry链表的末尾（因为是双向循环链表）
 
     return ret_buf;
@@ -149,10 +149,8 @@ module_buf_t *module_queue_pop(struct module *m)
     if (!list_empty_careful(entry)) { // 链表非空
         // 获取入口后面的第一个节点所属的结构体的地址（从子元素地址推导父元素地址）
         queue_node = list_first_entry(entry, queue_node_t, node); // 这里的node只是一个标号，是queue_node_t中的元素名
-
         cur_node = &queue_node->node;
         list_del_init(cur_node); // 从原链表中删除这个缓存对应的节点
-
         // 获取该节点下的module节点
         mbnode = list_entry(queue_node, module_buffer_node_t, qnode);
     }

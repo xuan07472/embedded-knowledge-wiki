@@ -34,6 +34,8 @@ static MSTATE module_process(struct module *m)
         return STATE_NONE;
     munit = (m_unit_t *)m->handle;
 
+    printf("\n '%s' %s\n", m->name, __func__);
+
     /* 状态控制1 */
     if (m->state == STATE_STOP) {
         if (munit->m_target) {
@@ -56,28 +58,26 @@ static MSTATE module_process(struct module *m)
     buf = module_queue_pop(m);
     if (buf) {
         printf("```````` %s ````````\n", m->name);
-        printf("%s got data: %s\n", buf->addr);
+        printf("%s got data: %s\n", m->name, buf->addr);
     }
-    if (module_queue_num(m) >= munit->buffer_threshold)
-        m->state = STATE_PROCESS; // 数据缓存已满
+//    if (module_queue_num(m) >= munit->buffer_threshold)
+//        m->state = STATE_PROCESS; // 数据缓存已满
 
-    if (munit->m_target) {
-        // 如果下级模块缓存阈值没满，可以发送数据
-        if (munit->m_target->state == STATE_IDLE) {
-            if (buf) {
-                strcpy(buf->addr, mydata);
-                buf->len = strlen(mydata) + 1;
-                printf("%s put data: %s\n", buf->addr);
-                module_queue_push(munit->m_target, buf);
-            }
-        }
-    }
+//    if (munit->m_target) {
+//        // 如果下级模块缓存阈值没满，可以发送数据
+//        if (munit->m_target->state == STATE_IDLE) {
+//            if (buf) {
+//                strcpy(buf->addr, mydata);
+//                buf->len = strlen(mydata) + 1;
+//                printf("%s put data: %s\n", buf->addr);
+//                module_queue_push(munit->m_target, buf);
+//            }
+//        }
+//    }
 
     if (buf) {
         printf("________ %s ________\n", m->name);
     }
-
-
 
     return m->state;
 }

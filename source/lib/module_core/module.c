@@ -104,7 +104,7 @@ void module_all_destroy(struct module *all_modules[])
  */
 MSTATE module_run(struct module *m)
 {
-    int index;
+    int index = 0;
     MSTATE state;
 
     if (!m)
@@ -117,6 +117,7 @@ MSTATE module_run(struct module *m)
 
         index++;
     }
+
     if (g_all_modules[index] == NULL)
         return -EACCES;
 

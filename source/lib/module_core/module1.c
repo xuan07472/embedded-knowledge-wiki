@@ -34,6 +34,8 @@ static MSTATE module_process(struct module *m)
         return STATE_NONE;
     munit = (m_unit_t *)m->handle;
 
+    printf("\n '%s' %s\n", m->name, __func__);
+
     /* 状态控制1 */
     if (m->state == STATE_STOP) {
         if (munit->m_target) {
@@ -44,9 +46,9 @@ static MSTATE module_process(struct module *m)
         m->module_stop(m); // stop自己模块
     }
 
-//    /* 级联运行 */
-//    if (munit->m_target)
-//        module_run(munit->m_target);
+    /* 级联运行 */
+    if (munit->m_target)
+        module_run(munit->m_target);
 
     /* 状态控制2 */
     if (m->state != STATE_IDLE && m->state != STATE_PROCESS)

@@ -34,6 +34,8 @@ static MSTATE module_process(struct module *m)
         return STATE_NONE;
     munit = (m_unit_t *)m->handle;
 
+    printf("\n '%s' %s\n", m->name, __func__);
+
     /* 状态控制1 */
     if (m->state == STATE_STOP) {
         if (munit->m_target) {
