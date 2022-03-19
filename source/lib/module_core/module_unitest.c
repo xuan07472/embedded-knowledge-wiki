@@ -55,7 +55,7 @@ int module_unitest(void)
         top_module->module_start(top_module, NULL);
 
     /* 5.运行模块 */
-    i = 2;
+    i = 3;
     while (i--) {
         if (top_module->state == STATE_IDLE) {
             // 此时方可发送数据

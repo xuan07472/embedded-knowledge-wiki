@@ -28,13 +28,13 @@ static MSTATE module_process(struct module *m)
 {
     int ret = 0;
     module_buf_t *buf = NULL;
-    char *mydata = "$$$$ :) my module2 hello :) $$$$";
+    char *mydata = " ':) :-) from module2 2 2' ";
     m_unit_t *munit;
     if (!m)
         return STATE_NONE;
     munit = (m_unit_t *)m->handle;
 
-    printf("\n '%s' %s\n", m->name, __func__);
+    printf(" '%s' %s\n", m->name, __func__);
 
     /* 状态控制1 */
     if (m->state == STATE_STOP) {
@@ -57,26 +57,24 @@ static MSTATE module_process(struct module *m)
     /* 数据处理 */
     buf = module_queue_pop(m);
     if (buf) {
-        printf("```````` %s ````````\n", m->name);
-        printf("%s got data: %s\n", m->name, buf->addr);
+        printf("%s got data: %s <<<<<<<< \n\n", m->name, buf->addr);
     }
-//    if (module_queue_num(m) >= munit->buffer_threshold)
-//        m->state = STATE_PROCESS; // 数据缓存已满
+    if (module_queue_num(m) >= munit->buffer_threshold)
+        m->state = STATE_PROCESS; // 数据缓存已满
 
-//    if (munit->m_target) {
-//        // 如果下级模块缓存阈值没满，可以发送数据
-//        if (munit->m_target->state == STATE_IDLE) {
-//            if (buf) {
-//                strcpy(buf->addr, mydata);
-//                buf->len = strlen(mydata) + 1;
-//                printf("%s put data: %s\n", buf->addr);
-//                module_queue_push(munit->m_target, buf);
-//            }
-//        }
-//    }
+    if (munit->m_target) {
+        // 如果下级模块缓存阈值没满，可以发送数据
+        if (munit->m_target->state == STATE_IDLE) {
+            if (buf) {
+                strcpy(buf->addr, mydata);
+                buf->len = strlen(mydata) + 1;
+                printf("\n%s put data: %s >>>>>>>>\n", m->name, buf->addr);
+                module_queue_push(munit->m_target, buf);
+            }
+        }
+    }
 
     if (buf) {
-        printf("________ %s ________\n", m->name);
     }
 
     return m->state;
@@ -207,6 +205,6 @@ static void *module_create(struct module *m)
  * \details 不开放函数接口，靠函数指针调用执行
  */
 struct module g_module2 = {
-    "@@@@module2's name@@@@", MODULE_VIDEO_DECODE,
+    "module2 )))2(((", MODULE_VIDEO_DECODE,
     &module_create,
     };

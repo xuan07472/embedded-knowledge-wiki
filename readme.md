@@ -586,13 +586,94 @@ Linux中使用
 4.5 杂项驱动  
 
 #### 5. 软件架构（应用框架）  
-##### 5.1 模块统一接口  
+
+##### 5.1 缓存结构  
+
+* 1、各种缓存结构：  
+
+基础：指针、链表、内存、数组。  
+数据结构基础：表、树、图（多对多）。  
+缓冲区/buffer/顺序表/平直缓存/数组/内存指针（malloc）。  
+栈/stack：因为是先进后出，也用于函数调用时的压栈，编译器和高级算法中用的多，日常编程基本上不用。  
+堆/heap/完全二叉树：方便排序，编译器和算法中常用，日常编程基本上不用。  
+环形缓冲区/环形缓存区/循环队列/loop_buffer/ring_buffer/队列/FIFO/Queue：先进先出，满和空。  
+
+*参考网址：*  [什么是队列（队列存储结构）](http://c.biancheng.net/view/3352.html)  
+*参考网址：* [链式队列及基本操作（C语言实现）](http://c.biancheng.net/view/3354.html)  
+*参考网址：*  [数据结构与算法教程，数据结构C语言版教程！](http://c.biancheng.net/data_structure/)  
+
+分组队列/多级队列/group_buffer/fifo/queue：每个模块都有自己的队列，且不同队列间可直接通过数据指针无消耗转移大块数据。  
+
+* 2、自行实现的 **“多级缓存队列”模块** Gitee仓库源码：[点击此处查看源码](https://gitee.com/langcai1943/embedded-knowledge-wiki/tree/develop/source/lib/group_buf_queue)  
+本地路径：嵌入式知识图谱WiKi\source\lib\group_buf_queue\   
+
+有gcc-makefile和Qt两个工程都能编过，带详细注释和单元测试用例。  
+
+**目录结构：**  
+
+```
+jim@DESKTOP-SVP3BEM MINGW64 /d/3_doc/嵌入式知识图谱WiKi/source/lib/group_buf_queue (develop)
+$ tree
+.
+|-- Makefile
+|-- arch_buffer_config.c
+|-- arch_buffer_config.h
+|-- group_buf_queue.c
+|-- group_buf_queue.h
+|-- group_buf_queue_init.c
+|-- group_buf_queue_init.h
+|-- group_buf_queue_unitest.c
+|-- group_buf_queue_unitest_qt_proj
+|   `-- group_buf_queue_unitest_qt_proj.pro
+|-- list.h
+|-- module_buf_queue.c
+|-- pair_list.c
+|-- pair_list.h
+`-- readme.txt
+
+1 directory, 15 files
+```
+
+**单元测试结果：**  
+
+```
+jim@DESKTOP-SVP3BEM MINGW64 /d/3_doc/嵌入式知识图谱WiKi/source/lib/group_buf_queue (develop)
+$ ./group_buf_queue_demo.exe
+         buffer_unitest start          
+got buf: [group_flag: 1] [addr: 0x0040d760] [buf_maxsize: 512] [len: 0]
+push data: :) my first buffer message ^_^
+got buf data: [group_flag: 1] [msg: :) my first buffer message ^_^] [len: 31]
+________ buffer_unitest test pass. ________
+
+          pair_list_unitest start          
+put data: :) my first buffer message ^_^
+got data: :) my first buffer message ^_^
+________ pair_list_unitest test pass. ________
+
+         circular_linked_list_unitest start         
+put a node
+node count: 1
+put a tail node
+node count: 2
+delete a node
+node count: 1
+________ circular_linked_list_unitest test pass. ________
+
+group_buf_queue_unitest.c test pass.
+```
+
+
+* 3、实现原理：  
+
+……待编写……  
+
+##### 5.2 模块统一接口  
 
 * 备注：用Visual Studio和Qt + MSVC编译偏底层的C程序会报错（如使用了typeof等GNU C特性时），推荐使用Qt + MinGW 64-bit 或者 gcc编译。  
 * 备注：Windows下也可以安装gcc和make（安装此软件时同时也会后台安装MinGW环境），然后可以直接在Windows命令行cmd中执行make生成exe。  
 * 备注：Qt + MinGW创建工程时不能使用Paint C++，只能使用Paint C，因为编译时会报一些C++专有的关键字错误（如new关键字），和部分类型强制转换不支持等错误。  
 
-* 1、自行实现的 **“通用模块”** 源码：[点击此处查看源码](https://gitee.com/langcai1943/embedded-knowledge-wiki/tree/develop/source/lib/module_core)  
+* 1、自行实现的 **“通用模块”** Gitee仓库源码：[点击此处查看源码](https://gitee.com/langcai1943/embedded-knowledge-wiki/tree/develop/source/lib/module_core)  
 本地路径：嵌入式知识图谱WiKi\source\lib\module_core\ 支持make编译和Qt编译，带详细注释和单元测试用例。     
 
 * 2、目录结构  
@@ -616,55 +697,52 @@ $ tree
 1 directory, 10 files
 ```
 
-* 3、实现原理：  
-
-……待编写……  
-
-##### 5.2 缓存结构  
-
-* 1、各种缓存结构：  
-
-基础：指针、链表、内存、数组。  
-数据结构基础：表、树、图（多对多）。  
-缓冲区/buffer/顺序表/平直缓存/数组/内存指针（malloc）。  
-栈/stack：因为是先进后出，也用于函数调用时的压栈，编译器和高级算法中用的多，日常编程基本上不用。  
-堆/heap/完全二叉树：方便排序，编译器和算法中常用，日常编程基本上不用。  
-环形缓冲区/环形缓存区/循环队列/loop_buffer/ring_buffer/队列/FIFO/Queue：先进先出，满和空。  
-
-*参考网址：*  [什么是队列（队列存储结构）](http://c.biancheng.net/view/3352.html)  
-*参考网址：* [链式队列及基本操作（C语言实现）](http://c.biancheng.net/view/3354.html)  
-*参考网址：*  [数据结构与算法教程，数据结构C语言版教程！](http://c.biancheng.net/data_structure/)  
-
-分组队列/多级队列/group_buffer/fifo/queue：每个模块都有自己的队列，且不同队列间可直接通过数据指针无消耗转移大块数据。  
-
-* 2、自行实现的 **“多级缓存队列”模块** 源码：[点击此处查看源码](https://gitee.com/langcai1943/embedded-knowledge-wiki/tree/develop/source/lib/group_buf_queue)  
-本地路径：嵌入式知识图谱WiKi\source\lib\group_buf_queue\   
-
-有gcc-makefile和Qt两个工程都能编过，带详细注释和单元测试用例。  
-
-目录结构：  
+**单元测试结果：**  
 
 ```
-jim@DESKTOP-SVP3BEM MINGW64 /d/3_doc/嵌入式知识图谱WiKi/source/lib/group_buf_queue (develop)
-$ tree
-.
-|-- Makefile
-|-- arch_buffer_config.c
-|-- arch_buffer_config.h
-|-- group_buf_queue.c
-|-- group_buf_queue.h
-|-- group_buf_queue_init.c
-|-- group_buf_queue_init.h
-|-- group_buf_queue_unitest.c
-|-- group_buf_queue_unitest_qt_proj
-|   `-- group_buf_queue_unitest_qt_proj.pro
-|-- list.h
-|-- module_buf_queue.c
-|-- pair_list.c
-|-- pair_list.h
-`-- readme.txt
+jim@DESKTOP-SVP3BEM MINGW64 /d/3_doc/嵌入式知识图谱WiKi/source/lib/module_core (develop)
+$ ./module_core_demo.exe
+         module_unitest start         
+ 'module1 >>>1<<<' module_create
+ 'module2 )))2(((' module_create
+ 'module3 \\\3///' module_create
+ 'module1 >>>1<<<' module_start
+ 'module2 )))2(((' module_start
+ 'module3 \\\3///' module_start
+ 'module1 >>>1<<<' module_process
+ 'module2 )))2(((' module_process
+ 'module3 \\\3///' module_process
 
-1 directory, 15 files
+module1 >>>1<<< put data:  '@_@ @o@ from module1 1 1'  >>>>>>>>
+ 'module1 >>>1<<<' module_process
+ 'module2 )))2(((' module_process
+ 'module3 \\\3///' module_process
+module2 )))2((( got data:  '@_@ @o@ from module1 1 1'  <<<<<<<<
+
+
+module2 )))2((( put data:  ':) :-) from module2 2 2'  >>>>>>>>
+
+module1 >>>1<<< put data:  '@_@ @o@ from module1 1 1'  >>>>>>>>
+ 'module1 >>>1<<<' module_process
+ 'module2 )))2(((' module_process
+ 'module3 \\\3///' module_process
+module3 \\\3/// got data:  ':) :-) from module2 2 2'  <<<<<<<<
+
+module2 )))2((( got data:  '@_@ @o@ from module1 1 1'  <<<<<<<<
+
+
+module2 )))2((( put data:  ':) :-) from module2 2 2'  >>>>>>>>
+
+module1 >>>1<<< put data:  '@_@ @o@ from module1 1 1'  >>>>>>>>
+ 'module1 >>>1<<<' module_stop
+ 'module2 )))2(((' module_stop
+ 'module3 \\\3///' module_stop
+ 'module1 >>>1<<<' module_distroy
+ 'module2 )))2(((' module_distroy
+ 'module3 \\\3///' module_distroy
+________ module_unitest test pass. ________
+
+module_unitest.c test pass.
 ```
 
 * 3、实现原理：  
