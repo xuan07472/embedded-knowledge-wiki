@@ -787,12 +787,18 @@ c) 图片显示和抓取：jpeg(jpg)、mjpeg、png、jif
 音视频编解码的参考源码有ffmpeg。  
 - **FFmpeg音视频编解码**完整内容详见 <u>**子文档**</u>：《[ffmpeg源码及架构分析](https://gitee.com/langcai1943/audio_video_codec/blob/develop/2_ffmpeg%E6%9E%B6%E6%9E%84.md)》内容全  
 
+- **Linux下音视频播放程序源码（用于嵌入式播放器的仿真）**  
+详见 <u>**子工程仓库**</u>：《[才鲸 / 嵌入式播放器](https://gitee.com/langcai1943/embedded-player)》  
+
+- **Windows下音视频播放器源码（用于嵌入式播放器的仿真）**  
+详见 <u>**子工程仓库**</u>：《[才鲸 / 嵌入式播放器](https://gitee.com/langcai1943/qt_gui_simple2complex/tree/develop/source/005_Embeded_player/)》  
+
+……正在编写中……  
+
 ###### 7.2.3 Qt多媒体（音视频，含界面）  
 * **Qt多媒体**详见 <u>**子文档**</u>：《[MultiMedia_VideoAudio.md](https://gitee.com/langcai1943/qt_gui_simple2complex/blob/develop/source/003_MultiMedia_VideoAudio/documents/MultiMedia_VideoAudio.md)》 内容全  
 
 * [Qt官方播放器源码（纯应用）](https://gitee.com/langcai1943/qt_gui_simple2complex/blob/develop/source/003_MultiMedia_VideoAudio/003_qt6.2.3_multimedia/documents/003_qt6.2.3_multimedia.md)  
-
-* [嵌入式播放器源码（自行实现编解码、复用解复用）](https://gitee.com/langcai1943/qt_gui_simple2complex/blob/develop/source/003_MultiMedia_VideoAudio/004_audio_video_codec/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91.md)  
 
 7.3 传感器采集与校准  
 7.4 电视节目加解扰  
