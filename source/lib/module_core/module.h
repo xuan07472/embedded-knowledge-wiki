@@ -17,12 +17,12 @@
  * \details 多线程、多任务、多模块相互配合循环运行时就要用到状态机，进行模块分离
  */
 typedef enum {
-    STATE_NULL = 0,
+    STATE_NONE = 0,
     STATE_CREATE,
-    STATE_PROCESS,
     STATE_IDLE,
+    STATE_PROCESS,
     STATE_PAUSE,
-    STATE_DESTROY,
+    STATE_STOP,
 }MSTATE;
 
 /**
@@ -48,6 +48,8 @@ typedef enum {
     MCMD_SKIP, // 跳过一段数据的处理
     MCMD_GET_SPEED, // 获取当前速度
     MCMD_SET_SPEED, // 设置速度
+    MCMD_SET_STATE, // 切换子模块状态
+    // 可自行添加
 } MCMD;
 
 /**
@@ -57,8 +59,6 @@ typedef enum {
 struct module{
     const char name[64];
     MODULE_TYPE type;
-    MSTATE state; // 状态机
-    void *handle; // 每个模块自己专有的数据结构体，类似于C++ class中的private
     void *(*module_create)(struct module *m); // 函数指针
     void (*module_distroy)(struct module *m);
     int (*module_start)(struct module *m, void *param);
@@ -66,7 +66,39 @@ struct module{
     MSTATE (*module_process)(struct module *m);
     int (*module_control)(struct module *m, int cmd, void *param);
     struct list_head queue_entry;
+    MSTATE state; // 状态机
+    // handle: 类型为gm_unit, 每个模块自己专有的数据结构体，类似于C++ class中的private
+    void *handle; // 方便以后用malloc动态申请内存时判断是否申请成功
 };
+
+/**
+ * \brief 按类型获取模块指针
+ */
+struct module *module_get(MODULE_TYPE *type);
+
+/**
+ * \brief 按顺序获取模块指针
+ */
+struct module *module_next(struct module *m);
+/**
+ * \brief 创建所有模块
+ */
+void module_all_create(struct module *all_modules[]);
+
+/**
+ * \brief 销毁所有模块
+ */
+void module_all_destroy(struct module *all_modules[]);
+
+/**
+ * \brief 运行一个模块
+ */
+MSTATE module_run(struct module *m);
+
+/**
+ * \brief 执行模块的私有函数
+ */
+int module_command(struct module *m, int cmd, void *param);
 
 /**************** 以下是module_queue.h需要的结构体和函数申明 ****************/
 
@@ -96,12 +128,19 @@ typedef struct _module_buf {
 } module_buffer_node_t;
 
 /**
+ * \brief 所有节点都设置为free状态
+ */
+void module_all_nodes_init(void);
+
+/**
  * \brief 从系统缓存中申请一个缓存
+ * \details module_buf_t *module_queue_alloc(unsigned int group);
  */
 #define module_queue_alloc buffer_alloc
 
 /**
  * \brief 将已经申请的缓存送回系统缓存
+ * \details int module_queue_free(module_buf_t *mbuf);
  */
 #define module_queue_free buffer_free
 
@@ -130,6 +169,6 @@ extern module_buf_t *module_queue_pop(struct module *m);
 /**
  * \brief 获取目标模块的缓存数量
  */
-extern int module_queue_num(struct module *m, module_buf_t *buf);
+extern int module_queue_num(struct module *m);
 
 #endif // _MODULE_H

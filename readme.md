@@ -593,7 +593,32 @@ Linux中使用
 * 备注：Qt + MinGW创建工程时不能使用Paint C++，只能使用Paint C，因为编译时会报一些C++专有的关键字错误（如new关键字），和部分类型强制转换不支持等错误。  
 
 * 1、自行实现的 **“通用模块”** 源码：[点击此处查看源码](https://gitee.com/langcai1943/embedded-knowledge-wiki/tree/develop/source/lib/module_core)  
-本地路径：嵌入式知识图谱WiKi\source\lib\module_core\   
+本地路径：嵌入式知识图谱WiKi\source\lib\module_core\ 支持make编译和Qt编译，带详细注释和单元测试用例。     
+
+* 2、目录结构  
+
+```
+jim@DESKTOP-SVP3BEM MINGW64 /d/3_doc/嵌入式知识图谱WiKi/source/lib/module_core (develop)
+$ tree
+.
+|-- Makefile
+|-- module.c
+|-- module.h
+|-- module1.c
+|-- module2.c
+|-- module3.c
+|-- module_queue.c
+|-- module_queue.h
+|-- module_unitest.c
+`-- module_unitest_qt_proj
+    `-- module_unitest_qt_proj.pro
+
+1 directory, 10 files
+```
+
+* 3、实现原理：  
+
+……待编写……  
 
 ##### 5.2 缓存结构  
 

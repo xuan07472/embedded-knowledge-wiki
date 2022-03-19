@@ -22,6 +22,14 @@
 static module_buffer_node_t module_all_buffers[BUFFER_MAX_COUNT];
 
 /**
+ * \brief 所有节点都设置为free状态
+ */
+void module_all_nodes_init(void)
+{
+    memset(module_all_buffers, 0, sizeof(module_all_buffers));
+}
+
+/**
  * \brief 初始化自己模块的缓存队列
  */
 void module_queue_init(struct module *m)
@@ -157,7 +165,7 @@ module_buf_t *module_queue_pop(struct module *m)
 /**
  * \brief 获取目标模块的缓存数量
  */
-int module_queue_num(struct module *m, module_buf_t *buf)
+int module_queue_num(struct module *m)
 {
     int count = 0;
     struct list_head *head, *node, *n; // node和n都是临时变量，不用关心
