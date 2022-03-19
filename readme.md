@@ -662,7 +662,6 @@ ________ circular_linked_list_unitest test pass. ________
 group_buf_queue_unitest.c test pass.
 ```
 
-
 * 3、实现原理：  
 
 ……待编写……  
@@ -674,7 +673,7 @@ group_buf_queue_unitest.c test pass.
 * 备注：Qt + MinGW创建工程时不能使用Paint C++，只能使用Paint C，因为编译时会报一些C++专有的关键字错误（如new关键字），和部分类型强制转换不支持等错误。  
 
 * 1、自行实现的 **“通用模块”** Gitee仓库源码：[点击此处查看源码](https://gitee.com/langcai1943/embedded-knowledge-wiki/tree/develop/source/lib/module_core)  
-本地路径：嵌入式知识图谱WiKi\source\lib\module_core\ 支持make编译和Qt编译，带详细注释和单元测试用例。     
+本地路径：嵌入式知识图谱WiKi\source\lib\module_core\ 支持make编译和Qt编译，带详细注释和单元测试用例。  
 
 * 2、目录结构  
 
@@ -749,14 +748,21 @@ module_unitest.c test pass.
 
 ……待编写……  
 
-5.3 状态机  
-状态机用于多任务、多线程、循环中反复执行的函数中进行状态切换  
+##### 5.3 状态机  
+* 状态机用于多任务、多线程、循环中反复执行的函数中进行状态切换。  
+* 状态机的实现与应用的源码详见章节 5.2 模块统一接口。  
 
-5.4 循环、TASK、定时器  
-5.5 多线程、同步与竞争  
+##### 5.4 循环、TASK、定时器  
 
-#### 6. 通用应用  
-##### 6.1 应用框架  
+* “循环”实现与应用的源码详见章节 5.2 模块统一接口。  
+* TASK。  
+* 定时器：可以用来实现TASK或者一次性延时任务，也可以用来实现精确的系统时间。  
+
+##### 5.5 多线程、同步与竞争  
+
+#### 6. 汇编应用  
+##### 6.1 汇编应用框架  
+* 多用标号和压栈弹栈。  
 
 #### 7. 行业相关应用  
 ##### 7.1 GUI框架  
