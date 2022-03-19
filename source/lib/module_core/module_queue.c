@@ -24,7 +24,7 @@ static module_buffer_node_t module_all_buffers[BUFFER_MAX_COUNT];
 /**
  * \brief 初始化自己模块的缓存队列
  */
-void module_queue_init(struct mudule *m)
+void module_queue_init(struct module *m)
 {
     if (!m)
         return;
@@ -35,7 +35,7 @@ void module_queue_init(struct mudule *m)
 /**
  * \brief 销毁自己模块的缓存队列，将用过的缓存还给group_buf_queue模块
  */
-void module_queue_exit(struct mudule *m)
+void module_queue_exit(struct module *m)
 {
     module_buf_t *mbuf;
 
@@ -102,7 +102,7 @@ static module_buf_t *module_node_free(module_buffer_node_t *mbnode)
  * \param m 对方模块
  * \param buf 已实现申请好或获取到并修改了内容的缓存
  */
-module_buf_t *module_queue_push(struct mudule *m, module_buf_t *buf)
+module_buf_t *module_queue_push(struct module *m, module_buf_t *buf)
 {
     module_buffer_node_t *mbnode; // 节点+队列入口+一个缓存
     module_buf_t *ret_buf;
@@ -111,13 +111,13 @@ module_buf_t *module_queue_push(struct mudule *m, module_buf_t *buf)
         return NULL;
 
     /* 申请一个目标缓存的节点 */
-    mbnode = module_node_alloc(&m->module_queue, buf);
+    mbnode = module_node_alloc(&m->queue_entry, buf);
     if (!mbnode)
         return NULL;
 
     ret_buf = mbnode->mbuf;
 
-    list_del_init(mbnode->qnode.node); // 从node自己所属的链表中删除node节点并初始化node节点
+    list_del_init(&mbnode->qnode.node); // 从node自己所属的链表中删除node节点并初始化node节点
     list_add_tail(&mbnode->qnode.node, &m->queue_entry); //node加入到head的前面，也就是entry链表的末尾（因为是双向循环链表）
 
     return ret_buf;
@@ -126,7 +126,7 @@ module_buf_t *module_queue_push(struct mudule *m, module_buf_t *buf)
 /**
  * \brief 从自己模块的队列中推出一个缓存
  */
-module_buf_t *module_queue_pop(struct mudule *m)
+module_buf_t *module_queue_pop(struct module *m)
 {
     module_buf_t *buf = NULL;
     queue_node_t *queue_node = NULL;
@@ -157,7 +157,7 @@ module_buf_t *module_queue_pop(struct mudule *m)
 /**
  * \brief 获取目标模块的缓存数量
  */
-int module_queue_num(struct mudule *m, module_buf_t *buf)
+int module_queue_num(struct module *m, module_buf_t *buf)
 {
     int count = 0;
     struct list_head *head, *node, *n; // node和n都是临时变量，不用关心

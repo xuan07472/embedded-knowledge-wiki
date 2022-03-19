@@ -9,6 +9,9 @@
 #ifndef _MODULE_H
 #define _MODULE_H
 
+#include "list.h"
+#include "group_buf_queue.h"
+
 /**
  * \brief 状态机
  * \details 多线程、多任务、多模块相互配合循环运行时就要用到状态机，进行模块分离
@@ -51,18 +54,17 @@ typedef enum {
  * \brief 模块私有数据
  * \details 类似于C++ class中定义的变量和方法
  */
-struct module {
-
+struct module{
     const char name[64];
     MODULE_TYPE type;
     MSTATE state; // 状态机
     void *handle; // 每个模块自己专有的数据结构体，类似于C++ class中的private
-    void *(*module_create)(struct mudule *m); // 函数指针
-    void (*module_distroy)(struct mudule *m);
-    int (*module_start)(struct mudule *m, void *param);
-    int (*module_stop)(struct mudule *m);
-    MSTATE (*module_process)(struct mudule *m);
-    int (*module_control)(struct mudule *m, int cmd, void *param);
+    void *(*module_create)(struct module *m); // 函数指针
+    void (*module_distroy)(struct module *m);
+    int (*module_start)(struct module *m, void *param);
+    int (*module_stop)(struct module *m);
+    MSTATE (*module_process)(struct module *m);
+    int (*module_control)(struct module *m, int cmd, void *param);
     struct list_head queue_entry;
 };
 
@@ -106,41 +108,28 @@ typedef struct _module_buf {
 /**
  * \brief 初始化自己模块的缓存队列
  */
-extern void module_queue_init(struct mudule *m);
+extern void module_queue_init(struct module *m);
 
 /**
  * \brief 销毁自己模块的缓存队列，将用过的缓存还给group_buf_queue模块
  */
-extern void module_queue_exit(struct mudule *m);
-
-/**
- * \brief 从module本地free列表中申请一个节点信息
- * \details 实际的缓存已经从group_buf_queue模块中获取过了，这些缓存是全局的
- *          不用自己分配
- */
-extern static module_buffer_node_t *module_node_alloc(module_queue_t *queue, module_buf_t *buf);
-
-/**
- * \brief 将缓存还给module本地free列表中
- * \details 和group_buf_queue模块无关
- */
-extern static module_buf_t *module_node_free(module_buffer_node_t *mbnode);
+extern void module_queue_exit(struct module *m);
 
 /**
  * \brief 将缓存推送到对方模块
  * \param m 对方模块
  * \param buf 已实现申请好或获取到并修改了内容的缓存
  */
-extern module_buf_t *module_queue_push(struct mudule *m, module_buf_t *buf);
+extern module_buf_t *module_queue_push(struct module *m, module_buf_t *buf);
 
 /**
  * \brief 从自己模块的队列中推出一个缓存
  */
-extern module_buf_t *module_queue_pop(struct mudule *m);
+extern module_buf_t *module_queue_pop(struct module *m);
 
 /**
  * \brief 获取目标模块的缓存数量
  */
-extern int module_queue_num(struct mudule *m, module_buf_t *buf);
+extern int module_queue_num(struct module *m, module_buf_t *buf);
 
 #endif // _MODULE_H

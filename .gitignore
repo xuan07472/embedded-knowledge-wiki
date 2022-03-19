@@ -4,3 +4,4 @@ build-*/
 *.exe
 *.txt.user
 *.pro.user
+*.o

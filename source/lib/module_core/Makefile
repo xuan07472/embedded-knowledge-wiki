@@ -1,6 +1,8 @@
 # Makefile 是make工具编译时的配置文件
 # 参考网址：[Makefile多目录源文件](https://blog.csdn.net/qq_23087589/article/details/80668983)
 
+SHELL=cmd.exe
+
 # 编译器名称；=是给变量赋值
 CC = gcc
 
@@ -37,20 +39,21 @@ OBJ2 = $(patsubst %.c, %.o, $(SRC2))
 # 行首的@表示编译时不回显信息；$对变量取值；$^所有依赖文件; $@所有目标文件
 # -o 是gcc的链接命令
 $(TARGETS) : $(OBJ1) $(OBJ2)
+	@echo "prepare Link "
 	@$(CC ) $^ -o $@
 	@echo "prepare successfully!"
 
 # 将所有.c编译成.o
 # -c 是gcc的编译命令；$<第一个依赖文件
 %.o : $(src1)/%.c
-	@echo "prepare Compile "
+	@echo "prepare Compile1 "
 	@$(CC) -c $< $(CFLAGS ) $(INCLUDE) -o $@
-	@echo "Compiled "$<" successfully!"
+	@echo "Compiled_1 "$<" successfully!"
 
-%.o:%.cpp 
-	@echo "prepare Compile "
+%.o:%.c 
+	@echo "prepare Compile2 "
 	@$(CC) -c $< $(CFLAGS) $(INCLUDE) -o $@
-	@echo "Compiled "$<" successfully!"
+	@echo "Compiled_2 "$<" successfully!"
 
 # .PHONY定义伪标签；用于make clean清除所有以前编译的中间文件
 .PHONY : clean

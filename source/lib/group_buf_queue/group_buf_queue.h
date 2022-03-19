@@ -15,7 +15,7 @@
  */
 
 #ifndef _GROUP_BUF_QUEUE_H
-#define ifndef_GROUP_BUF_QUEUE_H
+#define _GROUP_BUF_QUEUE_H
 
 #include "pair_list.h"
 
@@ -82,4 +82,4 @@ int buffer_push(buffer_t *buf);
  */
 buffer_t *buffer_pop(unsigned int group);
 
-#endif // ifndef_GROUP_BUF_QUEUE_H
+#endif // _GROUP_BUF_QUEUE_H

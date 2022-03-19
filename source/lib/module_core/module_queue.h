@@ -17,6 +17,7 @@
 #define _MODULE_QUEUE_H
 
 #include "group_buf_queue.h"
+#include "arch_buffer_config.h"
 #include "module.h"
 
 /**** 具体module_queue.h需要的结构体和函数申明在module.h中 ****/
