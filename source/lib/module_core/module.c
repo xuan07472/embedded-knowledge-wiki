@@ -8,9 +8,32 @@
 
 #include "module.h"
 
-struct module *module_get(MODULE_TYPE *type);
-struct module *module_next(struct module *m);
-void module_all_create(struct module *g_all_modules[]);
-void module_all_destroy(struct module *g_all_modules[]);
-MSTATE module_run(struct module *m);
-int module_command(struct module *m, int cmd, void *param);
+struct module *module_get(MODULE_TYPE *type)
+{
+
+}
+
+struct module *module_next(struct module *m)
+{
+
+}
+
+void module_all_create(struct module *g_all_modules[])
+{
+
+}
+
+void module_all_destroy(struct module *g_all_modules[])
+{
+
+}
+
+MSTATE module_run(struct module *m)
+{
+
+}
+
+int module_command(struct module *m, int cmd, void *param)
+{
+
+}
