@@ -74,7 +74,7 @@ struct module{
 /**
  * \brief 按类型获取模块指针
  */
-struct module *module_get(MODULE_TYPE *type);
+struct module *module_get(MODULE_TYPE type);
 
 /**
  * \brief 按顺序获取模块指针

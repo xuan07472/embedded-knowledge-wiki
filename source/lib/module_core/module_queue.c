@@ -14,6 +14,7 @@
  */
 
 #include "module_queue.h"
+#include "string.h"
 
 /**
  * \brief 将所有的系统缓存都重新映射一个属于module的节点入口
@@ -125,7 +126,7 @@ module_buf_t *module_queue_push(struct module *m, module_buf_t *buf)
 
     ret_buf = mbnode->mbuf;
 
-    list_del_init(&mbnode->qnode.node); // 从node自己所属的链表中删除node节点并初始化node节点
+//    list_del_init(&mbnode->qnode.node); // 从node自己所属的链表中删除node节点并初始化node节点
     list_add_tail(&mbnode->qnode.node, &m->queue_entry); //node加入到head的前面，也就是entry链表的末尾（因为是双向循环链表）
 
     return ret_buf;

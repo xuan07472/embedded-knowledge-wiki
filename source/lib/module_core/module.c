@@ -19,7 +19,7 @@ static struct module **g_all_modules = (struct module **)g_modules_null;
 /**
  * \brief 按类型获取模块指针
  */
-struct module *module_get(MODULE_TYPE *type)
+struct module *module_get(MODULE_TYPE type)
 {
     struct module *m = NULL;
     int index = 0;
@@ -78,8 +78,8 @@ void module_all_create(struct module *all_modules[])
     while (g_all_modules[index]) {
         m = g_all_modules[index];
         m->state = STATE_NONE;
-        module_queue_init(m); // 初始化模块缓存
         m->module_create(m); // 初始化模块
+        module_queue_init(m); // 初始化模块缓存
         index++;
     }
 }

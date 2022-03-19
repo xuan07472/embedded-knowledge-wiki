@@ -44,9 +44,9 @@ static MSTATE module_process(struct module *m)
         m->module_stop(m); // stop自己模块
     }
 
-    /* 级联运行 */
-    if (munit->m_target)
-        module_run(munit->m_target);
+//    /* 级联运行 */
+//    if (munit->m_target)
+//        module_run(munit->m_target);
 
     /* 状态控制2 */
     if (m->state != STATE_IDLE && m->state != STATE_PROCESS)
@@ -72,7 +72,7 @@ static MSTATE module_process(struct module *m)
                 buf->len = strlen(mydata) + 1;
                 printf("```````` %s ````````\n", m->name);
                 printf(">>>>>>>>>>>>>>>>>>>>>>>>\n");
-                printf("%s put data: %s\n", buf->addr);
+                printf("%s put data: %s\n", m->name, buf->addr);
                 module_queue_push(munit->m_target, buf);
             }
         }
@@ -144,6 +144,8 @@ static int module_stop(struct module *m)
 
     /* 清理用过的资源 */
     module_queue_exit(m);
+    if (munit->m_target)
+        munit->m_target->module_stop(munit->m_target);
 
     m->state = STATE_CREATE;
 
@@ -171,6 +173,8 @@ static int module_start(struct module *m, void *param)
     munit->buffer_threshold = BUFFER_THRESHOLD;
     // 设置默认目标模块为模块2
     munit->m_target = module_get(MODULE_VIDEO_DECODE);
+    if (munit->m_target)
+        munit->m_target->module_start(munit->m_target, NULL);
 
     m->state = STATE_IDLE;
 
@@ -205,6 +209,6 @@ static void *module_create(struct module *m)
  * \details 不开放函数接口，靠函数指针调用执行
  */
 struct module g_module1 = {
-    "module1's name", MODULE_VIDEO_IN, // MODULE_VIDEO_DECODE MODULE_VIDEO_OUT
+    "####module1's name####", MODULE_VIDEO_IN, // MODULE_VIDEO_DECODE MODULE_VIDEO_OUT
     &module_create,
     };

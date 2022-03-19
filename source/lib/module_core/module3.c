@@ -78,8 +78,6 @@ static MSTATE module_process(struct module *m)
         module_queue_free(buf);
     }
 
-
-
     return m->state;
 }
 
@@ -142,6 +140,8 @@ static int module_stop(struct module *m)
 
     /* 清理用过的资源 */
     module_queue_exit(m);
+    if (munit->m_target)
+        munit->m_target->module_stop(munit->m_target);
 
     m->state = STATE_CREATE;
 
@@ -170,6 +170,8 @@ static int module_start(struct module *m, void *param)
 
     // 默认目标模块为空
     munit->m_target = NULL;
+    if (munit->m_target)
+        munit->m_target->module_start(munit->m_target, NULL);
 
     m->state = STATE_IDLE;
 

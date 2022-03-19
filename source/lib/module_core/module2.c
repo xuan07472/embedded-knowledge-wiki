@@ -142,6 +142,8 @@ static int module_stop(struct module *m)
 
     /* 清理用过的资源 */
     module_queue_exit(m);
+    if (munit->m_target)
+        munit->m_target->module_stop(munit->m_target);
 
     m->state = STATE_CREATE;
 
@@ -169,6 +171,8 @@ static int module_start(struct module *m, void *param)
     munit->buffer_threshold = BUFFER_THRESHOLD;
     // 设置默认目标模块为模块3
     munit->m_target = module_get(MODULE_VIDEO_OUT);
+    if (munit->m_target)
+        munit->m_target->module_start(munit->m_target, NULL);
 
     m->state = STATE_IDLE;
 
