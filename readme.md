@@ -526,6 +526,9 @@ Linux中使用
 驱动寄存器通用结构：输入输出地址（可与DMA配合）、中断控制  
 
 3.1 裸机驱动架构  
+
+* 统一的寄存器读写接口  
+
 4.1 RTOS驱动架构  
 4.1.1 uCos  
 4.1.2 eCos  
@@ -760,6 +763,13 @@ module_unitest.c test pass.
 
 ##### 5.5 多线程、同步与竞争  
 
+##### 5.6 高级通讯协议  
+
+* 借用了Linux源码中UTP协议的思想。  
+* 源码本地路径：嵌入式知识图谱WiKi\source\lib\communicating_protocol  
+
+……  
+
 #### 6. 汇编应用  
 ##### 6.1 汇编应用框架  
 * 多用标号和压栈弹栈。  
@@ -768,6 +778,9 @@ module_unitest.c test pass.
 ##### 7.1 GUI框架  
 ###### 7.1.1 Qt编程  
 **Qt编程**详见 <u>**子文档**</u>：《[从零开始学习Qt GUI编程](https://gitee.com/langcai1943/qt_gui_simple2complex)》 内容非常全，含各种源码  
+
+* C++与C语言混合编程，C++工程中调用纯C gcc编译的库的方法见Qt主仓库中的qt_gui_simple2complex\source\005_Qt_with_C_language章节，链接如下：  
+[ qt_gui_simple2complex/ source / 005_Qt_with_C_language](https://gitee.com/langcai1943/qt_gui_simple2complex/tree/develop/source/005_Qt_with_C_language)  
 
 ###### 7.1.2 uC/GUI  
 
