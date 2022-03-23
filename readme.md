@@ -375,6 +375,8 @@ end
 * 汇编通过地址跳转即可以实现各种条件判断和循环功能，如if else switch do while for等高级语言的功能。  
 * 通过压栈和弹栈的指令即可以各种函数的调用。  
 
+* 有关C51汇编的实际使用和编程技巧，详见本文档3.1.2章节“51汇编”
+
 ###### **1.2.2 ARM核指令集**  
 
 * ARM核各个系列的介绍详见 *参考网址：* [关于ARM的内核架构](https://www.cnblogs.com/zhugeanran/p/8431127.html)  
@@ -545,8 +547,18 @@ Linux中使用
 
 4.1.2 I2C  
 4.1.3 SPI  
-4.1.4 网络  
-4.1.5 USB  
+**4.1.4 网络**  
+* 网络有PHY芯片和PHY相关的驱动。  
+一般芯片或者IP厂商都会提供驱动示例的源码。  
+
+**4.1.5 USB**  
+[usb接口DP和DN的电压是多少？](https://www.zhihu.com/question/282414441)  
+[USB 接口管脚－D +D 之间电压](https://zhidao.baidu.com/question/307120794.html)  
+
+* USB有PHY芯片（或者芯片内的IP）和控制器，以及相关的驱动。  
+一般芯片或者IP厂商都会提供驱动示例的源码。  
+一款USB的寄存器及驱动编写介绍**本地文档**：[documents/2.3-4.1.5USB_PHY驱动.md](./documents/2.3-4.1.5USB_PHY驱动.md)
+
 4.1.6 蓝牙  
 4.1.7 CAN  
 4.1.8 ZigBee  
@@ -831,12 +843,80 @@ c) 图片显示和抓取：jpeg(jpg)、mjpeg、png、jif
 ## 三、工具使用  
 ### 1）编码语言  
 #### 1. C语言  
-1.1 编码规范  
-1.2 命名规范  
-1.3 注释规范  
+* 编码规范，命名规范， 注释规范  
+* C语言的全部介绍详见另一个仓库中的文档《[ C语言框架讲解](https://gitee.com/langcai1943/embedded_programming_skills/blob/develop/0_doc/02-C%E8%AF%AD%E8%A8%80%E6%A1%86%E6%9E%B6%E8%AE%B2%E8%A7%A3.md)》
 
 #### 2. 51汇编  
-1 指令集  
+* 指令集信息详见2-2-1_1-2-1章节“51核指令集”。  
+
+* 文件命名：可以以.ASM或.asm做为文件后缀，存放源程序，以.INC或.inc作为文件后缀，存放头文件。  
+
+* 注释：以; 分号开头的行都是注释，多用注释描述清楚函数、函数的参数和函数块的功能，因为汇编很难看懂，尽量让别人光看你的注释就能知道你的逻辑。  
+
+"宏定义"：DATA、BIT、EQU伪指令，编写程序前将各种寄存器地址、要用到的常量值，都用“宏定义”定义一遍，既让程序清晰又方便查找。使用举例：  
+
+```asm
+	TCON	DATA	88H		; 宏定义IRAM地址
+	IT0		BIT		TCON.0	; 宏定义位
+	AD		EQU		0F1H	; 宏定义立即数或地址
+```
+
+[51汇编中DATA和EQU](https://blog.csdn.net/qq_38352677/article/details/83477993)  
+
+* "函数名"：标号。以: 冒号结尾的就是标号，可以跳转到此处开始执行程序。实现for() switch() while() 等循环结构时用标号，实现函数的调用时也用标号。使用举例：  
+
+```asm
+RESET:		; 每次复位时就跳转到这里执行
+	CLR RS0
+```
+
+[51单片机汇编语言的标号是如何定义的](https://zhidao.baidu.com/question/156850472.html)  
+
+* 宏定义函数：用MACRO 和 ENDM包围即可。使用举例：  
+
+```asm
+MY_MACRO_FUNC MACRO AA BB CC ; 定义MY_MACRO_FUNC宏定义函数，它有三个参数
+	MOV AA_ADDR, # AA		 ; #表示一个立即数，没有=等号，用mov进行赋值
+	MOV BB_ADDR, # BB
+	MOV CC_ADDR, # CC
+ENDM
+```
+
+[汇编语言中macro的用法](https://www.cnblogs.com/onesea/p/15745506.html)  
+[51 汇编 指令 单片机 @ 和 # 区别](https://zhidao.baidu.com/question/585135031.html)
+
+* 函数使用标号作为入口，返回时要调用RET指令，函数被别人调用时使用LCALL指令。  
+* 需要使用一个局部变量时，多用A寄存器（ACC），只是要压栈和弹栈。使用举例：  
+
+```asm
+app_sync: 		; 一个函数入口
+	PUSH ACC 	; 压栈，可以给A赋值多次，再压栈多次，退出函数时再弹出多次把值还给赋值的
+	NOP			; 空语句
+	MOV A, APP_DATA	; 使用A作为临时变量
+	ANL A, #40H	; 对临时变量进行操作
+	NOP
+	POP ACC		; 弹栈
+	RET			; 函数返回
+	NOP
+
+my_func:
+	LCALL app_sync	; 调用函数
+```
+
+* 汇编中中断程序是固定地址。中断示例：  
+
+```asm
+    ORG     0000H ; 定位的伪指令
+    LJMP    RESET ; 跳转到函数
+
+    ORG		000BH
+    LJMP	T0INT
+
+    ORG		001BH
+    LJMP	T1INT
+```
+
+[51单片机汇编中断程序（导引）](http://www.51hei.com/bbs/dpj-30671-1.html)
 
 #### 3. ARM汇编  
 
