@@ -470,6 +470,22 @@ usr 工具类应用
 *参考网址：* [详解嵌入式系统Boot-Loader](https://blog.csdn.net/liangzc1124/article/details/110180693)  
 *参考网址：* [嵌入式u-boot浅析](https://blog.csdn.net/xiaoqiang2080/article/details/77894379)  
 
+* 为什么boot代码要用汇编写：  
+主要是因为C语言的运行环境还没准备好：  
+1、PLL没有启动，CPU工作频率为外部输入晶振频率，非常低；  
+2、CPU工作模式、中断响应函数的入口地址等不确定；  
+3、有些特殊寄存器（处理器状态寄存器、用户模式、堆栈、中断等）只能在汇编中访问；  
+4、初始化CPU缓存，初始化MMU（如果有的话）  
+5、存储空间的各个BANK(包括内存)都没有驱动，内存不能使用；  
+6、堆栈指针需要初始化，设置堆栈；  
+7、初始化.bss全局变量区；  
+8、调用main()函数。  
+
+* 一般初始化的汇编代码默认命名为start.s或者crt0.s。  
+* 一般编译器会提供一份默认的模板。  
+
+*参考网址：* [为什么bootloader起始的代码都是用汇编写的？](https://bbs.csdn.net/topics/370005264)  
+
 #### 2. 系统移植  
 
 <center>图5 操作系统框架</center>  
@@ -830,7 +846,7 @@ c) 图片显示和抓取：jpeg(jpg)、mjpeg、png、jif
 详见 <u>**子工程仓库**</u>：《[才鲸 / 嵌入式播放器](https://gitee.com/langcai1943/embedded-player)》  
 
 - **Windows下音视频播放器源码（用于嵌入式播放器的仿真）**  
-详见 <u>**子工程仓库**</u>：《[才鲸 / 嵌入式播放器](https://gitee.com/langcai1943/qt_gui_simple2complex/tree/develop/source/005_Embeded_player/)》  
+详见 <u>**子工程仓库**</u>：《[ 才鲸 / Qt GUI从简单到复杂 embeded_player](https://gitee.com/langcai1943/qt_gui_simple2complex/tree/develop/source/005_Embeded_player/)》  
 
 ……正在编写中……  
 
@@ -930,7 +946,11 @@ my_func:
     LJMP	T1INT
 ```
 
-[51单片机汇编中断程序（导引）](http://www.51hei.com/bbs/dpj-30671-1.html)
+[51单片机汇编中断程序（导引）](http://www.51hei.com/bbs/dpj-30671-1.html)  
+
+* 参数传递：  
+[32bit 汇编函数调用参数传递是通过堆栈来实现的](https://www.cnblogs.com/bugman/archive/2011/10/07/2200688.html)  
+[C51函数参数传递和返回](https://www.51dzw.com/embed/embed_109991.html)  
 
 #### 3. ARM汇编  
 
