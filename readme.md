@@ -257,7 +257,10 @@ end
 
 ## 二、各个模块  
 ### 1）硬件设计   
-*详细内容未涉及……*  
+
+* 画好PCB的前提是画出正确的原理图。  
+
+[阻抗匹配是什么意思?阻抗匹配原理详解](https://blog.csdn.net/gsjthxy/article/details/91605291)  
 
 #### 1. 硬件架构框图  
 
@@ -486,6 +489,16 @@ usr 工具类应用
 
 *参考网址：* [为什么bootloader起始的代码都是用汇编写的？](https://bbs.csdn.net/topics/370005264)  
 
+##### 1.1 分析bin/hex文件
+
+##### 1.2 C51boot  
+
+* 可以使用keil自带的仿真器运行程序，也可以使用qemu模拟器运行程序  
+* 使用官方下载的Keil，评估版只支持2K代码空间（C51总共也只支持64K代码空间）  
+* 也可以使用SDCC开源编译器，需要自行编写Makefile文件  
+
+C51的详细介绍及boot汇编代码编写详见**子文档**[《2.3.1.1_c51编程.md》](documents/2.3.1.1_c51编程.md)
+
 #### 2. 系统移植  
 
 <center>图5 操作系统框架</center>  
@@ -565,6 +578,11 @@ Linux中使用
 
 #### 4. 驱动模块  
 4.1 通讯类驱动  
+
+像网络、USB、WiFi、蓝牙，都属于复杂通讯驱动，有自己的通讯协议栈，协议栈分好几层（如物理层、链路层、传输层、应用层），有自己的PHY芯片或者IP，这种驱动的寄存器往往都有几百个，硬件内部就集成了多个状态机，一个人根本不能从零开始写一个完整的驱动。最常用的方式是使用主芯片厂商或者PHY芯片厂商提供的源码进行修改，自己也不用熟悉所有的协议层，只需要清楚自己需要修改的协议知识就可以了。  
+
+调试这类驱动时除了量电气特性的启动握手信号，都需要使用协议分析仪，用示波器根本识别不出实际数据。  
+
 4.1.1 串口  
 4.1.1.1 裸机开发  
 4.1.1.2 RTOS开发  
@@ -574,12 +592,18 @@ Linux中使用
 4.1.3 SPI  
 **4.1.4 网络**  
 
-像网络、USB、WiFi、蓝牙，都属于复杂通讯驱动，有自己的通讯协议栈，协议栈分好几层（如物理层、链路层、传输层、应用层），有自己的PHY芯片或者IP，这种驱动的寄存器往往都有几百个，硬件内部就集成了多个状态机，一个人根本不能从零开始写一个完整的驱动。最常用的方式是使用主芯片厂商或者PHY芯片厂商提供的源码进行修改，自己也不用熟悉所有的协议层，只需要清楚自己需要修改的协议知识就可以了。  
+* 网络物理层模块有PHY芯片和PHY相关的驱动，链路层有MAC芯片和MAC相关的驱动。一般芯片或者IP厂商都会提供驱动示例的源码。  
+* MAC与PHY数据接口有GMII MII RMII，接口规范中定义了MAC和PHY之间引脚的信号定义。  
+* 一般MAC集成进芯片内部，PHY在板子上单独有个芯片，如Realtek瑞昱。PHY包含模拟电路，而MAC是数字电路。  
+* MAC通过MDIO接口访问PHY寄存器（MDIO上可以接多个PHY）。  
+* MII：MAC与PHY之间的数据传输。  
 
-调试这类驱动时除了量电气特性的启动握手信号，都需要使用协议分析仪，用示波器根本识别不出实际数据。  
-
-* 网络有PHY芯片和PHY相关的驱动。  
-一般芯片或者IP厂商都会提供驱动示例的源码。  
+*参考网址：*  
+[mac与phy如何实现网络自适应](https://blog.csdn.net/skyflying2012/article/details/47132149)  
+[MAC和PHY关系](https://www.cnblogs.com/kdurant/p/4310554.html)  
+[以太网交换机如何工作以及MAC和PHY](https://blog.51cto.com/benshitong/1673287)  
+[MDIO接口](https://blog.csdn.net/qsczxcedczx/article/details/85782119)  
+[MII与RMII接口的区别](https://blog.csdn.net/fun_tion/article/details/70270632)  
 
 **4.1.5 USB**  
 [usb接口DP和DN的电压是多少？](https://www.zhihu.com/question/282414441)  
@@ -620,6 +644,17 @@ Linux中使用
 4.4.12 触摸屏  
 4.4.13 显示  
 4.4.14 MIPI  
+
+MIPI是一个接口集，里面常用的是DSI显示接口。  
+MIPI屏的接口不固定，pin数量也不固定，常用的有40pin、26pin。  
+MIPI屏的一个很大的特点是屏幕小但是像素高，多见于竖屏，常用的分辨率有都是720*1280、1080*1920。  
+
+
+
+[MIPI介绍(CSI DSI接口)](http://www.cnector.net/pdshowtwo/newsshow_5233756.html)  
+[MIPI自学笔记](https://zhuanlan.zhihu.com/p/92682047)  
+[MIPI_DSI协议简要介绍](https://blog.csdn.net/caihaitao2000/article/details/80224976)  
+
 4.4.15 PWM  
 4.4.16 i2s音频  
 4.4.17 ADC/DAC音频  
