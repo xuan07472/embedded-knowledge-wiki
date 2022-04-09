@@ -378,7 +378,7 @@ end
 * 汇编通过地址跳转即可以实现各种条件判断和循环功能，如if else switch do while for等高级语言的功能。  
 * 通过压栈和弹栈的指令即可以各种函数的调用。  
 
-* 有关C51汇编的实际使用和编程技巧，详见C51的详细介绍及boot汇编代码编写详见**子文档**[《2.3.1.1_c51编程.md》](documents/2.3.1.1_c51编程.md)  
+* 有关C51汇编的实际使用和编程技巧，详见**子文档**[《2.3.1.1_c51编程.md》](documents/2.3.1.1_c51编程.md)  
 
 ###### **1.2.2 ARM核指令集**  
 
@@ -391,6 +391,8 @@ end
 *参考网址：* [关于ARM处理器指令集](https://blog.csdn.net/qq_45385706/article/details/108478867)  
 *参考网址：* [ARM指令集](https://www.diangon.com/m209371.html)  
 *参考网址：* [Arm Architecture Reference Manual for A-profile architecture](https://developer.arm.com/documentation/ddi0487/ha/?lang=en) 文档下载  
+
+* 有关ARM汇编的实际使用和编程技巧，详见**子文档**[《2.3.1.2_ARM编程.md》](documents/2.3.1.2_ARM编程.md)   
 
 **1.2.3 TI DSP指令集**  
 
@@ -489,15 +491,17 @@ usr 工具类应用
 
 *参考网址：* [为什么bootloader起始的代码都是用汇编写的？](https://bbs.csdn.net/topics/370005264)  
 
-##### 1.1 分析bin/hex文件
-
-##### 1.2 C51boot  
+##### 1.1 C51 boot  
+* 分析bin/hex文件
 
 * 可以使用keil自带的仿真器运行程序，也可以使用qemu模拟器运行程序  
 * 使用官方下载的Keil，评估版只支持2K代码空间（C51总共也只支持64K代码空间）  
 * 也可以使用SDCC开源编译器，需要自行编写Makefile文件  
 
 C51的详细介绍及boot汇编代码编写详见**子文档**[《2.3.1.1_c51编程.md》](documents/2.3.1.1_c51编程.md)  
+
+##### 1.2 ARM boot  
+* 详见**子文档**[《2.3.1.2_ARM编程.md》](documents/2.3.1.2_ARM编程.md)   
 
 #### 2. 系统移植  
 
@@ -648,8 +652,6 @@ Linux中使用
 MIPI是一个接口集，里面常用的是DSI显示接口。  
 MIPI屏的接口不固定，pin数量也不固定，常用的有40pin、26pin。  
 MIPI屏的一个很大的特点是屏幕小但是像素高，多见于竖屏，常用的分辨率有都是720*1280、1080*1920。  
-
-
 
 [MIPI介绍(CSI DSI接口)](http://www.cnector.net/pdshowtwo/newsshow_5233756.html)  
 [MIPI自学笔记](https://zhuanlan.zhihu.com/p/92682047)  
@@ -990,6 +992,8 @@ my_func:
 * 51单片机汇编更详细的介绍及boot汇编代码编写详见**子文档**[《2.3.1.1_c51编程.md》](documents/2.3.1.1_c51编程.md)  
 
 #### 3. ARM汇编  
+
+* 详见**子文档**[《2.3.1.2_ARM编程.md》](documents/2.3.1.2_ARM编程.md)   
 
 #### 4. TI DSP汇编  
 
