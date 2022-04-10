@@ -842,10 +842,17 @@ module_unitest.c test pass.
 
 ##### 5.5 多线程、同步与竞争  
 
-##### 5.6 高级通讯协议  
+##### 5.6 通讯协议  
 
-* 借用了Linux源码中UTP协议的思想。  
 * 源码本地路径：嵌入式知识图谱WiKi\source\lib\communicating_protocol  
+* 概念：总线、局域网（以太网）、UDP、IP、私有协议  
+* 总线：  
+总线是一组信号线和通讯协议的集合，包含信号电气与机械特性，用于多组件间的数据传输。一些概念有传输速率、仲裁、并行串行、同步异步、差分、主从、一对多、多对多、时分复用。  
+总线是一个拓扑概念，相关的拓扑概念有：星形、总线型、环形、树形。  
+
+* 私有协议的通用概念：包头、包长、命令码、数据、累加和、包尾，ACK，重传，可靠传输，单次传输、批量传输、状态机。  
+
+* 详见**子文档**[《2.3.5.6_通讯协议.md》](documents/2.3.5.6_通讯协议.md)  
 
 ……  
 
@@ -1017,6 +1024,9 @@ my_func:
 详见 <u>**子文档**</u>：《[Markdown语法](https://gitee.com/langcai1943/embedded-knowledge-wiki/blob/develop/documents/3.1.13_Markdown%E8%AF%AD%E6%B3%95.md)》  
 
 ### 2）通讯协议  
+
+[接口协议（四）：以太网（Ethernet）学习（一）：协议](https://blog.csdn.net/qq_40483920/article/details/108262953)  
+
 #### 1. OSI七层协议  
 #### 2. 网络  
 #### 3. USB  
