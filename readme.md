@@ -1051,11 +1051,14 @@ my_func:
 ### 4.1 自运行的吃豆人程序  
 详见 <u>**子文档**</u>：《[才鲸 / C语言小游戏](https://gitee.com/langcai1943/c-little-game)》  
 
-### 4.2 Linux下视频播放程序  
+### 4.2 Linux下视频播放嵌入式仿真程序  
 详见 <u>**子文档**</u>：《[才鲸 / 嵌入式播放器](https://gitee.com/langcai1943/embedded-player)》  
 
 ### 4.3 Qt安卓手机群控PC软件  
 详见 <u>**子文档**</u>：《[才鲸 / qtscrcpy_tc_安卓手机群控](https://gitee.com/langcai1943/qtscrcpy_tc)》  
+
+### 4.4 Qt下视频录制嵌入式仿真程序  
+详见 <u>**子文档**</u>：《[Qt实现音视频播放器、多媒体开发框架（用于嵌入式播放器在PC上的仿真和多媒体框架学习）](https://gitee.com/langcai1943/qt_gui_simple2complex/tree/develop/source/007_Embeded_Player)》  
 
 ## 五、其它  
 待完善……  
