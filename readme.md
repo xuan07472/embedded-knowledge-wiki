@@ -486,8 +486,8 @@ usr 工具类应用
 7、初始化.bss全局变量区；  
 8、调用main()函数。  
 
-* 一般初始化的汇编代码默认命名为start.s或者crt0.s。  
-* 一般编译器会提供一份默认的模板。  
+* 一般初始化的汇编代码默认命名为start.s、crt0.s、STARTUP.A51等。  
+* 一般编译器会提供一份默认的boot模板，或者干脆将具体的细节隐藏在了编译器当中，用户在源码工程中看不到。  
 
 *参考网址：* [为什么bootloader起始的代码都是用汇编写的？](https://bbs.csdn.net/topics/370005264)  
 
@@ -655,9 +655,9 @@ Linux中使用
 4.4.13 显示  
 4.4.14 MIPI  
 
-MIPI是一个接口集，里面常用的是DSI显示接口。  
+MIPI是一个接口集，里面常用的是DSI显示接口和CSI摄像头接口。  
 MIPI屏的接口不固定，pin数量也不固定，常用的有40pin、26pin。  
-MIPI屏的一个很大的特点是屏幕小但是像素高，多见于竖屏，常用的分辨率有都是720*1280、1080*1920。  
+MIPI屏的一个很大的特点是屏幕小但是像素高，多见于竖屏，常用的分辨率有720x1280、1080x1920。  
 
 [MIPI介绍(CSI DSI接口)](http://www.cnector.net/pdshowtwo/newsshow_5233756.html)  
 [MIPI自学笔记](https://zhuanlan.zhihu.com/p/92682047)  
@@ -666,7 +666,7 @@ MIPI屏的一个很大的特点是屏幕小但是像素高，多见于竖屏，�
 4.4.15 PWM  
 4.4.16 i2s音频  
 4.4.17 ADC/DAC音频  
-4.4.18 振镜  
+4.4.18 激光振镜  
 4.4.19 激光器  
 4.4.20 换能器（水声） 
 4.4.21 电机   
@@ -750,10 +750,6 @@ ________ circular_linked_list_unitest test pass. ________
 group_buf_queue_unitest.c test pass.
 ```
 
-* 3、实现原理：  
-
-……待编写……  
-
 ##### 5.2 模块统一接口  
 
 * 备注：用Visual Studio和Qt + MSVC编译偏底层的C程序会报错（如使用了typeof等GNU C特性时），推荐使用Qt + MinGW 64-bit 或者 gcc编译。  
@@ -832,10 +828,6 @@ ________ module_unitest test pass. ________
 module_unitest.c test pass.
 ```
 
-* 3、实现原理：  
-
-……待编写……  
-
 ##### 5.3 状态机  
 * 状态机用于多任务、多线程、循环中反复执行的函数中进行状态切换。  
 * 状态机的实现与应用的源码详见章节 5.2 模块统一接口。  
@@ -848,19 +840,18 @@ module_unitest.c test pass.
 
 ##### 5.5 多线程、同步与竞争  
 
-##### 5.6 通讯协议  
+##### 5.6 通信协议  
 
 * 源码本地路径：嵌入式知识图谱WiKi\source\lib\communicating_protocol  
 * 概念：总线、局域网（以太网）、UDP、IP、私有协议  
 * 总线：  
-总线是一组信号线和通讯协议的集合，包含信号电气与机械特性，用于多组件间的数据传输。一些概念有传输速率、仲裁、并行串行、同步异步、差分、主从、一对多、多对多、时分复用。  
+总线是一组信号线和通信协议的集合，包含信号电气与机械特性，用于多组件间的数据传输。一些概念有传输速率、仲裁、并行串行、同步异步、差分、主从、一对多、多对多、时分复用。  
 总线是一个拓扑概念，相关的拓扑概念有：星形、总线型、环形、树形。  
 
 * 私有协议的通用概念：包头、包长、命令码、数据、累加和、包尾，ACK，重传，可靠传输，单次传输、批量传输、状态机。  
 
-* 详见**子文档**[《2.3.5.6_通讯协议.md》](documents/2.3.5.6_通讯协议.md)  
-
-……  
+* 通信协议概述详见**子文档**[《2.3.5.6_通信协议.md》](documents/2.3.5.6_通信协议.md)  
+* 基于开源uTP实现私有通信协议的示例：详见**子文档**[《2.3.5.6_uTP通信协议.md》](documents/2.3.5.6_uTP通信协议.md)  
 
 #### 6. 汇编应用  
 ##### 6.1 汇编应用框架  
@@ -882,6 +873,11 @@ module_unitest.c test pass.
 详见 <u>**子文档**</u>：《[2.3_7.2.3_不同操作系统多媒体框架.md](./documents/2.3_7.2.1_不同操作系统多媒体框架.md)》  
 
 ###### 7.2.2 嵌入式多媒体（音视频API）  
+
+* 上述各个框架中唯有Windows中的Media Foundation的session框架比较简洁，方便改造成嵌入式多媒体框架，其它的框架都很复杂。  
+
+![avatar](documents/T6_微软MediaFoundation多媒体框架.png)  
+
 - **音视频**是指：  
 a) 音频播放和录制：mp3、aac、ac3、wav（未编码的裸流）、pcm（未编码的裸流）  
 b) 音视频播放和录制：mp4、mkv、flv、ts（音视频封装），h264、h265(hevc)、vp8、vp9（纯视频流）
@@ -897,8 +893,6 @@ c) 图片显示和抓取：jpeg(jpg)、mjpeg、png、jif
 
 - **Windows下音视频播放器源码（用于嵌入式播放器的仿真）**  
 详见 <u>**子工程仓库**</u>：《[ 才鲸 / Qt GUI从简单到复杂 embeded_player](https://gitee.com/langcai1943/qt_gui_simple2complex/tree/develop/source/005_Embeded_player/)》  
-
-……正在编写中……  
 
 ###### 7.2.3 Qt多媒体（音视频，含界面）  
 * **Qt多媒体**详见 <u>**子文档**</u>：《[MultiMedia_VideoAudio.md](https://gitee.com/langcai1943/qt_gui_simple2complex/blob/develop/source/003_MultiMedia_VideoAudio/documents/MultiMedia_VideoAudio.md)》 内容全  
