@@ -1,0 +1,29 @@
+/*******************************************************************************
+硬件相关驱动模块：
+aes bignum(模幂运算) bluetooth des flash random(随机数) rsa smartcard uart
+cmi(编码) dma ebi(外部总线接口) intr(中断模块) otp(一次性密码) reg(寄存器)
+spi 
+
+纯软件模块：
+base64 crc CRYPTO(加解密) issue sha trace(调试跟踪用) types(字节处理) version
+zlib errors log session
+
+某一行业相关模块：
+ci(电视行业：DVB-CI+：CI+是对EN 50 221标准(也即CI标准)的扩展)
+demux(音视频解复用、解封装<如mp4/mkv/ts>) NSK(Network Security Key)
+pcmcia(一种总线接口) tsp(ts流处理) 
+
+架构：
+架构1：
+main() {
+    init();
+    task1(); while(1) {task1_parse();}
+    task2(); while(1) {task2_parse();}
+    task3(); while(1) {session_open(); session_read(); session_write(); session_close();}
+    exit();
+}
+
+
+
+
+*******************************************************************************/
