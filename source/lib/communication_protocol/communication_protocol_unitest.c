@@ -8,6 +8,9 @@
 int main()
 {
     printf("Hello World!\n");
+
+    UtpApp_Msg_Client_Init();
+
     return 0;
 }
 #endif // GROUP_COMMUNICATION_PROTOCOL_UNITEST
