@@ -1,0 +1,11 @@
+[全网最详细msys2编译libx264库](https://blog.csdn.net/nodeman/article/details/106431858)  
+[清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64/)  
+[安装MSYS2 Gcc环境](https://www.moguf.com/post/win10installgcc)  
+[ubuntu添加环境变量的四种方法](https://blog.csdn.net/K_K_yl/article/details/119756206)  
+[LINUX修改.bashrc之后，生效的办法](https://blog.csdn.net/quantum7/article/details/82142173)  
+[在 msys2 中安装软件 vim git gcc等](https://blog.csdn.net/eloudy/article/details/120159510) 
+[Ubuntu添加gcc头文件搜索路径](https://blog.csdn.net/qq_44986592/article/details/112061665) 
+[MSYS2与mingw32和mingw64的安装](https://www.cnblogs.com/juluwangshier/p/12015699.html)  
+[pacman常用命令](https://www.jianshu.com/p/4da41f67a7d9)  
+要手动安装gcc、make、git等常用的编译工具  
+如果要编译32位的程序，还需要安装mingw-w64-i686、ncurses、ncurses-devel  

@@ -1,0 +1,9 @@
+ubuntu最好一开始就安装英文版，要不然家目录是中文还经常有空格，使用cd命令切换目录时非常不方便
+
+[ubuntu16.04安装中文输入法并设置显示中文](https://blog.csdn.net/qq_45467083/article/details/108684083)  
+[ubuntu 无输入法图标如何设置？](https://jingyan.baidu.com/article/fec4bce28610c4f2618d8b13.html)  
+
+VMPlayer虚拟机中ubuntu16.04与主机间的文件拖动经常时灵时不灵，一直没有办法解决，可以用共享文件夹来实现。
+vmtools中配置好了共享文件夹后，ubuntu中执行
+sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other
+命令后，在/mnt/hgfs目录下就能看到共享以后的文件夹了

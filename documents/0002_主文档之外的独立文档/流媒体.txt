@@ -1,0 +1,5 @@
+go语言实战-----31-----流媒体架构设计之直播架构、音视频通话(常见 流媒体协议 解释)
+https://blog.csdn.net/weixin_44517656/article/details/124330093
+RTP RTCP RTSP!!! RTMP（需要flash支持，已经过时了） HTTP-FLV（未来可能会被淘汰） HLS WebRTC 
+HTTP-MP4（只能点播不能直播） 
+使用rtmp推流，HTTP-FLV、HLS拉流是个很好的选择
