@@ -1169,14 +1169,42 @@ my_func:
 
 ## 六、缩写列表
 
-待完善……  
-
 ## 七、索引（文档地图）
 
-待完善……  
+---
+
+## 八、其它
+
+### 1）字库
+* 字库有点阵字库和矢量字库，有些嵌入式里面是使用的是点阵字库，而点阵字库一般是用工具从矢量字库中转出来的。
+* 常用的字库有TTF字库。
+* 一个矢量字库的后缀往往是.ttf，大小有十几M。
+* 依靠编码方式，如GB2312、UTF-8等；矢量字库的每个字模都需要4字节地址偏移和2字节字模长度（举例）来指示在字库中的位置。
+* 支持矢量字库的板子，往往需要用软件解析字库的.ttf文件，硬件上只负责选择一个个具体的字模，所以也需要熟悉.ttf文件的存放格式。
+* .ttf字体文件中存储的是TrueType字体。另一种字体是OpenType。
+* TrueType字体大端编码，和Windows、Linux编译器都不一样。
+* 只使用.ttf关键字，而不加上sfnt的话，在中文环境中搜不到详细的描述，只有英文版中能搜到有用的信息。
+* .ttf文件存放的首先是描述自己有多上张表，然后是字体目录，接着具体每个字的字模可以任意顺序存储；.ttf文件由多个表组成，每个表都会字节对齐，不对齐的部分进行补0；
+* .ttf中每个表都有一个名字（和mp4中box名字类似）；常用的表有cmap：一个字从索引到存储的映射；glyf：单个字的所有轮廓；head：整套字体的名称；
+* .ttf字体存放的组织格式称为sfnt，类比的话，如果.ttf是指视频文件，sfnt就是mp4容器格式。
+* .ttf字体文件中首先描述有多少张表，然后第一个表是映射表cmap，里面可能包含多个子表，不同的编码方案有一张表。
+* 具体每个表的详细描述，可以使用ttf + 4个字母的表名进行搜索，也可以在下面链接中的苹果官网中查看。
+
+* *参考网址：*
+* [点阵字库与矢量字库](https://blog.csdn.net/qq_28258885/article/details/115166245)
+* [【每日AI】什么是矢量字库？](https://blog.csdn.net/TUSTer_/article/details/122655730)
+* [ttf文件结构解析](https://blog.csdn.net/a369488983/article/details/101586668)
+* [字体文件格式详解](https://blog.51cto.com/zhangchiworkos/5158114)
+* [TrueType Reference Manual苹果官方英文文档](https://developer.apple.com/fonts/TrueType-Reference-Manual/)
+* [TTF字体表](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6.html)
+* [“cmap”表](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6cmap.html)
+* [字体格式解析笔记整理一:SFNT包装格式](https://www.jianshu.com/p/21ae2dc5c50a)
+
+
 
 ---
 
-……正在编写中……  
 
----
+
+
+
