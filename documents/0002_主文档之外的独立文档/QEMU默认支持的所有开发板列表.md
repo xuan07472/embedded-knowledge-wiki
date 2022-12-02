@@ -757,7 +757,7 @@ The following devices are emulated:
 
 -  PL181 MultiMedia Card Interface with SD card.
 
-#### raspi 树莓派，显示，视频编解码（博通vpu），（可惜没有2D加速）
+#### raspi 树莓派，显示，没有GPU（视频编解码、2D加速）
 
 QEMU provides models of the following Raspberry Pi boards:
 
@@ -788,7 +788,7 @@ Implemented devices 已实现的设备
  * SoC thermal sensor
  * USB2 host controller (DWC2 and MPHI)
  * MailBox controller (MBOX)
- * VideoCore firmware (property) 视频编解码
+ * VideoCore firmware (property) GPU的固件接口，用作上电boot，但是没有实现GPU的视频编解码、2D3D显示加速
 
 
 #### palm，OMAP310，显示，触摸屏，音频编解码
@@ -1131,6 +1131,6 @@ Supported devices
  * LPC Peripheral Controller (a subset of subdevices are supported)
  * Hash/Crypto Engine (HACE) - Hash support only. TODO: HMAC and RSA
 
-### 四、模拟树莓派
+### 四、模拟GPU、视频编解码、2D3D显示加速
 
-QEMU好像支持树莓派的视频编解码，我需要多媒体功能，所以我只能使用树莓派。
+QEMU不能模拟GPU、2D3D加速、视频编解码，能模拟少部分音频编解码，也不能运行openGL。
