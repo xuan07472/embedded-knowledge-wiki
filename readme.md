@@ -5,13 +5,14 @@
 | 作者   | 将狼才鲸       |
 | ---- | ---------- |
 | 创建时间 | 2022-02-18 |
-|当前更新时间|2022-12-14|
+|当前更新时间|2022-12-15|
 
 ---
 
-*Gitee文档源码仓库地址* [ 才鲸 / 嵌入式知识图谱WiKi](https://gitee.com/langcai1943/embedded-knowledge-wiki)  
-*CSDN文章阅读地址* [嵌入式知识图谱WiKi](https://blog.csdn.net/qq582880551/article/details/123013592)  
-*Bilibili视频讲解网址（待完成）* [才鲸嵌入式主页](https://space.bilibili.com/106424039)  
+*Gitee文档源码仓库地址*： [ 才鲸 / 嵌入式知识图谱WiKi](https://gitee.com/langcai1943/embedded-knowledge-wiki)  
+*CSDN文章阅读地址*： [嵌入式知识图谱WiKi](https://blog.csdn.net/qq582880551/article/details/123013592)  
+*Bilibili视频讲解网址1*： [嵌入式哪些内容要学哪些不用学](https://www.bilibili.com/video/BV1nG411P7s3)  
+*Bilibili视频讲解网址2*： [嵌入式/单片机开发中有哪些通用模块需要掌握](https://www.bilibili.com/video/BV1g14y1N7rE/)  
 
 * 备注：文章内容较多，可从左侧目录跳转着观看。
 
@@ -287,7 +288,7 @@ end
   * 选中一个特定行业，深钻此行业的核心技术如架构、通讯、算法，可以突破嵌入式通用天花板，达到行业天花板，缺点是丧失任意更换行业的机动性，就业对象急剧变窄，抵挡大环境变化的能力变弱。有得必有失，风险越大，收益越大。
   * 敏锐的洞察力，遇见了一个未曾出现过的行业、发现了一个传统行业急待嵌入式的解救、发现了一个传统行业一旦被嵌入式加持则会功力大增但无人发觉，那么勇敢的少年，去开拓新的天地吧。不要轻易尝试，一步快才能步步快，但是第一步都已经被人占了。
 
-## 二、各个模块
+## 二、各个模块（通用模块）
 
 ### 1）硬件设计
 
@@ -1226,13 +1227,23 @@ my_func:
 
 游戏、UI、web前端、web后端、数据库、安卓、iOS、安全、大数据、人工智能、云计算、高级语言：Java，Python，C#、工具类：Json、正则表达式、网络协议栈、XAML、MinGW、MSYS2、Cygwin、Wine兼容层……  
 
-## 六、缩写列表
+### 5.6 写Linux应用程序
+* 如果要写带窗口的程序，可以使用X11，但是还是建议使用Qt，因为Linux下的窗口程序的用武之地很少；
+  * 如果是命令行程序，使用Linux比使用Windows更好，技能更通用；
 
-## 七、索引（文档地图）
+### 5.7 写Windows应用程序（功能仿真和模拟用）
+* 有些嵌入式的功能，如果是能抽象的，和硬件剥离的，虽然开发时能直接在板子上调试，但每次下代码都比较麻烦，或者每次编译程序都要很久；如果能直接在Linux或者Windows上直接写Demo运行，是能提高工作效率的。
+  * 如果是通用的C程序，可以使用MinGW下的gcc编译器，采用C语言标准库和Linux的API；
+  * 如果是GUI程序和带显示窗口的程序，可以使用Windows API，也可以使用Qt；
+  * 如果是本来就在芯片原厂开发GUI库，或者GUI功能很简单，或者要实现一些复杂的动画，那么使用Windows API是个很好的选择；
+    * win32 API能实现一些常用的功能：文件系统、外设、进程、线程、注册表、错误处理、2D显示(各种画图)、图形控件（按钮、滚动条、鼠标、键盘）、对话框、控件（状态栏、进度条、工具栏、标签）、Windows shell 命令、网络socket；
 
----
+* *参考网址：*
+  * [Windows API](https://baike.sogou.com/v3354197.htm?fromTitle=Windows+API)
+  * [Windows API 入门](https://blog.csdn.net/x_y_q_/article/details/52352523)
+  * [各种常用的 Win32Api 汇总](https://blog.csdn.net/weixin_42100963/article/details/107242265)
 
-## 八、其它
+## 六、专用模块
 
 ### 1）字库
 * 字库有点阵字库和矢量字库，有些嵌入式里面是使用的是点阵字库，而点阵字库一般是用工具从矢量字库中转出来的。
