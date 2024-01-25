@@ -1,4 +1,4 @@
-ARM Mali-V VPU硬件视频编解码驱动介绍V61
+ARM Mali-V VPU硬件视频编解码驱动介绍V61 V550
 ===
 
 |作者|将狼才鲸|
@@ -73,3 +73,9 @@ CSDN文章地址：[ARM Mali-V VPU硬件视频编解码驱动介绍V61](https://
   * 在停止状态，一些基本的流信息还是保存的，例如尺寸宽高，但是关键帧信息一定会丢失，所以只需要重新输入一个I帧就能继续接着解码，
   * VPU在成功切换到STOP状态后，会发送MVE_RESPONSE_CODE_STATE_CHANGE message给CPU，CPU必须先刷新input buffers，然后再传入新的I帧。
   * VPU切换到STOP状态后，会丢失nput buffers中的内容，但output buffers中的帧会继续保存，因为这些帧所占的时间很短，所以跳转和切换文件时可以不管output的缓存，直接把已解码的帧播完，也可以直接清输出缓存。
+
+## 三、VPU性能和配置
+
+* Mali-V550支持的编码像素格式有：
+  * YUV420、NV12、YUV422等，除了V61的编码，都不支持RGB。
+  * 详见《MVE-Host-Interface-Specification-v2》7.2 Formats
